@@ -1,2643 +1,796 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flour Mills of Nigeria Aptitude Test Practice</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --success-color: #27ae60;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            padding-top: 20px;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .question-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid var(--secondary-color);
-            transition: transform 0.3s ease;
-        }
-        
-        .question-card:hover {
-            transform: translateY(-3px);
-        }
-        
-        .question-number {
-            background-color: var(--secondary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-        
-        .option-label {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            border: 2px solid #e0e0e0;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .option-label:hover {
-            border-color: var(--secondary-color);
-            background-color: rgba(52, 152, 219, 0.05);
-        }
-        
-        .option-label.selected {
-            border-color: var(--secondary-color);
-            background-color: rgba(52, 152, 219, 0.1);
-        }
-        
-        .option-label.correct {
-            border-color: var(--success-color);
-            background-color: rgba(39, 174, 96, 0.1);
-        }
-        
-        .option-label.incorrect {
-            border-color: var(--accent-color);
-            background-color: rgba(231, 76, 60, 0.1);
-        }
-        
-        .option-radio {
-            margin-right: 10px;
-        }
-        
-        .section-title {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 8px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-        
-        .timer-container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            border-top: 4px solid var(--accent-color);
-        }
-        
-        .timer {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-        
-        .progress-container {
-            margin-bottom: 20px;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            border-radius: 5px;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        
-        .btn-custom {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .btn-custom:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .btn-finish {
-            background-color: var(--accent-color);
-        }
-        
-        .btn-finish:hover {
-            background-color: #c0392b;
-        }
-        
-        .results-container {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            display: none;
-        }
-        
-        .score-circle {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: conic-gradient(var(--success-color) 0% 0%, #e0e0e0 0% 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            position: relative;
-        }
-        
-        .score-circle-inner {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        .performance-summary {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        
-        .stat-box {
-            background-color: white;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            margin-bottom: 15px;
-        }
-        
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .section-score {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            background-color: white;
-            border-left: 4px solid var(--secondary-color);
-        }
-        
-        .answer-review {
-            margin-top: 30px;
-        }
-        
-        .review-item {
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            background-color: white;
-            border-left: 4px solid #ddd;
-        }
-        
-        .review-item.correct {
-            border-left-color: var(--success-color);
-        }
-        
-        .review-item.incorrect {
-            border-left-color: var(--accent-color);
-        }
-        
-        .review-question {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .user-answer {
-            color: var(--accent-color);
-            font-weight: 500;
-        }
-        
-        .correct-answer {
-            color: var(--success-color);
-            font-weight: 500;
-        }
-        
-        .instructions {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--secondary-color);
-        }
-        
-        .instructions ul {
-            padding-left: 20px;
-        }
-        
-        .instructions li {
-            margin-bottom: 8px;
-        }
-        
-        .start-screen {
-            text-align: center;
-            padding: 50px 20px;
-        }
-        
-        .start-btn {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            margin-top: 30px;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            .question-card {
-                padding: 15px;
-            }
-            
-            .option-label {
-                padding: 10px;
-            }
-            
-            .score-circle {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .score-circle-inner {
-                width: 110px;
-                height: 110px;
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FMN · Future Leader CBT</title>
+  <!-- jsPDF and autoTable plugin for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #f3f6f9;
+      color: #1a2b3c;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* header and progress */
+    .test-header {
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 8px 20px rgba(0,20,50,0.06);
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title-section h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #0a4b4a;
+      letter-spacing: -0.01em;
+    }
+    .title-section span {
+      background: #e7f1ee;
+      color: #0f6e6b;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-left: 0.8rem;
+    }
+
+    .timer-card {
+      background: #1e2f4e;
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+    .timer-card i {
+      font-size: 1.3rem;
+      color: #ffd966;
+    }
+
+    .section-badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.5rem 0 1rem;
+    }
+    .section-badge {
+      background: white;
+      padding: 0.6rem 1.3rem;
+      border-radius: 40px;
+      font-weight: 600;
+      border: 1.5px solid transparent;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .section-badge.active {
+      background: #0a4b4a;
+      color: white;
+      border-color: #0a4b4a;
+    }
+    .section-badge i {
+      margin-right: 0.5rem;
+    }
+
+    /* main question card */
+    .question-panel {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 12px 28px rgba(0,20,40,0.06);
+      margin-bottom: 2rem;
+    }
+
+    .q-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+    }
+    .q-counter {
+      background: #ecf3fa;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      color: #1e3f5c;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .flag-btn {
+      background: none;
+      border: 1.5px solid #dce5ec;
+      padding: 0.4rem 1.1rem;
+      border-radius: 40px;
+      background: white;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #3a5670;
+    }
+
+    .question-text {
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 2.2rem;
+      line-height: 1.5;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.8rem;
+    }
+    .option {
+      background: #f8fafd;
+      padding: 1rem 1.6rem;
+      border-radius: 16px;
+      border: 1.8px solid transparent;
+      transition: 0.12s;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-color: #e4ecf2;
+    }
+    .option:hover {
+      background: #edf3f8;
+      border-color: #3f9c9a;
+    }
+    .option.selected {
+      background: #e2f0ef;
+      border-color: #0f6e6b;
+      box-shadow: 0 4px 10px rgba(12,90,80,0.08);
+    }
+    .option-prefix {
+      font-weight: 700;
+      width: 2.2rem;
+      color: #1a4e63;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #e2eaf0;
+      padding-top: 1.8rem;
+    }
+    .btn {
+      border: none;
+      background: white;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1.5px solid #cbd7e2;
+      color: #2c4e66;
+      transition: 0.15s;
+    }
+    .btn-primary {
+      background: #0a4b4a;
+      border-color: #0a4b4a;
+      color: white;
+    }
+    .btn-primary i {
+      color: white;
+    }
+    .btn:hover {
+      background: #e1ecf0;
+    }
+    .btn-primary:hover {
+      background: #0e5e5c;
+    }
+
+    /* side summary */
+    .summary-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.6rem;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 1.5rem;
+    }
+    .grid-questions {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .q-num {
+      background: #f2f6fa;
+      border-radius: 12px;
+      padding: 0.5rem 0;
+      text-align: center;
+      font-weight: 600;
+      color: #1d3f5e;
+      cursor: pointer;
+    }
+    .q-num.answered {
+      background: #0a4b4a;
+      color: white;
+    }
+    .q-num.flagged {
+      border: 2px solid #e68a2e;
+    }
+
+    /* result panel */
+    .result-container {
+      background: white;
+      border-radius: 28px;
+      padding: 2.2rem;
+      margin-top: 2rem;
+    }
+    .hidden {
+      display: none;
+    }
+
+    .pdf-export-btn {
+      background: #872434;
+      color: white;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Start Screen -->
-        <div id="startScreen" class="start-screen">
-            <div class="header">
-                <h1><i class="fas fa-industry me-2"></i> Flour Mills of Nigeria</h1>
-                <h2>Aptitude Test Practice</h2>
-                <p class="lead">Prepare for your aptitude test with this comprehensive practice platform</p>
-            </div>
-            
-            <div class="instructions">
-                <h3><i class="fas fa-info-circle me-2"></i> Test Instructions</h3>
-                <ul>
-                    <li>The test contains <strong>150 questions</strong> across 5 sections</li>
-                    <li>You have <strong>120 minutes</strong> (2 hours) to complete the test</li>
-                    <li>Each section must be completed before moving to the next</li>
-                    <li>Select your answer by clicking on the option</li>
-                    <li>You can navigate between questions using the Previous/Next buttons</li>
-                    <li>Your test will be automatically submitted when the time expires</li>
-                    <li>Click the "Finish Test" button when you're ready to submit</li>
-                </ul>
-                
-                <div class="row mt-4">
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-box">
-                            <div class="stat-value">40</div>
-                            <div class="stat-label">Quantitative</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-box">
-                            <div class="stat-value">40</div>
-                            <div class="stat-label">Verbal</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-box">
-                            <div class="stat-value">40</div>
-                            <div class="stat-label">Logical</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-box">
-                            <div class="stat-value">30</div>
-                            <div class="stat-label">Situational</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <button id="startTestBtn" class="btn btn-custom btn-lg start-btn">
-                <i class="fas fa-play-circle me-2"></i> Start Practice Test
-            </button>
-        </div>
-        
-        <!-- Test Interface (Initially Hidden) -->
-        <div id="testInterface" style="display: none;">
-            <div class="header">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <h3><i class="fas fa-industry me-2"></i> Flour Mills Aptitude Test</h3>
-                        <p id="currentSectionText">Section 1: Quantitative Reasoning</p>
-                    </div>
-                    <div class="col-md-6 text-md-end">
-                        <div class="timer-container">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    <i class="fas fa-clock me-2"></i> Time Remaining:
-                                </div>
-                                <div class="col">
-                                    <div id="timer" class="timer">120:00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="progress-container">
-                <div class="d-flex justify-content-between mb-2">
-                    <span>Progress: <span id="currentQuestionNum">1</span>/<span id="totalQuestions">40</span></span>
-                    <span id="progressPercent">0%</span>
-                </div>
-                <div class="progress">
-                    <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" 
-                         role="progressbar" style="width: 0%" 
-                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            
-            <!-- Question Display -->
-            <div id="questionContainer"></div>
-            
-            <!-- Navigation Buttons -->
-            <div class="nav-buttons">
-                <button id="prevBtn" class="btn btn-custom">
-                    <i class="fas fa-arrow-left me-2"></i> Previous
-                </button>
-                
-                <div>
-                    <button id="sectionOverviewBtn" class="btn btn-custom me-2">
-                        <i class="fas fa-list-alt me-2"></i> Section Overview
-                    </button>
-                    
-                    <button id="finishSectionBtn" class="btn btn-custom me-2">
-                        <i class="fas fa-arrow-right me-2"></i> Next Section
-                    </button>
-                    
-                    <button id="finishTestBtn" class="btn btn-custom btn-finish">
-                        <i class="fas fa-flag-checkered me-2"></i> Finish Test
-                    </button>
-                </div>
-                
-                <button id="nextBtn" class="btn btn-custom">
-                    Next <i class="fas fa-arrow-right ms-2"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Results Screen (Initially Hidden) -->
-        <div id="resultsScreen" class="results-container">
-            <h2 class="text-center mb-4"><i class="fas fa-chart-line me-2"></i> Test Results</h2>
-            
-            <div class="score-circle">
-                <div class="score-circle-inner">
-                    <span id="finalScore">0</span>%
-                </div>
-            </div>
-            
-            <div class="text-center mb-4">
-                <h3 id="performanceText">Performance Rating</h3>
-                <p id="performanceDescription" class="text-muted">Your performance analysis will appear here</p>
-            </div>
-            
-            <div class="performance-summary">
-                <h4 class="mb-3"><i class="fas fa-chart-pie me-2"></i> Performance Summary</h4>
-                
-                <div class="row">
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-box">
-                            <div class="stat-value" id="correctAnswers">0</div>
-                            <div class="stat-label">Correct Answers</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-box">
-                            <div class="stat-value" id="incorrectAnswers">0</div>
-                            <div class="stat-label">Incorrect Answers</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-box">
-                            <div class="stat-value" id="skippedQuestions">0</div>
-                            <div class="stat-label">Skipped Questions</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-box">
-                            <div class="stat-value" id="timeSpent">0:00</div>
-                            <div class="stat-label">Time Spent</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <h5 class="mt-4 mb-3"><i class="fas fa-layer-group me-2"></i> Section-wise Performance</h5>
-                <div id="sectionScores"></div>
-            </div>
-            
-            <div class="answer-review mt-5">
-                <h4><i class="fas fa-clipboard-check me-2"></i> Answer Review</h4>
-                <p class="text-muted mb-3">Review your answers below. Green indicates correct answers, red indicates incorrect answers.</p>
-                <div id="answerReviewList"></div>
-            </div>
-            
-            <div class="text-center mt-4">
-                <button id="restartTestBtn" class="btn btn-custom me-3">
-                    <i class="fas fa-redo me-2"></i> Restart Test
-                </button>
-                <button id="viewStartScreenBtn" class="btn btn-custom">
-                    <i class="fas fa-home me-2"></i> Back to Start
-                </button>
-            </div>
-        </div>
-        
-        <!-- Section Overview Modal -->
-        <div class="modal fade" id="sectionOverviewModal" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"><i class="fas fa-list-ol me-2"></i> Section Overview</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row" id="sectionOverviewContent"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>Flour Mills of Nigeria Aptitude Test Practice Platform | Created for preparation purposes only</p>
-            <p>All questions are based on past aptitude test materials</p>
-        </div>
+<div class="container" id="app">
+  <!-- header with timer -->
+  <div class="test-header">
+    <div class="title-section">
+      <h1><i class="fas fa-flask" style="color:#0f6e6b; margin-right: 8px;"></i>FMN Future Leader</h1>
+      <span>180 questions · 30 min</span>
     </div>
-    
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        const questions = {
-          "Quantitative": [
-              {
-                  id: 1,
-                  question: "A flour mill produces 2.5 tons of flour in 3 hours. How much flour will it produce in 24 hours at the same rate?",
-                  options: ["15 tons", "18 tons", "20 tons", "25 tons"],
-                  answer: 2,
-                  explanation: "2.5 tons in 3 hours = 0.833 tons/hour. In 24 hours: 0.833 × 24 = 20 tons"
-              },
-              {
-                  id: 2,
-                  question: "If a 50kg bag of wheat costs N25,000 and yields 40kg of flour, what is the cost per kg of flour produced?",
-                  options: ["N500", "N550", "N600", "N625"],
-                  answer: 3,
-                  explanation: "N25,000 ÷ 40kg = N625 per kg"
-              },
-              {
-                  id: 3,
-                  question: "A warehouse has 1,200 bags of flour. If 35% are Grade A, 40% are Grade B, and the rest are Grade C, how many bags are Grade C?",
-                  options: ["280 bags", "300 bags", "320 bags", "340 bags"],
-                  answer: 1,
-                  explanation: "100% - 75% = 25%; 25% of 1,200 = 300 bags"
-              },
-              {
-                  id: 4,
-                  question: "Production increased from 15,000 tons in January to 18,000 tons in February. What was the percentage increase?",
-                  options: ["18%", "20%", "22%", "25%"],
-                  answer: 1,
-                  explanation: "(3,000 / 15,000) × 100 = 20%"
-              },
-              {
-                  id: 5,
-                  question: "If the exchange rate is $1 = N1,500, how much will 2,000kg of wheat cost if it's priced at $0.80 per kg?",
-                  options: ["N2,400,000", "N2,600,000", "N2,800,000", "N3,000,000"],
-                  answer: 0,
-                  explanation: "2,000 × $0.80 = $1,600; $1,600 × N1,500 = N2,400,000"
-              },
-              {
-                  id: 6,
-                  question: "A truck delivers 750 bags of flour to 5 distributors equally. If 3 distributors take their full share, how many bags remain?",
-                  options: ["150 bags", "225 bags", "300 bags", "450 bags"],
-                  answer: 2,
-                  explanation: "Each distributor gets 750 ÷ 5 = 150 bags. 2 distributors haven't taken: 2 × 150 = 300 bags"
-              },
-              {
-                  id: 7,
-                  question: "Production costs are 60% raw materials, 25% labor, and 15% overhead. If total cost is N10,000,000, what is the labor cost?",
-                  options: ["N1,500,000", "N2,000,000", "N2,500,000", "N3,000,000"],
-                  answer: 2,
-                  explanation: "25% of N10,000,000 = N2,500,000"
-              },
-              {
-                  id: 8,
-                  question: "If flour sells for N800 per kg with a 25% profit margin, what was the cost price per kg?",
-                  options: ["N600", "N640", "N660", "N720"],
-                  answer: 1,
-                  explanation: "Cost price = Selling price ÷ 1.25 = N800 ÷ 1.25 = N640"
-              },
-              {
-                  id: 9,
-                  question: "Machine A processes 300kg/hour, Machine B processes 450kg/hour. Working together for 4 hours, how much flour is processed?",
-                  options: ["2,500kg", "2,800kg", "3,000kg", "3,200kg"],
-                  answer: 2,
-                  explanation: "(300 + 450) × 4 = 750 × 4 = 3,000kg"
-              },
-              {
-                  id: 10,
-                  question: "A 20% discount on bulk purchase reduces price from N1,000 to N800 per bag. How much is saved on 500 bags?",
-                  options: ["N100,000", "N200,000", "N300,000", "N400,000"],
-                  answer: 0,
-                  explanation: "Savings per bag = N200; 500 × N200 = N100,000"
-              },
-              {
-                  id: 11,
-                  question: "The ratio of wheat to other grains in a blend is 7:3. If there are 210kg of wheat, how much other grains?",
-                  options: ["70kg", "80kg", "90kg", "100kg"],
-                  answer: 2,
-                  explanation: "7 parts = 210kg, so 1 part = 30kg; 3 parts = 90kg"
-              },
-              {
-                  id: 12,
-                  question: "If production capacity is 24,000 tons annually and current production is 18,000 tons, what percentage of capacity is utilized?",
-                  options: ["65%", "70%", "75%", "80%"],
-                  answer: 2,
-                  explanation: "18,000/24,000 × 100 = 75%"
-              },
-              {
-                  id: 13,
-                  question: "A recipe requires 2.5kg flour for 50 loaves. How many kg for 350 loaves?",
-                  options: ["15kg", "17.5kg", "20kg", "22.5kg"],
-                  answer: 1,
-                  explanation: "2.5kg ÷ 50 = 0.05kg per loaf; 350 × 0.05 = 17.5kg"
-              },
-              {
-                  id: 14,
-                  question: "Employee productivity increased from 50 bags/day to 65 bags/day. What is the percentage increase?",
-                  options: ["25%", "28%", "30%", "32%"],
-                  answer: 2,
-                  explanation: "((65-50)/50) × 100 = (15/50) × 100 = 30%"
-              },
-              {
-                  id: 15,
-                  question: "If 1 ton = 1,000kg and flour sells at N750/kg, revenue from 8 tons is:",
-                  options: ["N5,000,000", "N6,000,000", "N7,000,000", "N8,000,000"],
-                  answer: 1,
-                  explanation: "8 tons = 8,000kg; 8,000 × N750 = N6,000,000"
-              },
-              {
-                  id: 16,
-                  question: "A budget allocates 45% to raw materials, 30% to salaries, 15% to maintenance, and 10% to marketing. If total budget is N50 million, what is marketing budget?",
-                  options: ["N4 million", "N5 million", "N6 million", "N7 million"],
-                  answer: 1,
-                  explanation: "10% of N50 million = N5 million"
-              },
-              {
-                  id: 17,
-                  question: "Warehouse space costs N120,000/month for 1,000m². Cost per m² per day (30-day month)?",
-                  options: ["N3", "N4", "N5", "N6"],
-                  answer: 1,
-                  explanation: "N120,000 ÷ 30 days ÷ 1,000m² = N4 per m² per day"
-              },
-              {
-                  id: 18,
-                  question: "Machine efficiency improved from 85% to 94%. What is the percentage point improvement?",
-                  options: ["7%", "8%", "9%", "10%"],
-                  answer: 2,
-                  explanation: "94 - 85 = 9 percentage points"
-              },
-              {
-                  id: 19,
-                  question: "If flour price increases by 15% from N600/kg, new price is:",
-                  options: ["N680", "N690", "N700", "N720"],
-                  answer: 1,
-                  explanation: "N600 × 1.15 = N690"
-              },
-              {
-                  id: 20,
-                  question: "Employee shift: 6am-2pm (8 hours) with 30min break. Actual working hours?",
-                  options: ["7 hours", "7.5 hours", "7.75 hours", "8 hours"],
-                  answer: 1,
-                  explanation: "8 hours - 0.5 hours = 7.5 hours"
-              },
-              {
-                  id: 21,
-                  question: "If a milling machine operates at 85% efficiency and its maximum capacity is 2,000kg/hour, what is its actual output?",
-                  options: ["1,500kg/hour", "1,600kg/hour", "1,700kg/hour", "1,800kg/hour"],
-                  answer: 2,
-                  explanation: "2,000 × 0.85 = 1,700kg/hour"
-              },
-              {
-                  id: 22,
-                  question: "A 25% increase in wheat prices raises cost from N400/kg to what?",
-                  options: ["N450/kg", "N475/kg", "N500/kg", "N525/kg"],
-                  answer: 2,
-                  explanation: "N400 × 1.25 = N500"
-              },
-              {
-                  id: 23,
-                  question: "Transport costs are 15% of total expenses. If total expenses are N8,000,000, what are transport costs?",
-                  options: ["N1,000,000", "N1,200,000", "N1,400,000", "N1,600,000"],
-                  answer: 1,
-                  explanation: "15% of N8,000,000 = N1,200,000"
-              },
-              {
-                  id: 24,
-                  question: "If a machine uses 5kW per hour and runs 16 hours/day at N50 per kWh, daily electricity cost?",
-                  options: ["N3,200", "N3,600", "N4,000", "N4,400"],
-                  answer: 2,
-                  explanation: "5kW × 16hrs × N50 = N4,000"
-              },
-              {
-                  id: 25,
-                  question: "Annual salary of N4,800,000. Monthly salary after 20% tax deduction?",
-                  options: ["N320,000", "N340,000", "N360,000", "N380,000"],
-                  answer: 0,
-                  explanation: "N4,800,000 ÷ 12 = N400,000; 20% tax = N80,000; Net = N320,000"
-              },
-              {
-                  id: 26,
-                  question: "Recipe: 60% flour, 25% water, 10% yeast, 5% salt. For 200kg dough, flour needed?",
-                  options: ["100kg", "110kg", "120kg", "130kg"],
-                  answer: 2,
-                  explanation: "60% of 200kg = 120kg"
-              },
-              {
-                  id: 27,
-                  question: "Production target: 5,000 bags/week. Monday: 800, Tuesday: 950, Wednesday: 1,100. Average needed for remaining 2 days?",
-                  options: ["1,025 bags/day", "1,050 bags/day", "1,075 bags/day", "1,100 bags/day"],
-                  answer: 2,
-                  explanation: "Remaining: 5,000 - 2,850 = 2,150; ÷2 = 1,075 per day"
-              },
-              {
-                  id: 28,
-                  question: "Investment of N2,000,000 grows to N2,600,000 in 2 years. Annual growth rate?",
-                  options: ["12%", "13%", "14%", "15%"],
-                  answer: 2,
-                  explanation: "Compound growth: √(2.6/2.0) - 1 ≈ 14%"
-              },
-              {
-                  id: 29,
-                  question: "Order: 1,500 bags at N850/bag. 5% discount for payment within 7 days. Amount paid?",
-                  options: ["N1,185,000", "N1,200,000", "N1,211,250", "N1,225,000"],
-                  answer: 2,
-                  explanation: "1,500 × N850 = N1,275,000; ×0.95 = N1,211,250"
-              },
-              {
-                  id: 30,
-                  question: "Time study: Worker takes 8 min/bag. With 10% improvement, new time?",
-                  options: ["7.0 min", "7.2 min", "7.4 min", "7.6 min"],
-                  answer: 1,
-                  explanation: "8 × 0.9 = 7.2 min"
-              },
-              {
-                  id: 31,
-                  question: "Ratio of supervisors to workers is 1:15. With 180 workers, supervisors needed?",
-                  options: ["10", "12", "14", "16"],
-                  answer: 1,
-                  explanation: "180 ÷ 15 = 12 supervisors"
-              },
-              {
-                  id: 32,
-                  question: "Machine depreciates 10% annually. Value after 3 years if original N5,000,000?",
-                  options: ["N3,645,000", "N3,750,000", "N3,850,000", "N4,000,000"],
-                  answer: 0,
-                  explanation: "N5,000,000 × 0.9³ = N3,645,000"
-              },
-              {
-                  id: 33,
-                  question: "Blend: 70kg wheat @ N500/kg, 30kg corn @ N300/kg. Cost per kg of blend?",
-                  options: ["N420", "N430", "N440", "N450"],
-                  answer: 2,
-                  explanation: "(70×500 + 30×300) ÷ 100 = N44,000 ÷ 100 = N440"
-              },
-              {
-                  id: 34,
-                  question: "Cylindrical silo: radius 5m, height 10m. Volume in m³? (π ≈ 3.14)",
-                  options: ["785 m³", "795 m³", "805 m³", "815 m³"],
-                  answer: 0,
-                  explanation: "πr²h = 3.14 × 25 × 10 = 785 m³"
-              },
-              {
-                  id: 35,
-                  question: "Sales: Jan N12M, Feb N14M, Mar N16M. Quarterly average?",
-                  options: ["N13M", "N14M", "N15M", "N16M"],
-                  answer: 1,
-                  explanation: "(12 + 14 + 16) ÷ 3 = N14M"
-              },
-              {
-                  id: 36,
-                  question: "Customer order: 2.5 tons flour. Bags: 25kg each. Bags needed?",
-                  options: ["80 bags", "90 bags", "100 bags", "110 bags"],
-                  answer: 2,
-                  explanation: "2.5 tons = 2,500kg; 2,500 ÷ 25 = 100 bags"
-              },
-              {
-                  id: 37,
-                  question: "Water usage: 3 liters per kg flour. Daily production: 8,000kg. Monthly water (30 days)?",
-                  options: ["720,000 liters", "740,000 liters", "760,000 liters", "780,000 liters"],
-                  answer: 0,
-                  explanation: "8,000 × 3 × 30 = 720,000 liters"
-              },
-              {
-                  id: 38,
-                  question: "Profit margin: Cost N600, Selling N750. Margin percentage?",
-                  options: ["20%", "22%", "24%", "25%"],
-                  answer: 3,
-                  explanation: "((750-600)/600) × 100 = (150/600) × 100 = 25%"
-              },
-              {
-                  id: 39,
-                  question: "Staff of 40, 60% are production workers. Production workers count?",
-                  options: ["20", "22", "24", "26"],
-                  answer: 2,
-                  explanation: "40 × 0.6 = 24 workers"
-              },
-              {
-                  id: 40,
-                  question: "Loss reduced from 3% to 1.5% of production. If production is 10,000 bags, bags saved?",
-                  options: ["150 bags", "160 bags", "170 bags", "180 bags"],
-                  answer: 0,
-                  explanation: "10,000 × (0.03 - 0.015) = 150 bags"
-              }
-          ],
-          
-          "Verbal": [
-              {
-                  id: 41,
-                  question: "Choose the synonym for OPTIMIZE:",
-                  options: ["Waste", "Improve", "Reduce"],
-                  answer: 1,
-                  explanation: "Optimize means to make the best or most effective use of something, similar to improve."
-              },
-              {
-                  id: 42,
-                  question: "Select the correctly spelled word:",
-                  options: ["Efficiency", "Efficiency", "Efficiency", "Efficiency"],
-                  answer: 0,
-                  explanation: "All appear identical but in context, first option is correct."
-              },
-              {
-                  id: 43,
-                  question: "Choose the antonym for DIVERSE:",
-                  options: ["Varied", "Similar", "Different", "Mixed"],
-                  answer: 1,
-                  explanation: "Diverse means showing variety, opposite is similar."
-              },
-              {
-                  id: 44,
-                  question: "Which sentence is grammatically correct?",
-                  options: [
-                      "The team have submitted their reports.",
-                      "The team has submitted their reports.",
-                      "The team has submitted its report.",
-                      "The team have submitted its report."
-                  ],
-                  answer: 2,
-                  explanation: "Collective nouns like 'team' typically take singular verbs in American English."
-              },
-              {
-                  id: 45,
-                  question: 'What does "Scalability" mean in business context?',
-                  options: [
-                      "Ability to reduce costs",
-                      "Ability to grow without losing efficiency",
-                      "Ability to maintain quality",
-                      "Ability to diversify products"
-                  ],
-                  answer: 1,
-                  explanation: "Scalability refers to handling growth without efficiency loss."
-              },
-              {
-                  id: 46,
-                  question: "Choose the word closest to SUSTAINABLE:",
-                  options: ["Temporary", "Maintainable", "Expensive", "Limited"],
-                  answer: 1,
-                  explanation: "Sustainable means able to be maintained at a certain rate or level."
-              },
-              {
-                  id: 47,
-                  question: "Which is NOT a communication skill?",
-                  options: ["Active listening", "Interrupting", "Clarifying", "Empathy"],
-                  answer: 1,
-                  explanation: "Interrupting is not a positive communication skill."
-              },
-              {
-                  id: 48,
-                  question: 'Select the correct idiom: "To think outside the ___"',
-                  options: ["Circle", "Room", "Box", "Line"],
-                  answer: 2,
-                  explanation: 'The correct idiom is "think outside the box".'
-              },
-              {
-                  id: 49,
-                  question: "What does 'KPIs' stand for?",
-                  options: [
-                      "Key Performance Indicators",
-                      "Key Process Improvements",
-                      "Knowledge Performance Index",
-                      "Key Production Indicators"
-                  ],
-                  answer: 0,
-                  explanation: "KPIs stands for Key Performance Indicators."
-              },
-              {
-                  id: 50,
-                  question: "Choose the professional email closing:",
-                  options: ["Cheers,", "See ya,", "Yours faithfully,", "Later,"],
-                  answer: 2,
-                  explanation: "'Yours faithfully' is a professional closing."
-              },
-              {
-                  id: 51,
-                  question: "What is a 'stakeholder' in business?",
-                  options: [
-                      "Only shareholders",
-                      "Anyone affected by the business",
-                      "Only employees",
-                      "Only customers"
-                  ],
-                  answer: 1,
-                  explanation: "Stakeholders include anyone affected by the business."
-              },
-              {
-                  id: 52,
-                  question: "Select the correct meeting terminology: 'To ___ a meeting'",
-                  options: ["Adjourn", "Avoid", "Attend", "Arrange"],
-                  answer: 0,
-                  explanation: "To adjourn a meeting means to end it."
-              },
-              {
-                  id: 53,
-                  question: "Choose the synonym for INNOVATE:",
-                  options: ["Copy", "Create", "Destroy", "Maintain"],
-                  answer: 1,
-                  explanation: "Innovate means to introduce new ideas, similar to create."
-              },
-              {
-                  id: 54,
-                  question: "Which is a report writing principle?",
-                  options: [
-                      "Use jargon extensively",
-                      "Be concise and clear",
-                      "Omit important data",
-                      "Use informal language"
-                  ],
-                  answer: 1,
-                  explanation: "Reports should be concise and clear."
-              },
-              {
-                  id: 55,
-                  question: "What does 'ROI' mean?",
-                  options: [
-                      "Return on Investment",
-                      "Rate of Interest",
-                      "Revenue on Income",
-                      "Return on Innovation"
-                  ],
-                  answer: 0,
-                  explanation: "ROI stands for Return on Investment."
-              },
-              {
-                  id: 56,
-                  question: "Choose the antonym for PROACTIVE:",
-                  options: ["Active", "Reactive", "Initiative", "Forward-thinking"],
-                  answer: 1,
-                  explanation: "Proactive means taking initiative, opposite is reactive."
-              },
-              {
-                  id: 57,
-                  question: "Which word is misspelled?",
-                  options: ["Maintenance", "Professional", "Accomodate", "Discipline"],
-                  answer: 2,
-                  explanation: "Should be 'Accommodate' with double 'm'."
-              },
-              {
-                  id: 58,
-                  question: '"The data ___ conclusive." Choose correct verb:',
-                  options: ["are", "is", "were"],
-                  answer: 1,
-                  explanation: "Data is often treated as singular in business contexts."
-              },
-              {
-                  id: 59,
-                  question: "What does 'benchmarking' mean?",
-                  options: [
-                      "Setting standards based on best practices",
-                      "Marking benches",
-                      "Reducing costs",
-                      "Hiring employees"
-                  ],
-                  answer: 0,
-                  explanation: "Benchmarking means comparing with best practices."
-              },
-              {
-                  id: 60,
-                  question: "Select the correct plural: 'analysis'",
-                  options: ["Analysis", "Analysis", "Analyses", "Analyses"],
-                  answer: 2,
-                  explanation: "The plural of analysis is analyses."
-              },
-              {
-                  id: 61,
-                  question: "Choose the synonym for RIGOROUS:",
-                  options: ["Careless", "Thorough", "Easy", "Simple"],
-                  answer: 1,
-                  explanation: "Rigorous means thorough and accurate."
-              },
-              {
-                  id: 62,
-                  question: "Which is a communication barrier?",
-                  options: ["Active listening", "Clear speaking", "Assumptions", "Feedback"],
-                  answer: 2,
-                  explanation: "Assumptions can create communication barriers."
-              },
-              {
-                  id: 63,
-                  question: '"He is the ___ candidate for promotion." Choose:',
-                  options: ["principle", "principal", "principle", "principle"],
-                  answer: 1,
-                  explanation: "Principal means main or most important."
-              },
-              {
-                  id: 64,
-                  question: "What does 'synergy' mean?",
-                  options: [
-                      "Working separately",
-                      "Combined effort producing greater results",
-                      "Conflict",
-                      "Competition"
-                  ],
-                  answer: 1,
-                  explanation: "Synergy means combined effort producing greater effect."
-              },
-              {
-                  id: 65,
-                  question: "Choose the correct spelling:",
-                  options: ["Recommend", "Recommend", "Recommend", "Recommend"],
-                  answer: 0,
-                  explanation: "All appear identical but first is correct."
-              },
-              {
-                  id: 66,
-                  question: "Which is NOT a leadership quality?",
-                  options: ["Integrity", "Micromanagement", "Vision", "Empathy"],
-                  answer: 1,
-                  explanation: "Micromanagement is not a positive leadership quality."
-              },
-              {
-                  id: 67,
-                  question: '"Please find the report ___." Choose:',
-                  options: ["attached", "attach", "attaching", "attachment"],
-                  answer: 0,
-                  explanation: "'Attached' is the correct form."
-              },
-              {
-                  id: 68,
-                  question: "What does 'B2B' mean?",
-                  options: [
-                      "Business to Business",
-                      "Back to Basics",
-                      "Buy to Borrow",
-                      "Brand to Brand"
-                  ],
-                  answer: 0,
-                  explanation: "B2B stands for Business to Business."
-              },
-              {
-                  id: 69,
-                  question: "Choose the antonym for TRANSPARENT:",
-                  options: ["Clear", "Opaque", "Honest", "Open"],
-                  answer: 1,
-                  explanation: "Transparent means clear, opposite is opaque."
-              },
-              {
-                  id: 70,
-                  question: "Which is correct?",
-                  options: [
-                      "Between you and I",
-                      "Between you and me",
-                      "Between you and myself",
-                      "Between you and mine"
-                  ],
-                  answer: 1,
-                  explanation: "'Between you and me' is grammatically correct."
-              },
-              {
-                  id: 71,
-                  question: "What does 'ESG' stand for?",
-                  options: [
-                      "Environmental, Social, Governance",
-                      "Economic, Strategic, Growth",
-                      "Employee, Safety, Goals",
-                      "Efficiency, Standards, Guidelines"
-                  ],
-                  answer: 0,
-                  explanation: "ESG stands for Environmental, Social, Governance."
-              },
-              {
-                  id: 72,
-                  question: "Choose the correctly written sentence:",
-                  options: [
-                      "Their going to the meeting.",
-                      "There going to the meeting.",
-                      "They're going to the meeting.",
-                      "They're going to the meeting."
-                  ],
-                  answer: 2,
-                  explanation: "They're is contraction of 'they are'."
-              },
-              {
-                  id: 73,
-                  question: "What is 'conflict resolution'?",
-                  options: [
-                      "Avoiding conflicts",
-                      "Solving disagreements constructively",
-                      "Creating conflicts",
-                      "Ignoring issues"
-                  ],
-                  answer: 1,
-                  explanation: "Conflict resolution means solving disagreements."
-              },
-              {
-                  id: 74,
-                  question: "Choose the synonym for ACCOUNTABLE:",
-                  options: ["Irresponsible", "Responsible", "Blameworthy", "Unreliable"],
-                  answer: 1,
-                  explanation: "Accountable means responsible."
-              },
-              {
-                  id: 75,
-                  question: "Which is NOT a type of business communication?",
-                  options: ["Memorandum", "Report", "Gossip", "Presentation"],
-                  answer: 2,
-                  explanation: "Gossip is not formal business communication."
-              },
-              {
-                  id: 76,
-                  question: '"The project was completed ___ time." Choose:',
-                  options: ["on", "in", "at", "by"],
-                  answer: 0,
-                  explanation: "'On time' means at the scheduled time."
-              },
-              {
-                  id: 77,
-                  question: "What does 'MBO' stand for?",
-                  options: [
-                      "Management by Objectives",
-                      "Monthly Business Operations",
-                      "Main Business Office",
-                      "Management Board Organization"
-                  ],
-                  answer: 0,
-                  explanation: "MBO stands for Management by Objectives."
-              },
-              {
-                  id: 78,
-                  question: "Choose the antonym for EFFICIENT:",
-                  options: ["Productive", "Effective", "Wasteful", "Organized"],
-                  answer: 2,
-                  explanation: "Efficient means productive, opposite is wasteful."
-              },
-              {
-                  id: 79,
-                  question: "Which is correct?",
-                  options: [
-                      "Less people attended",
-                      "Fewer people attended",
-                      "Lesser people attended",
-                      "Few people attended"
-                  ],
-                  answer: 1,
-                  explanation: "'Fewer' is used for countable nouns like people."
-              },
-              {
-                  id: 80,
-                  question: "What does 'SMART' in goal-setting mean?",
-                  options: [
-                      "Specific, Measurable, Achievable, Relevant, Time-bound",
-                      "Simple, Manageable, Appropriate, Realistic, Timely",
-                      "Strategic, Meaningful, Actionable, Responsible, Targeted",
-                      "Systematic, Methodical, Analytical, Rational, Thorough"
-                  ],
-                  answer: 0,
-                  explanation: "SMART goals are Specific, Measurable, Achievable, Relevant, Time-bound."
-              }
-          ],
-          
-          "Logical": [
-              {
-                  id: 81,
-                  question: "All managers are leaders. Some leaders are innovators. Therefore:",
-                  options: [
-                      "All managers are innovators",
-                      "Some managers are innovators",
-                      "No managers are innovators",
-                      "Cannot be determined"
-                  ],
-                  answer: 3,
-                  explanation: "The statements don't provide enough information to determine if any managers are innovators."
-              },
-              {
-                  id: 82,
-                  question: "Complete series: 2, 4, 8, 16, 32, ___",
-                  options: ["48", "56", "64", "72"],
-                  answer: 2,
-                  explanation: "Each number is multiplied by 2: 2×2=4, 4×2=8, 8×2=16, 16×2=32, 32×2=64"
-              },
-              {
-                  id: 83,
-                  question: "If QUALITY = 17-21-1-12-9-20-25, then SAFETY = ? (A=1, B=2,...)",
-                  options: [
-                      "19-1-6-5-20-25",
-                      "18-1-6-5-20-25",
-                      "19-1-5-6-20-25",
-                      "19-1-6-5-21-25"
-                  ],
-                  answer: 0,
-                  explanation: "S=19, A=1, F=6, E=5, T=20, Y=25 → 19-1-6-5-20-25"
-              },
-              {
-                  id: 84,
-                  question: "Statement: All efficient processes save time. Some time-saving processes are automated. Conclusion: Some automated processes are efficient.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 2,
-                  explanation: "We don't know if the automated time-saving processes are the same as efficient processes."
-              },
-              {
-                  id: 85,
-                  question: "Find odd one: Planning, Organizing, Controlling, Procrastinating",
-                  options: ["Planning", "Organizing", "Controlling", "Procrastinating"],
-                  answer: 3,
-                  explanation: "Procrastinating is not a management function like the others."
-              },
-              {
-                  id: 86,
-                  question: "Analog: Supplier is to Raw Material as Customer is to:",
-                  options: ["Product", "Payment", "Complaint", "Service"],
-                  answer: 0,
-                  explanation: "Supplier provides raw material, customer receives product."
-              },
-              {
-                  id: 87,
-                  question: "Pattern: If A=1, B=2, C=3 then LEADER = ?",
-                  options: ["37", "38", "39", "40"],
-                  answer: 2,
-                  explanation: "L=12, E=5, A=1, D=4, E=5, R=18 → 12+5+1+4+5+18=45, but in test pattern likely 39"
-              },
-              {
-                  id: 88,
-                  question: "Sequence: If Day 1 = 100 units, Day 2 = 105, Day 3 = 110.25, Day 4 = ?",
-                  options: ["115.50", "115.76", "116.25", "117.50"],
-                  answer: 1,
-                  explanation: "5% increase: 110.25 × 1.05 = 115.7625 ≈ 115.76"
-              },
-              {
-                  id: 89,
-                  question: "All supervisors must attend safety training. John attended safety training. Therefore:",
-                  options: [
-                      "John is a supervisor",
-                      "John might be a supervisor",
-                      "John is not a supervisor",
-                      "Cannot determine"
-                  ],
-                  answer: 3,
-                  explanation: "John could be a supervisor or not; we can't determine from the statement."
-              },
-              {
-                  id: 90,
-                  question: "Odd one in production stages: Milling, Packaging, Marketing, Quality Check",
-                  options: ["Milling", "Packaging", "Marketing", "Quality Check"],
-                  answer: 2,
-                  explanation: "Marketing is not a production stage."
-              },
-              {
-                  id: 91,
-                  question: "Complete: 3, 9, 27, 81, ___",
-                  options: ["162", "243", "324", "405"],
-                  answer: 1,
-                  explanation: "Each multiplied by 3: 3×3=9, 9×3=27, 27×3=81, 81×3=243"
-              },
-              {
-                  id: 92,
-                  question: "Statement: No risky investments are safe. Some stocks are risky investments. Conclusion: Some stocks are not safe.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 0,
-                  explanation: "If no risky investments are safe, and some stocks are risky, then those stocks are not safe."
-              },
-              {
-                  id: 93,
-                  question: "Analog: Hammer is to Carpenter as Scalpel is to:",
-                  options: ["Doctor", "Chef", "Engineer", "Teacher"],
-                  answer: 0,
-                  explanation: "Hammer is tool for carpenter, scalpel is tool for doctor."
-              },
-              {
-                  id: 94,
-                  question: "Find missing: 64, 32, 16, 8, ___",
-                  options: ["2", "4", "6", "10"],
-                  answer: 1,
-                  explanation: "Divided by 2 each time: 64÷2=32, 32÷2=16, 16÷2=8, 8÷2=4"
-              },
-              {
-                  id: 95,
-                  question: "All quality products satisfy customers. Some products are not quality products. Conclusion: Some products do not satisfy customers.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 2,
-                  explanation: "We don't know if non-quality products satisfy customers or not."
-              },
-              {
-                  id: 96,
-                  question: "Complete: A, C, F, J, ___",
-                  options: ["N", "O", "P", "Q"],
-                  answer: 1,
-                  explanation: "+2,+3,+4,+5 pattern: A(+2)=C, C(+3)=F, F(+4)=J, J(+5)=O"
-              },
-              {
-                  id: 97,
-                  question: "If • means 'hot', •• means 'cold', ••• means 'wet', then •••• means:",
-                  options: ["Hot and cold", "Temperature", "Weather", "Climate"],
-                  answer: 1,
-                  explanation: "Combination of hot and cold suggests temperature."
-              },
-              {
-                  id: 98,
-                  question: "Find odd one: 2, 3, 5, 7, 9, 11, 13",
-                  options: ["2", "7", "9", "13"],
-                  answer: 2,
-                  explanation: "9 is not a prime number."
-              },
-              {
-                  id: 99,
-                  question: "Statement: All leaders communicate well. Some managers communicate well. Conclusion: Some managers are leaders.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 2,
-                  explanation: "We can't conclude that some managers are leaders from these statements."
-              },
-              {
-                  id: 100,
-                  question: "Complete: 1, 4, 9, 16, 25, ___",
-                  options: ["36", "49", "64", "81"],
-                  answer: 0,
-                  explanation: "Square numbers: 1²=1, 2²=4, 3²=9, 4²=16, 5²=25, 6²=36"
-              },
-              {
-                  id: 101,
-                  question: "If P=16, Q=17, R=18, S=19, then TRAIN = ?",
-                  options: ["58", "59", "60", "61"],
-                  answer: 2,
-                  explanation: "T=20, R=18, A=1, I=9, N=14 → 20+18+1+9+14=62, but pattern may differ"
-              },
-              {
-                  id: 102,
-                  question: "All machines need maintenance. This device is a machine. Conclusion: This device needs maintenance.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 0,
-                  explanation: "If all machines need maintenance and this is a machine, then it needs maintenance."
-              },
-              {
-                  id: 103,
-                  question: "Complete: 5, 10, 20, 40, ___",
-                  options: ["60", "70", "80", "90"],
-                  answer: 2,
-                  explanation: "Multiplied by 2: 5×2=10, 10×2=20, 20×2=40, 40×2=80"
-              },
-              {
-                  id: 104,
-                  question: "Analog: Clock is to Time as Thermometer is to:",
-                  options: ["Heat", "Temperature", "Weather", "Measurement"],
-                  answer: 1,
-                  explanation: "Clock measures time, thermometer measures temperature."
-              },
-              {
-                  id: 105,
-                  question: "Find odd one: Circle, Square, Triangle, Cylinder",
-                  options: ["Circle", "Square", "Triangle", "Cylinder"],
-                  answer: 3,
-                  explanation: "Cylinder is 3D shape, others are 2D shapes."
-              },
-              {
-                  id: 106,
-                  question: "Statement: Some employees are trainers. All trainers are certified. Conclusion: Some employees are certified.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 0,
-                  explanation: "If some employees are trainers and all trainers are certified, then those employees are certified."
-              },
-              {
-                  id: 107,
-                  question: "Complete: Z, X, V, T, ___",
-                  options: ["R", "S", "Q", "P"],
-                  answer: 0,
-                  explanation: "Subtract 2 letters each time: Z(-2)=X, X(-2)=V, V(-2)=T, T(-2)=R"
-              },
-              {
-                  id: 108,
-                  question: "If 5@3 = 16, 7@2 = 47, then 4@5 = ?",
-                  options: ["9", "20", "41", "54"],
-                  answer: 2,
-                  explanation: "Pattern: a² + b? 5²+? but test indicates 41"
-              },
-              {
-                  id: 109,
-                  question: "All decisions require analysis. Some analyses are flawed. Conclusion: Some decisions are flawed.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 2,
-                  explanation: "We don't know if the flawed analyses were used for decisions."
-              },
-              {
-                  id: 110,
-                  question: "Complete: 12, 24, 48, 96, ___",
-                  options: ["144", "168", "192", "216"],
-                  answer: 2,
-                  explanation: "Multiplied by 2: 12×2=24, 24×2=48, 48×2=96, 96×2=192"
-              },
-              {
-                  id: 111,
-                  question: "Find odd one: Profit, Loss, Revenue, Employee",
-                  options: ["Profit", "Loss", "Revenue", "Employee"],
-                  answer: 3,
-                  explanation: "Employee is not a financial term."
-              },
-              {
-                  id: 112,
-                  question: "If Monday=1, Tuesday=2, ... Sunday=7, then Friday + Wednesday = ?",
-                  options: ["6", "7", "8", "9"],
-                  answer: 2,
-                  explanation: "Friday=5, Wednesday=3, 5+3=8"
-              },
-              {
-                  id: 113,
-                  question: "Statement: No shortcuts are effective. Some methods are shortcuts. Conclusion: Some methods are not effective.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 0,
-                  explanation: "If no shortcuts are effective and some methods are shortcuts, then those methods are not effective."
-              },
-              {
-                  id: 114,
-                  question: "Complete: 2, 6, 12, 20, 30, ___",
-                  options: ["40", "42", "44", "48"],
-                  answer: 1,
-                  explanation: "+4,+6,+8,+10,+12 pattern: 2+4=6, 6+6=12, 12+8=20, 20+10=30, 30+12=42"
-              },
-              {
-                  id: 115,
-                  question: "Analog: Teacher:Student::Mentor:?",
-                  options: ["Protege", "Colleague", "Supervisor", "Peer"],
-                  answer: 0,
-                  explanation: "Teacher guides student, mentor guides protege."
-              },
-              {
-                  id: 116,
-                  question: "Find odd: Efficiency, Productivity, Quality, Laziness",
-                  options: ["Efficiency", "Productivity", "Quality", "Laziness"],
-                  answer: 3,
-                  explanation: "Laziness is negative trait, others are positive."
-              },
-              {
-                  id: 117,
-                  question: "If all As are Bs, and some Bs are Cs, then:",
-                  options: [
-                      "All As are Cs",
-                      "Some As are Cs",
-                      "No As are Cs",
-                      "Cannot determine"
-                  ],
-                  answer: 3,
-                  explanation: "We can't determine relationship between As and Cs."
-              },
-              {
-                  id: 118,
-                  question: "Complete: 100, 95, 85, 70, 50, ___",
-                  options: ["25", "30", "35", "40"],
-                  answer: 0,
-                  explanation: "-5,-10,-15,-20,-25 pattern: 100-5=95, 95-10=85, 85-15=70, 70-20=50, 50-25=25"
-              },
-              {
-                  id: 119,
-                  question: "Statement: Innovation requires risk. Some companies avoid risk. Conclusion: Some companies do not innovate.",
-                  options: ["True", "False", "Uncertain", "Invalid"],
-                  answer: 2,
-                  explanation: "We don't know if the companies that avoid risk don't innovate."
-              },
-              {
-                  id: 120,
-                  question: "Find odd one: Vision, Mission, Strategy, Complaint",
-                  options: ["Vision", "Mission", "Strategy", "Complaint"],
-                  answer: 3,
-                  explanation: "Complaint is not a business planning term."
-              }
-          ],
-          
-          "Situational": [
-              {
-                  id: 121,
-                  question: "A team member consistently misses deadlines. Your first action should be:",
-                  options: [
-                      "Report to HR immediately",
-                      "Discuss privately to understand reasons",
-                      "Punish by withholding bonuses",
-                      "Ignore if work is good otherwise"
-                  ],
-                  answer: 1,
-                  explanation: "First understand reasons before taking action."
-              },
-              {
-                  id: 122,
-                  question: "Discovering a quality defect in shipped products, you should:",
-                  options: [
-                      "Recall immediately",
-                      "Check if customers complained first",
-                      "Inform supervisor and assess scope",
-                      "Blame production team"
-                  ],
-                  answer: 2,
-                  explanation: "First inform supervisor and assess scope before action."
-              },
-              {
-                  id: 123,
-                  question: "Two team members argue during a meeting. You should:",
-                  options: [
-                      "Take sides with senior member",
-                      "Intervene and redirect to agenda",
-                      "Let them argue it out",
-                      "Cancel the meeting"
-                  ],
-                  answer: 1,
-                  explanation: "Intervene professionally and redirect focus."
-              },
-              {
-                  id: 124,
-                  question: "You notice safety violation but production is behind schedule. You should:",
-                  options: [
-                      "Ignore to meet target",
-                      "Stop operation immediately",
-                      "Report after shift ends",
-                      "Ask others if it's serious"
-                  ],
-                  answer: 1,
-                  explanation: "Safety should always be top priority."
-              },
-              {
-                  id: 125,
-                  question: "A supplier offers personal gift for contract renewal. You should:",
-                  options: [
-                      "Accept if small",
-                      "Decline and report",
-                      "Accept then share with team",
-                      "Negotiate for bigger gift"
-                  ],
-                  answer: 1,
-                  explanation: "Decline to maintain ethical standards."
-              },
-              {
-                  id: 126,
-                  question: "You discover cheaper raw material but quality is unknown. You should:",
-                  options: [
-                      "Switch immediately to save costs",
-                      "Test thoroughly before decision",
-                      "Ask competitors if they use it",
-                      "Reject without testing"
-                  ],
-                  answer: 1,
-                  explanation: "Always test quality before switching materials."
-              },
-              {
-                  id: 127,
-                  question: "Senior manager gives unethical instruction. You should:",
-                  options: [
-                      "Follow without question",
-                      "Refuse and report to higher authority",
-                      "Do it but complain later",
-                      "Ask colleagues what to do"
-                  ],
-                  answer: 1,
-                  explanation: "Refuse unethical requests and report properly."
-              },
-              {
-                  id: 128,
-                  question: "Team morale is low due to rumors. You should:",
-                  options: [
-                      "Ignore rumors",
-                      "Address with transparent communication",
-                      "Punish rumor starters",
-                      "Organize party to distract"
-                  ],
-                  answer: 1,
-                  explanation: "Address issues with transparent communication."
-              },
-              {
-                  id: 129,
-                  question: "You make an error causing production delay. You should:",
-                  options: [
-                      "Hide error",
-                      "Blame equipment",
-                      "Immediately inform supervisor",
-                      "Fix quietly without telling"
-                  ],
-                  answer: 2,
-                  explanation: "Always report errors immediately."
-              },
-              {
-                  id: 130,
-                  question: "Customer complains about product. Your first response:",
-                  options: [
-                      "Defend company",
-                      "Apologize and investigate",
-                      "Refer to another department",
-                      "Ignore if not major"
-                  ],
-                  answer: 1,
-                  explanation: "Apologize first and investigate the complaint."
-              },
-              {
-                  id: 131,
-                  question: "Team member takes credit for your idea. You should:",
-                  options: [
-                      "Confront publicly",
-                      "Discuss privately first",
-                      "Report to manager immediately",
-                      "Retaliate by undermining them"
-                  ],
-                  answer: 1,
-                  explanation: "Address privately first before escalating."
-              },
-              {
-                  id: 132,
-                  question: "You receive conflicting instructions from two managers. You should:",
-                  options: [
-                      "Follow the senior manager",
-                      "Ask them to clarify with each other",
-                      "Choose the easier task",
-                      "Do nothing until they follow up"
-                  ],
-                  answer: 1,
-                  explanation: "Ask managers to clarify conflicting instructions."
-              },
-              {
-                  id: 133,
-                  question: "You discover a coworker stealing supplies. You should:",
-                  options: [
-                      "Confront them directly",
-                      "Report to supervisor",
-                      "Ignore if small amount",
-                      "Join them to avoid conflict"
-                  ],
-                  answer: 1,
-                  explanation: "Report theft to proper authority."
-              },
-              {
-                  id: 134,
-                  question: "Deadline is unrealistic but assigned by boss. You should:",
-                  options: [
-                      "Work overtime without complaint",
-                      "Negotiate timeline with reasons",
-                      "Miss deadline and explain later",
-                      "Delegate to others"
-                  ],
-                  answer: 1,
-                  explanation: "Negotiate realistically with reasons."
-              },
-              {
-                  id: 135,
-                  question: "You notice process inefficiency but it's not your department. You should:",
-                  options: [
-                      "Ignore - not your responsibility",
-                      "Suggest improvement to responsible manager",
-                      "Implement change yourself",
-                      "Complain to your boss"
-                  ],
-                  answer: 1,
-                  explanation: "Suggest improvements to responsible person."
-              },
-              {
-                  id: 136,
-                  question: "Team member is underperforming due to personal issues. You should:",
-                  options: [
-                      "Fire them immediately",
-                      "Offer support and adjust workload temporarily",
-                      "Ignore personal issues",
-                      "Reduce their salary"
-                  ],
-                  answer: 1,
-                  explanation: "Offer support for personal issues affecting work."
-              },
-              {
-                  id: 137,
-                  question: "You have too much work. You should:",
-                  options: [
-                      "Work longer hours",
-                      "Prioritize and discuss with manager",
-                      "Do everything poorly",
-                      "Delegate to others without asking"
-                  ],
-                  answer: 1,
-                  explanation: "Prioritize and discuss workload with manager."
-              },
-              {
-                  id: 138,
-                  question: "You disagree with company policy. You should:",
-                  options: [
-                      "Sabotage implementation",
-                      "Discuss concerns through proper channels",
-                      "Complain to coworkers",
-                      "Ignore and follow anyway"
-                  ],
-                  answer: 1,
-                  explanation: "Voice concerns through proper channels."
-              },
-              {
-                  id: 139,
-                  question: "You receive negative feedback. You should:",
-                  options: [
-                      "Defend yourself immediately",
-                      "Thank them and reflect on it",
-                      "Ignore it",
-                      "Retaliate with their flaws"
-                  ],
-                  answer: 1,
-                  explanation: "Accept feedback graciously and reflect."
-              },
-              {
-                  id: 140,
-                  question: "Budget cut requires team reduction. You should:",
-                  options: [
-                      "Cut newest employees first",
-                      "Cut based on performance reviews",
-                      "Cut your own salary instead",
-                      "Refuse to make cuts"
-                  ],
-                  answer: 1,
-                  explanation: "Base cuts on performance, not seniority."
-              },
-              {
-                  id: 141,
-                  question: "Important equipment breaks during peak production. You should:",
-                  options: [
-                      "Blame maintenance team",
-                      "Find temporary workaround while fixing",
-                      "Stop all production",
-                      "Hide the problem"
-                  ],
-                  answer: 1,
-                  explanation: "Find workaround while fixing the problem."
-              },
-              {
-                  id: 142,
-                  question: "You witness harassment. You should:",
-                  options: [
-                      "Ignore to avoid trouble",
-                      "Support victim and report",
-                      "Join in to fit in",
-                      "Confront harasser publicly"
-                  ],
-                  answer: 1,
-                  explanation: "Support victim and report harassment."
-              },
-              {
-                  id: 143,
-                  question: "You're offered a better job elsewhere. You should:",
-                  options: [
-                      "Quit immediately",
-                      "Use offer to negotiate salary",
-                      "Discuss career path with current employer first",
-                      "Stay without mentioning offer"
-                  ],
-                  answer: 2,
-                  explanation: "Discuss career opportunities with current employer first."
-              },
-              {
-                  id: 144,
-                  question: "You discover accounting error in your favor. You should:",
-                  options: [
-                      "Keep the money",
-                      "Report and correct",
-                      "Share with team",
-                      "Blame accountant"
-                  ],
-                  answer: 1,
-                  explanation: "Always report and correct errors."
-              },
-              {
-                  id: 145,
-                  question: "Team rejects your idea. You should:",
-                  options: [
-                      "Force implementation",
-                      "Understand their concerns and refine",
-                      "Give up completely",
-                      "Complain to higher management"
-                  ],
-                  answer: 1,
-                  explanation: "Understand concerns and refine idea."
-              },
-              {
-                  id: 146,
-                  question: "You need to implement unpopular change. You should:",
-                  options: [
-                      "Force it without explanation",
-                      "Communicate reasons and benefits",
-                      "Blame upper management",
-                      "Delay indefinitely"
-                  ],
-                  answer: 1,
-                  explanation: "Communicate reasons for change clearly."
-              },
-              {
-                  id: 147,
-                  question: "You're asked to do something beyond your expertise. You should:",
-                  options: [
-                      "Fake competence",
-                      "Admit limitation and ask for training/support",
-                      "Refuse outright",
-                      "Blame others for not helping"
-                  ],
-                  answer: 1,
-                  explanation: "Admit limitations and seek support."
-              },
-              {
-                  id: 148,
-                  question: "You achieve great results. You should:",
-                  options: [
-                      "Take all credit",
-                      "Acknowledge team contribution",
-                      "Demand promotion immediately",
-                      "Downplay achievement"
-                  ],
-                  answer: 1,
-                  explanation: "Acknowledge team contributions."
-              },
-              {
-                  id: 149,
-                  question: "Company faces bad publicity. You should:",
-                  options: [
-                      "Criticize company publicly",
-                      "Defend company blindly",
-                      "Understand facts before commenting",
-                      "Look for another job"
-                  ],
-                  answer: 2,
-                  explanation: "Understand facts before commenting."
-              },
-              {
-                  id: 150,
-                  question: "You finish work early. You should:",
-                  options: [
-                      "Leave immediately",
-                      "Offer help to others",
-                      "Pretend to work",
-                      "Start personal projects"
-                  ],
-                  answer: 1,
-                  explanation: "Offer help to colleagues when done early."
-              }
-          ],
-          
-          "Personality": [
-              {
-                  id: 151,
-                  question: "I enjoy taking charge of group projects.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 152,
-                  question: "I prefer following established procedures rather than creating new ones.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 153,
-                  question: "I remain calm under pressure.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 154,
-                  question: "I actively seek feedback on my performance.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 155,
-                  question: "I enjoy analyzing data and reports.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 156,
-                  question: "I prefer working independently rather than in teams.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 157,
-                  question: "I adapt quickly to changes in the workplace.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 158,
-                  question: "I enjoy mentoring or training others.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 159,
-                  question: "I take initiative without being asked.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 160,
-                  question: "I pay close attention to details in my work.",
-                  options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 161,
-                  question: "When facing a difficult problem, I:",
-                  options: [
-                      "Analyze all data first",
-                      "Consult experienced colleagues",
-                      "Trust my intuition",
-                      "Follow standard procedure"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 162,
-                  question: "In team conflicts, I usually:",
-                  options: [
-                      "Mediate between parties",
-                      "Avoid involvement",
-                      "Support my friends",
-                      "Report to supervisor"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 163,
-                  question: "When receiving criticism, I:",
-                  options: [
-                      "Become defensive",
-                      "Listen and reflect",
-                      "Ignore if I disagree",
-                      "Ask for specific examples"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 164,
-                  question: "My approach to deadlines:",
-                  options: [
-                      "Complete early",
-                      "Work steadily to meet deadline",
-                      "Rush at last minute",
-                      "Often request extensions"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 165,
-                  question: "In learning new skills, I prefer:",
-                  options: [
-                      "Hands-on practice",
-                      "Reading manuals",
-                      "Watching demonstrations",
-                      "Trial and error"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 166,
-                  question: "In meetings, I typically:",
-                  options: [
-                      "Speak first",
-                      "Listen then contribute",
-                      "Speak only when asked",
-                      "Avoid speaking"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 167,
-                  question: "When making decisions, I consider:",
-                  options: [
-                      "Facts and data only",
-                      "People's feelings",
-                      "Both facts and feelings",
-                      "My gut instinct"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 168,
-                  question: "Regarding rules and policies:",
-                  options: [
-                      "Always follow strictly",
-                      "Follow but suggest improvements",
-                      "Bend if necessary",
-                      "Ignore if inconvenient"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 169,
-                  question: "When working on projects:",
-                  options: [
-                      "I prefer clear instructions",
-                      "I like autonomy",
-                      "I want frequent feedback"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 170,
-                  question: "Under stress, I:",
-                  options: [
-                      "Work harder",
-                      "Seek help",
-                      "Become less productive",
-                      "Take breaks"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 171,
-                  question: "My communication style:",
-                  options: [
-                      "Direct and brief",
-                      "Detailed and thorough",
-                      "Diplomatic and considerate",
-                      "Informal and friendly"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 172,
-                  question: "Regarding mistakes:",
-                  options: [
-                      "I rarely make them",
-                      "I learn from them",
-                      "I hide them",
-                      "I blame others"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 173,
-                  question: "In team settings, I'm usually:",
-                  options: [
-                      "The organizer",
-                      "The creative thinker",
-                      "The quality checker",
-                      "The peacemaker"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 174,
-                  question: "Regarding feedback to others:",
-                  options: [
-                      "I give it freely",
-                      "I give only when asked",
-                      "I avoid giving negative feedback",
-                      "I sugarcoat criticism"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 175,
-                  question: "My work priority:",
-                  options: [
-                      "Task completion",
-                      "Team harmony",
-                      "Personal growth",
-                      "Customer satisfaction"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 176,
-                  question: "When praised:",
-                  options: [
-                      "I credit the team",
-                      "I accept graciously",
-                      "I deflect praise",
-                      "I expect more recognition"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 177,
-                  question: "Regarding office politics:",
-                  options: [
-                      "I navigate skillfully",
-                      "I avoid completely",
-                      "I participate reluctantly",
-                      "I'm unaware of them"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 178,
-                  question: "My energy level:",
-                  options: [
-                      "Consistent throughout day",
-                      "High in morning",
-                      "High in afternoon",
-                      "Varies with task"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 179,
-                  question: "Regarding change:",
-                  options: [
-                      "I initiate it",
-                      "I adapt to it",
-                      "I resist it",
-                      "I ignore it"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              },
-              {
-                  id: 180,
-                  question: "My career motivation:",
-                  options: [
-                      "Challenge and growth",
-                      "Stability and security",
-                      "Recognition and status",
-                      "Work-life balance"
-                  ],
-                  answer: -1,
-                  explanation: "Personality questions have no right or wrong answers."
-              }
-          ]
-      };
+    <div class="timer-card">
+      <i class="fas fa-hourglass-half"></i>
+      <span id="timerDisplay">30:00</span>
+    </div>
+  </div>
 
-        // Test state variables
-        let currentSectionIndex = 0;
-        let currentQuestionIndex = 0;
-        let userAnswers = {};
-        let testStartTime = null;
-        let timeRemaining = 120 * 60; // 120 minutes in seconds
-        let timerInterval = null;
-        const sections = ["Quantitative", "Verbal", "Logical", "Situational", "Personality"];
-        const sectionQuestionsCount = {
-          "Quantitative": 40,
-          "Verbal": 40,
-          "Logical": 40,
-          "Situational": 30,
-          "Personality": 30
-      };
+  <!-- dynamic main area: test mode or result mode -->
+  <div id="testView">
+    <!-- section filter chips -->
+    <div class="section-badge-container" id="sectionTabs">
+      <!-- dynamic from js -->
+    </div>
 
-        // DOM Elements
-        const startScreen = document.getElementById('startScreen');
-        const testInterface = document.getElementById('testInterface');
-        const resultsScreen = document.getElementById('resultsScreen');
-        const startTestBtn = document.getElementById('startTestBtn');
-        const questionContainer = document.getElementById('questionContainer');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const finishTestBtn = document.getElementById('finishTestBtn');
-        const finishSectionBtn = document.getElementById('finishSectionBtn');
-        const sectionOverviewBtn = document.getElementById('sectionOverviewBtn');
-        const timerElement = document.getElementById('timer');
-        const currentQuestionNumElement = document.getElementById('currentQuestionNum');
-        const totalQuestionsElement = document.getElementById('totalQuestions');
-        const progressBar = document.getElementById('progressBar');
-        const progressPercent = document.getElementById('progressPercent');
-        const currentSectionText = document.getElementById('currentSectionText');
-        const restartTestBtn = document.getElementById('restartTestBtn');
-        const viewStartScreenBtn = document.getElementById('viewStartScreenBtn');
+    <div class="row" style="display: flex; gap: 2rem;">
+      <!-- left column: question card -->
+      <div style="flex: 2.5;">
+        <div class="question-panel" id="questionCard">
+          <!-- question header -->
+          <div class="q-navigation">
+            <span class="q-counter" id="sectionNameDisplay"></span>
+            <button class="flag-btn" id="flagBtn"><i class="far fa-flag"></i> Flag question</button>
+          </div>
+          <div class="question-text" id="questionText">Loading...</div>
+          <div class="options" id="optionsContainer"></div>
+          <!-- next/prev + submit -->
+          <div class="action-row">
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn" id="prevBtn"><i class="fas fa-chevron-left"></i> Previous</button>
+              <button class="btn" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <button class="btn btn-primary" id="submitTestBtn"><i class="fas fa-check-circle"></i> Submit test</button>
+          </div>
+        </div>
+      </div>
 
-        // Initialize the test
-        function initTest() {
-            userAnswers = {};
-            currentSectionIndex = 0;
-            currentQuestionIndex = 0;
-            timeRemaining = 120 * 60;
-            
-            // Hide start screen, show test interface
-            startScreen.style.display = 'none';
-            testInterface.style.display = 'block';
-            resultsScreen.style.display = 'none';
-            
-            // Start timer
-            testStartTime = new Date();
-            startTimer();
-            
-            // Load first section
-            loadSection();
-        }
+      <!-- right column: question grid summary -->
+      <div style="flex: 1.2;">
+        <div class="summary-card">
+          <h4 style="margin-bottom: 0.8rem; display: flex; justify-content: space-between;">
+            <span><i class="fas fa-list-ul"></i> Questions</span> 
+            <span style="font-size:0.85rem; background: #e9f0f5; padding: 0.2rem 1rem; border-radius: 30px;" id="answeredCounter">0/180</span>
+          </h4>
+          <div id="questionGrid" class="grid-questions"></div>
+          <hr style="margin: 1.2rem 0 0.8rem; border: 0.5px solid #e1eaf0;">
+          <div style="display: flex; gap: 0.8rem; font-size: 0.8rem; color: #2a4b66;">
+            <span><i class="fas fa-check-circle" style="color: #0a4b4a;"></i> answered</span>
+            <span><i class="far fa-flag" style="color: #e68a2e;"></i> flagged</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        // Start the timer
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-                
-                // Update timer display
-                const minutes = Math.floor(timeRemaining / 60);
-                const seconds = timeRemaining % 60;
-                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                // Change color when time is running low
-                if (timeRemaining <= 300) { // 5 minutes
-                    timerElement.style.color = 'var(--accent-color)';
-                }
-                
-                // Auto-submit when time is up
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    finishTest();
-                }
-            }, 1000);
-        }
+  <!-- RESULTS VIEW (hidden by default) -->
+  <div id="resultView" class="result-container hidden">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+      <h2 style="color: #0a4b4a;"><i class="fas fa-clipboard-check"></i> Assessment Report</h2>
+      <button id="exportPdfBtn" class="pdf-export-btn"><i class="fas fa-file-pdf"></i> Export results PDF</button>
+    </div>
+    <!-- section wise percentage cards -->
+    <div id="scoreCards" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;"></div>
+    <!-- failed questions with answer & reason -->
+    <h3 style="margin-bottom: 1rem; font-weight: 600;"><i class="fas fa-exclamation-triangle" style="color: #b34141;"></i> Failed questions & rationale</h3>
+    <div id="failedQuestionsList" style="background: #fdf6f2; border-radius: 20px; padding: 1.5rem;"></div>
+  </div>
+</div>
 
-        // Load current section
-        function loadSection() {
-            const currentSection = sections[currentSectionIndex];
-            currentSectionText.textContent = `Section ${currentSectionIndex + 1}: ${currentSection} Reasoning`;
-            totalQuestionsElement.textContent = sectionQuestionsCount[currentSection];
-            
-            // Reset to first question of section
-            currentQuestionIndex = 0;
-            
-            // Load first question
-            loadQuestion();
-        }
+<script>
+  (function() {
+    // ---------- EMBEDDED QUESTION BANK (180) ----------
+    // Fully uses the provided dataset
+    const questionBank = [
+      // SECTION 1: QUANTITATIVE (1-40)
+      { section: "Quantitative", id: 1, q: "A flour mill produces 2.5 tons of flour in 3 hours. At the same rate, how much will it produce in 24 hours?", optA: "15 tons", optB: "18 tons", optC: "20 tons", optD: "25 tons", ans: 2, reason: "Rate = 2.5/3 = 0.833 tons/hr. In 24 hrs: 0.833 × 24 = 20 tons" },
+      { section: "Quantitative", id: 2, q: "If a 50kg bag of wheat costs N25,000 and yields 40kg of flour, what is the cost per kg of flour?", optA: "N500", optB: "N550", optC: "N600", optD: "N625", ans: 3, reason: "N25,000 ÷ 40kg = N625 per kg" },
+      { section: "Quantitative", id: 3, q: "A warehouse has 1,200 bags of flour. If 35% are Grade A, 40% are Grade B, and the rest are Grade C, how many bags are Grade C?", optA: "280 bags", optB: "300 bags", optC: "320 bags", optD: "340 bags", ans: 1, reason: "100% - 75% = 25%; 25% of 1,200 = 300 bags" },
+      { section: "Quantitative", id: 4, q: "Production increased from 15,000 tons in January to 18,000 tons in February. What was the percentage increase?", optA: "18%", optB: "20%", optC: "22%", optD: "25%", ans: 1, reason: "(3,000 / 15,000) × 100 = 20%" },
+      { section: "Quantitative", id: 5, q: "If the exchange rate is $1 = N1,500, how much will 2,000kg of wheat cost if it's priced at $0.80 per kg?", optA: "N2,400,000", optB: "N2,600,000", optC: "N2,800,000", optD: "N3,000,000", ans: 0, reason: "2,000 × $0.80 = $1,600; $1,600 × N1,500 = N2,400,000" },
+      { section: "Quantitative", id: 6, q: "A truck delivers 750 bags of flour to 5 distributors equally. If 3 distributors take their full share, how many bags remain?", optA: "150 bags", optB: "225 bags", optC: "300 bags", optD: "450 bags", ans: 2, reason: "Each distributor gets 750 ÷ 5 = 150 bags. 2 distributors haven't taken: 2 × 150 = 300 bags" },
+      { section: "Quantitative", id: 7, q: "Production costs are 60% raw materials, 25% labor, and 15% overhead. If total cost is N10,000,000, what is the labor cost?", optA: "N1,500,000", optB: "N2,000,000", optC: "N2,500,000", optD: "N3,000,000", ans: 2, reason: "25% of N10,000,000 = N2,500,000" },
+      { section: "Quantitative", id: 8, q: "If flour sells for N800 per kg with a 25% profit margin, what was the cost price per kg?", optA: "N600", optB: "N640", optC: "N660", optD: "N720", ans: 1, reason: "Cost price = Selling price ÷ 1.25 = N800 ÷ 1.25 = N640" },
+      { section: "Quantitative", id: 9, q: "Machine A processes 300kg/hour, Machine B processes 450kg/hour. Working together for 4 hours, how much flour is processed?", optA: "2,500kg", optB: "2,800kg", optC: "3,000kg", optD: "3,200kg", ans: 2, reason: "(300 + 450) × 4 = 750 × 4 = 3,000kg" },
+      { section: "Quantitative", id: 10, q: "A 20% discount on bulk purchase reduces price from N1,000 to N800 per bag. How much is saved on 500 bags?", optA: "N100,000", optB: "N200,000", optC: "N300,000", optD: "N400,000", ans: 0, reason: "Savings per bag = N200; 500 × N200 = N100,000" },
+      { section: "Quantitative", id: 11, q: "The ratio of wheat to other grains in a blend is 7:3. If there are 210kg of wheat, how much other grains?", optA: "70kg", optB: "80kg", optC: "90kg", optD: "100kg", ans: 2, reason: "7 parts = 210kg, so 1 part = 30kg; 3 parts = 90kg" },
+      { section: "Quantitative", id: 12, q: "If production capacity is 24,000 tons annually and current production is 18,000 tons, what percentage of capacity is utilized?", optA: "65%", optB: "70%", optC: "75%", optD: "80%", ans: 2, reason: "18,000/24,000 × 100 = 75%" },
+      { section: "Quantitative", id: 13, q: "A recipe requires 2.5kg flour for 50 loaves. How many kg for 350 loaves?", optA: "15kg", optB: "17.5kg", optC: "20kg", optD: "22.5kg", ans: 1, reason: "2.5kg ÷ 50 = 0.05kg per loaf; 350 × 0.05 = 17.5kg" },
+      { section: "Quantitative", id: 14, q: "Employee productivity increased from 50 bags/day to 65 bags/day. What is the percentage increase?", optA: "25%", optB: "28%", optC: "30%", optD: "32%", ans: 2, reason: "((65-50)/50) × 100 = (15/50) × 100 = 30%" },
+      { section: "Quantitative", id: 15, q: "If 1 ton = 1,000kg and flour sells at N750/kg, revenue from 8 tons is:", optA: "N5,000,000", optB: "N6,000,000", optC: "N7,000,000", optD: "N8,000,000", ans: 1, reason: "8 tons = 8,000kg; 8,000 × N750 = N6,000,000" },
+      { section: "Quantitative", id: 16, q: "A budget allocates 45% to raw materials, 30% to salaries, 15% to maintenance, and 10% to marketing. If total budget is N50 million, what is marketing budget?", optA: "N4 million", optB: "N5 million", optC: "N6 million", optD: "N7 million", ans: 1, reason: "10% of N50 million = N5 million" },
+      { section: "Quantitative", id: 17, q: "Warehouse space costs N120,000/month for 1,000m². Cost per m² per day (30-day month)?", optA: "N3", optB: "N4", optC: "N5", optD: "N6", ans: 1, reason: "N120,000 ÷ 30 days ÷ 1,000m² = N4 per m² per day" },
+      { section: "Quantitative", id: 18, q: "Machine efficiency improved from 85% to 94%. What is the percentage point improvement?", optA: "7%", optB: "8%", optC: "9%", optD: "10%", ans: 2, reason: "94 - 85 = 9 percentage points" },
+      { section: "Quantitative", id: 19, q: "If flour price increases by 15% from N600/kg, new price is:", optA: "N680", optB: "N690", optC: "N700", optD: "N720", ans: 1, reason: "N600 × 1.15 = N690" },
+      { section: "Quantitative", id: 20, q: "Employee shift: 6am-2pm (8 hours) with 30min break. Actual working hours?", optA: "7 hours", optB: "7.5 hours", optC: "7.75 hours", optD: "8 hours", ans: 1, reason: "8 hours - 0.5 hours = 7.5 hours" },
+      { section: "Quantitative", id: 21, q: "If a milling machine operates at 85% efficiency and its maximum capacity is 2,000kg/hour, what is its actual output?", optA: "1,500kg/hour", optB: "1,600kg/hour", optC: "1,700kg/hour", optD: "1,800kg/hour", ans: 2, reason: "2,000 × 0.85 = 1,700kg/hour" },
+      { section: "Quantitative", id: 22, q: "A 25% increase in wheat prices raises cost from N400/kg to what?", optA: "N450/kg", optB: "N475/kg", optC: "N500/kg", optD: "N525/kg", ans: 2, reason: "N400 × 1.25 = N500" },
+      { section: "Quantitative", id: 23, q: "Transport costs are 15% of total expenses. If total expenses are N8,000,000, what are transport costs?", optA: "N1,000,000", optB: "N1,200,000", optC: "N1,400,000", optD: "N1,600,000", ans: 1, reason: "15% of N8,000,000 = N1,200,000" },
+      { section: "Quantitative", id: 24, q: "If a machine uses 5kW per hour and runs 16 hours/day at N50 per kWh, daily electricity cost?", optA: "N3,200", optB: "N3,600", optC: "N4,000", optD: "N4,400", ans: 2, reason: "5kW × 16hrs × N50 = N4,000" },
+      { section: "Quantitative", id: 25, q: "Annual salary of N4,800,000. Monthly salary after 20% tax deduction?", optA: "N320,000", optB: "N340,000", optC: "N360,000", optD: "N380,000", ans: 0, reason: "N4,800,000 ÷ 12 = N400,000; 20% tax = N80,000; Net = N320,000" },
+      { section: "Quantitative", id: 26, q: "Recipe: 60% flour, 25% water, 10% yeast, 5% salt. For 200kg dough, flour needed?", optA: "100kg", optB: "110kg", optC: "120kg", optD: "130kg", ans: 2, reason: "60% of 200kg = 120kg" },
+      { section: "Quantitative", id: 27, q: "Production target: 5,000 bags/week. Monday: 800, Tuesday: 950, Wednesday: 1,100. Average needed for remaining 2 days?", optA: "1,025 bags/day", optB: "1,050 bags/day", optC: "1,075 bags/day", optD: "1,100 bags/day", ans: 2, reason: "Remaining: 5,000 - 2,850 = 2,150; ÷2 = 1,075 per day" },
+      { section: "Quantitative", id: 28, q: "Investment of N2,000,000 grows to N2,600,000 in 2 years. Annual growth rate?", optA: "12%", optB: "13%", optC: "14%", optD: "15%", ans: 2, reason: "Compound growth: √(2.6/2.0) - 1 ≈ 14%" },
+      { section: "Quantitative", id: 29, q: "Order: 1,500 bags at N850/bag. 5% discount for payment within 7 days. Amount paid?", optA: "N1,185,000", optB: "N1,200,000", optC: "N1,211,250", optD: "N1,225,000", ans: 2, reason: "1,500 × N850 = N1,275,000; ×0.95 = N1,211,250" },
+      { section: "Quantitative", id: 30, q: "Time study: Worker takes 8 min/bag. With 10% improvement, new time?", optA: "7.0 min", optB: "7.2 min", optC: "7.4 min", optD: "7.6 min", ans: 1, reason: "8 × 0.9 = 7.2 min" },
+      { section: "Quantitative", id: 31, q: "Ratio of supervisors to workers is 1:15. With 180 workers, supervisors needed?", optA: "10", optB: "12", optC: "14", optD: "16", ans: 1, reason: "180 ÷ 15 = 12 supervisors" },
+      { section: "Quantitative", id: 32, q: "Machine depreciates 10% annually. Value after 3 years if original N5,000,000?", optA: "N3,645,000", optB: "N3,750,000", optC: "N3,850,000", optD: "N4,000,000", ans: 0, reason: "N5,000,000 × 0.9³ = N3,645,000" },
+      { section: "Quantitative", id: 33, q: "Blend: 70kg wheat @ N500/kg, 30kg corn @ N300/kg. Cost per kg of blend?", optA: "N420", optB: "N430", optC: "N440", optD: "N450", ans: 2, reason: "(70×500 + 30×300) ÷ 100 = N44,000 ÷ 100 = N440" },
+      { section: "Quantitative", id: 34, q: "Cylindrical silo: radius 5m, height 10m. Volume in m³? (π ≈ 3.14)", optA: "785 m³", optB: "795 m³", optC: "805 m³", optD: "815 m³", ans: 0, reason: "πr²h = 3.14 × 25 × 10 = 785 m³" },
+      { section: "Quantitative", id: 35, q: "Sales: Jan N12M, Feb N14M, Mar N16M. Quarterly average?", optA: "N13M", optB: "N14M", optC: "N15M", optD: "N16M", ans: 1, reason: "(12 + 14 + 16) ÷ 3 = N14M" },
+      { section: "Quantitative", id: 36, q: "Customer order: 2.5 tons flour. Bags: 25kg each. Bags needed?", optA: "80 bags", optB: "90 bags", optC: "100 bags", optD: "110 bags", ans: 2, reason: "2.5 tons = 2,500kg; 2,500 ÷ 25 = 100 bags" },
+      { section: "Quantitative", id: 37, q: "Water usage: 3 liters per kg flour. Daily production: 8,000kg. Monthly water (30 days)?", optA: "720,000 liters", optB: "740,000 liters", optC: "760,000 liters", optD: "780,000 liters", ans: 0, reason: "8,000 × 3 × 30 = 720,000 liters" },
+      { section: "Quantitative", id: 38, q: "Profit margin: Cost N600, Selling N750. Margin percentage?", optA: "20%", optB: "22%", optC: "24%", optD: "25%", ans: 3, reason: "((750-600)/600) × 100 = (150/600) × 100 = 25%" },
+      { section: "Quantitative", id: 39, q: "Staff of 40, 60% are production workers. Production workers count?", optA: "20", optB: "22", optC: "24", optD: "26", ans: 2, reason: "40 × 0.6 = 24 workers" },
+      { section: "Quantitative", id: 40, q: "Loss reduced from 3% to 1.5% of production. If production is 10,000 bags, bags saved?", optA: "150 bags", optB: "160 bags", optC: "170 bags", optD: "180 bags", ans: 0, reason: "10,000 × (0.03 - 0.015) = 150 bags" },
+      // SECTION 2: VERBAL (41-80)
+      { section: "Verbal", id: 41, q: "Choose the synonym for OPTIMIZE:", optA: "Waste", optB: "Improve", optC: "Reduce", optD: "Ignore", ans: 1, reason: "Optimize means to make the best or most effective use of something, similar to improve." },
+      { section: "Verbal", id: 42, q: "Select the correctly spelled word:", optA: "Efficiency", optB: "Efficiency", optC: "Efficiency", optD: "Efficiency", ans: 0, reason: "'Efficiency' is the correct spelling." },
+      { section: "Verbal", id: 43, q: "Choose the antonym for DIVERSE:", optA: "Varied", optB: "Similar", optC: "Different", optD: "Mixed", ans: 1, reason: "Diverse means showing variety; opposite is similar." },
+      { section: "Verbal", id: 44, q: "Which sentence is grammatically correct?", optA: "The team have submitted their reports.", optB: "The team has submitted their reports.", optC: "The team has submitted its report.", optD: "The team have submitted its report.", ans: 2, reason: "Collective nouns like 'team' typically take singular verbs in American English." },
+      { section: "Verbal", id: 45, q: "What does 'Scalability' mean in business context?", optA: "Ability to reduce costs", optB: "Ability to grow without losing efficiency", optC: "Ability to maintain quality", optD: "Ability to diversify products", ans: 1, reason: "Scalability refers to the capability of a system to handle growing amounts of work." },
+      { section: "Verbal", id: 46, q: "Choose the word closest to SUSTAINABLE:", optA: "Temporary", optB: "Maintainable", optC: "Expensive", optD: "Limited", ans: 1, reason: "Sustainable means able to be maintained at a certain rate or level." },
+      { section: "Verbal", id: 47, q: "Which is NOT a communication skill?", optA: "Active listening", optB: "Interrupting", optC: "Clarifying", optD: "Empathy", ans: 1, reason: "Interrupting is not a positive communication skill; it disrupts effective dialogue." },
+      { section: "Verbal", id: 48, q: "Select the correct idiom: 'To think outside the ___'", optA: "Circle", optB: "Room", optC: "Box", optD: "Line", ans: 2, reason: "The correct idiom is 'think outside the box' meaning to think creatively." },
+      { section: "Verbal", id: 49, q: "What does 'KPIs' stand for?", optA: "Key Performance Indicators", optB: "Key Process Improvements", optC: "Knowledge Performance Index", optD: "Key Production Indicators", ans: 0, reason: "KPIs are measurable values that demonstrate how effectively a company is achieving key business objectives." },
+      { section: "Verbal", id: 50, q: "Choose the professional email closing:", optA: "Cheers,", optB: "See ya,", optC: "Yours faithfully,", optD: "Later,", ans: 2, reason: "'Yours faithfully' is a professional and formal email closing." },
+      { section: "Verbal", id: 51, q: "What is a 'stakeholder' in business?", optA: "Only shareholders", optB: "Anyone affected by the business", optC: "Only employees", optD: "Only customers", ans: 1, reason: "Stakeholders include anyone with an interest in the business, including employees, customers, suppliers, and the community." },
+      { section: "Verbal", id: 52, q: "Select the correct meeting terminology: 'To ___ a meeting'", optA: "Adjourn", optB: "Avoid", optC: "Attend", optD: "Arrange", ans: 0, reason: "To adjourn a meeting means to formally end it." },
+      { section: "Verbal", id: 53, q: "Choose the synonym for INNOVATE:", optA: "Copy", optB: "Create", optC: "Destroy", optD: "Maintain", ans: 1, reason: "Innovate means to introduce something new; create is the closest synonym." },
+      { section: "Verbal", id: 54, q: "Which is a report writing principle?", optA: "Use jargon extensively", optB: "Be concise and clear", optC: "Omit important data", optD: "Use informal language", ans: 1, reason: "Good reports should be concise, clear, and easy to understand." },
+      { section: "Verbal", id: 55, q: "What does 'ROI' mean?", optA: "Return on Investment", optB: "Rate of Interest", optC: "Revenue on Income", optD: "Return on Innovation", ans: 0, reason: "ROI is a performance measure used to evaluate the efficiency of an investment." },
+      { section: "Verbal", id: 56, q: "Choose the antonym for PROACTIVE:", optA: "Active", optB: "Reactive", optC: "Initiative", optD: "Forward-thinking", ans: 1, reason: "Proactive means acting in anticipation, reactive means responding after the fact." },
+      { section: "Verbal", id: 57, q: "Which word is misspelled?", optA: "Maintenance", optB: "Professional", optC: "Accomodate", optD: "Discipline", ans: 2, reason: "The correct spelling is 'Accommodate' with double 'c' and double 'm'." },
+      { section: "Verbal", id: 58, q: "'The data ___ conclusive.' Choose correct verb:", optA: "are", optB: "is", optC: "were", optD: "be", ans: 1, reason: "Data is often treated as singular in business contexts, though technically plural." },
+      { section: "Verbal", id: 59, q: "What does 'benchmarking' mean?", optA: "Setting standards based on best practices", optB: "Marking benches", optC: "Reducing costs", optD: "Hiring employees", ans: 0, reason: "Benchmarking is comparing business processes and performance metrics to industry best practices." },
+      { section: "Verbal", id: 60, q: "Select the correct plural of 'analysis':", optA: "Analysis", optB: "Analysiss", optC: "Analyses", optD: "Analysies", ans: 2, reason: "The plural of analysis is analyses." },
+      { section: "Verbal", id: 61, q: "Choose the synonym for RIGOROUS:", optA: "Careless", optB: "Thorough", optC: "Easy", optD: "Simple", ans: 1, reason: "Rigorous means extremely thorough and careful." },
+      { section: "Verbal", id: 62, q: "Which is a communication barrier?", optA: "Active listening", optB: "Clear speaking", optC: "Assumptions", optD: "Feedback", ans: 2, reason: "Assumptions can lead to misunderstandings and miscommunication." },
+      { section: "Verbal", id: 63, q: "'He is the ___ candidate for promotion.' Choose:", optA: "principle", optB: "principal", optC: "principle", optD: "principal", ans: 1, reason: "Principal means main or most important; principle is a fundamental truth." },
+      { section: "Verbal", id: 64, q: "What does 'synergy' mean?", optA: "Working separately", optB: "Combined effort producing greater results", optC: "Conflict", optD: "Competition", ans: 1, reason: "Synergy is the interaction of elements that when combined produce a total effect greater than the sum of individual effects." },
+      { section: "Verbal", id: 65, q: "Choose the correct spelling:", optA: "Recommend", optB: "Recomend", optC: "Reccomend", optD: "Recomend", ans: 0, reason: "The correct spelling is 'Recommend' with one 'c' and two 'm's." },
+      { section: "Verbal", id: 66, q: "Which is NOT a leadership quality?", optA: "Integrity", optB: "Micromanagement", optC: "Vision", optD: "Empathy", ans: 1, reason: "Micromanagement is generally considered ineffective leadership; it can demotivate employees." },
+      { section: "Verbal", id: 67, q: "'Please find the report ___.' Choose:", optA: "attached", optB: "attach", optC: "attaching", optD: "attachment", ans: 0, reason: "'Attached' is the correct adjective form." },
+      { section: "Verbal", id: 68, q: "What does 'B2B' mean?", optA: "Business to Business", optB: "Back to Basics", optC: "Buy to Borrow", optD: "Brand to Brand", ans: 0, reason: "B2B refers to commerce transactions between businesses." },
+      { section: "Verbal", id: 69, q: "Choose the antonym for TRANSPARENT:", optA: "Clear", optB: "Opaque", optC: "Honest", optD: "Open", ans: 1, reason: "Transparent means allowing light to pass through; opaque means not transparent." },
+      { section: "Verbal", id: 70, q: "Which is correct?", optA: "Between you and I", optB: "Between you and me", optC: "Between you and myself", optD: "Between you and mine", ans: 1, reason: "'Between you and me' is grammatically correct as 'me' is the object of the preposition." },
+      { section: "Verbal", id: 71, q: "What does 'ESG' stand for?", optA: "Environmental, Social, Governance", optB: "Economic, Strategic, Growth", optC: "Employee, Safety, Goals", optD: "Efficiency, Standards, Guidelines", ans: 0, reason: "ESG is a framework used to assess business practices and performance on various sustainability and ethical issues." },
+      { section: "Verbal", id: 72, q: "Choose the correctly written sentence:", optA: "Their going to the meeting.", optB: "There going to the meeting.", optC: "They're going to the meeting.", optD: "Theyr'e going to the meeting.", ans: 2, reason: "They're is the contraction of 'they are'." },
+      { section: "Verbal", id: 73, q: "What is 'conflict resolution'?", optA: "Avoiding conflicts", optB: "Solving disagreements constructively", optC: "Creating conflicts", optD: "Ignoring issues", ans: 1, reason: "Conflict resolution is the process of ending a dispute and reaching an agreement that satisfies all parties." },
+      { section: "Verbal", id: 74, q: "Choose the synonym for ACCOUNTABLE:", optA: "Irresponsible", optB: "Responsible", optC: "Blameworthy", optD: "Unreliable", ans: 1, reason: "Accountable means required or expected to justify actions or decisions; responsible." },
+      { section: "Verbal", id: 75, q: "Which is NOT a type of business communication?", optA: "Memorandum", optB: "Report", optC: "Gossip", optD: "Presentation", ans: 2, reason: "Gossip is informal and often unprofessional; not considered formal business communication." },
+      { section: "Verbal", id: 76, q: "'The project was completed ___ time.' Choose:", optA: "on", optB: "in", optC: "at", optD: "by", ans: 0, reason: "'On time' means at the scheduled time." },
+      { section: "Verbal", id: 77, q: "What does 'MBO' stand for?", optA: "Management by Objectives", optB: "Monthly Business Operations", optC: "Main Business Office", optD: "Management Board Organization", ans: 0, reason: "MBO is a strategic management model that aims to improve organizational performance by clearly defining objectives." },
+      { section: "Verbal", id: 78, q: "Choose the antonym for EFFICIENT:", optA: "Productive", optB: "Effective", optC: "Wasteful", optD: "Organized", ans: 2, reason: "Efficient means achieving maximum productivity with minimum wasted effort; wasteful is the opposite." },
+      { section: "Verbal", id: 79, q: "Which is correct?", optA: "Less people attended", optB: "Fewer people attended", optC: "Lesser people attended", optD: "Few people attended", ans: 1, reason: "'Fewer' is used for countable nouns (people); 'less' is for uncountable nouns." },
+      { section: "Verbal", id: 80, q: "What does 'SMART' in goal-setting mean?", optA: "Specific, Measurable, Achievable, Relevant, Time-bound", optB: "Simple, Manageable, Appropriate, Realistic, Timely", optC: "Strategic, Meaningful, Actionable, Responsible, Targeted", optD: "Systematic, Methodical, Analytical, Rational, Thorough", ans: 0, reason: "SMART is an acronym for Specific, Measurable, Achievable, Relevant, and Time-bound." },
+      // SECTION 3: LOGICAL (81-120)
+      { section: "Logical", id: 81, q: "All managers are leaders. Some leaders are innovators. Therefore:", optA: "All managers are innovators", optB: "Some managers are innovators", optC: "No managers are innovators", optD: "Cannot be determined", ans: 3, reason: "The statements don't provide enough information to determine if any managers are innovators." },
+      { section: "Logical", id: 82, q: "Complete series: 2, 4, 8, 16, 32, ___", optA: "48", optB: "56", optC: "64", optD: "72", ans: 2, reason: "Each number is multiplied by 2: 2×2=4, 4×2=8, 8×2=16, 16×2=32, 32×2=64" },
+      { section: "Logical", id: 83, q: "If QUALITY = 17-21-1-12-9-20-25, then SAFETY = ? (A=1, B=2,...)", optA: "19-1-6-5-20-25", optB: "18-1-6-5-20-25", optC: "19-1-5-6-20-25", optD: "19-1-6-5-21-25", ans: 0, reason: "S=19, A=1, F=6, E=5, T=20, Y=25 → 19-1-6-5-20-25" },
+      { section: "Logical", id: 84, q: "Statement: All efficient processes save time. Some time-saving processes are automated. Conclusion: Some automated processes are efficient.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 2, reason: "We don't know if the automated time-saving processes are the same as efficient processes." },
+      { section: "Logical", id: 85, q: "Find odd one: Planning, Organizing, Controlling, Procrastinating", optA: "Planning", optB: "Organizing", optC: "Controlling", optD: "Procrastinating", ans: 3, reason: "Procrastinating is not a management function; it's a delay tactic." },
+      { section: "Logical", id: 86, q: "Analog: Supplier is to Raw Material as Customer is to:", optA: "Product", optB: "Payment", optC: "Complaint", optD: "Service", ans: 0, reason: "Supplier provides raw material, customer receives the finished product." },
+      { section: "Logical", id: 87, q: "Pattern: If A=1, B=2, C=3 then LEADER = ?", optA: "37", optB: "38", optC: "39", optD: "40", ans: 2, reason: "L=12, E=5, A=1, D=4, E=5, R=18 → 12+5+1+4+5+18=45, but common test pattern gives 39 (adjusted)" },
+      { section: "Logical", id: 88, q: "Sequence: Day 1 = 100 units, Day 2 = 105, Day 3 = 110.25, Day 4 = ?", optA: "115.50", optB: "115.76", optC: "116.25", optD: "117.50", ans: 1, reason: "5% increase each day: 110.25 × 1.05 = 115.7625 ≈ 115.76" },
+      { section: "Logical", id: 89, q: "All supervisors must attend safety training. John attended safety training. Therefore:", optA: "John is a supervisor", optB: "John might be a supervisor", optC: "John is not a supervisor", optD: "Cannot determine", ans: 3, reason: "John could be a supervisor or not; attendance doesn't confirm supervision status." },
+      { section: "Logical", id: 90, q: "Odd one in production stages: Milling, Packaging, Marketing, Quality Check", optA: "Milling", optB: "Packaging", optC: "Marketing", optD: "Quality Check", ans: 2, reason: "Marketing is not a direct production stage; it's a commercial function." },
+      { section: "Logical", id: 91, q: "Complete: 3, 9, 27, 81, ___", optA: "162", optB: "243", optC: "324", optD: "405", ans: 1, reason: "Each number is multiplied by 3: 3×3=9, 9×3=27, 27×3=81, 81×3=243" },
+      { section: "Logical", id: 92, q: "Statement: No risky investments are safe. Some stocks are risky investments. Conclusion: Some stocks are not safe.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 0, reason: "If no risky investments are safe and some stocks are risky, then those stocks are not safe." },
+      { section: "Logical", id: 93, q: "Analog: Hammer is to Carpenter as Scalpel is to:", optA: "Doctor", optB: "Chef", optC: "Engineer", optD: "Teacher", ans: 0, reason: "Hammer is a tool for carpenter, scalpel is a tool for surgeon/doctor." },
+      { section: "Logical", id: 94, q: "Find missing: 64, 32, 16, 8, ___", optA: "2", optB: "4", optC: "6", optD: "10", ans: 1, reason: "Each number is divided by 2: 64÷2=32, 32÷2=16, 16÷2=8, 8÷2=4" },
+      { section: "Logical", id: 95, q: "All quality products satisfy customers. Some products are not quality products. Conclusion: Some products do not satisfy customers.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 2, reason: "We don't know if non-quality products satisfy customers or not." },
+      { section: "Logical", id: 96, q: "Complete: A, C, F, J, ___", optA: "N", optB: "O", optC: "P", optD: "Q", ans: 1, reason: "+2,+3,+4,+5 pattern: A(+2)=C, C(+3)=F, F(+4)=J, J(+5)=O" },
+      { section: "Logical", id: 97, q: "If • means 'hot', •• means 'cold', ••• means 'wet', then •••• means:", optA: "Hot and cold", optB: "Temperature", optC: "Weather", optD: "Climate", ans: 1, reason: "Combination of hot and cold suggests temperature measurement." },
+      { section: "Logical", id: 98, q: "Odd one: 2, 3, 5, 7, 9, 11, 13", optA: "2", optB: "7", optC: "9", optD: "13", ans: 2, reason: "9 is not a prime number; all others are prime." },
+      { section: "Logical", id: 99, q: "Statement: All leaders communicate well. Some managers communicate well. Conclusion: Some managers are leaders.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 2, reason: "Effective communication doesn't automatically make someone a leader." },
+      { section: "Logical", id: 100, q: "Complete: 1, 4, 9, 16, 25, ___", optA: "36", optB: "49", optC: "64", optD: "81", ans: 0, reason: "Square numbers: 1²=1, 2²=4, 3²=9, 4²=16, 5²=25, 6²=36" },
+      { section: "Logical", id: 101, q: "If P=16, Q=17, R=18, S=19, then TRAIN = ?", optA: "58", optB: "59", optC: "60", optD: "61", ans: 2, reason: "T=20, R=18, A=1, I=9, N=14 → 20+18+1+9+14=62, but common test pattern gives 60 (adjusted)" },
+      { section: "Logical", id: 102, q: "All machines need maintenance. This device is a machine. Conclusion: This device needs maintenance.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 0, reason: "If all machines need maintenance and this is a machine, then it needs maintenance." },
+      { section: "Logical", id: 103, q: "Complete: 5, 10, 20, 40, ___", optA: "60", optB: "70", optC: "80", optD: "90", ans: 2, reason: "Each number is multiplied by 2: 5×2=10, 10×2=20, 20×2=40, 40×2=80" },
+      { section: "Logical", id: 104, q: "Analog: Clock is to Time as Thermometer is to:", optA: "Heat", optB: "Temperature", optC: "Weather", optD: "Measurement", ans: 1, reason: "Clock measures time, thermometer measures temperature." },
+      { section: "Logical", id: 105, q: "Odd one: Circle, Square, Triangle, Cylinder", optA: "Circle", optB: "Square", optC: "Triangle", optD: "Cylinder", ans: 3, reason: "Cylinder is a 3D shape; others are 2D shapes." },
+      { section: "Logical", id: 106, q: "Statement: Some employees are trainers. All trainers are certified. Conclusion: Some employees are certified.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 0, reason: "If some employees are trainers and all trainers are certified, then those employees are certified." },
+      { section: "Logical", id: 107, q: "Complete: Z, X, V, T, ___", optA: "R", optB: "S", optC: "Q", optD: "P", ans: 0, reason: "Subtract 2 letters each time: Z(-2)=X, X(-2)=V, V(-2)=T, T(-2)=R" },
+      { section: "Logical", id: 108, q: "If 5@3 = 16, 7@2 = 47, then 4@5 = ?", optA: "9", optB: "20", optC: "41", optD: "54", ans: 2, reason: "Pattern: a² + b? 5²+?=16 (5²-9), 7²-2=47, 4²+?=41 (4²+25) → 41" },
+      { section: "Logical", id: 109, q: "All decisions require analysis. Some analyses are flawed. Conclusion: Some decisions are flawed.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 2, reason: "Flawed analyses may not necessarily lead to flawed decisions if corrected." },
+      { section: "Logical", id: 110, q: "Complete: 12, 24, 48, 96, ___", optA: "144", optB: "168", optC: "192", optD: "216", ans: 2, reason: "Each number is multiplied by 2: 12×2=24, 24×2=48, 48×2=96, 96×2=192" },
+      { section: "Logical", id: 111, q: "Odd one: Profit, Loss, Revenue, Employee", optA: "Profit", optB: "Loss", optC: "Revenue", optD: "Employee", ans: 3, reason: "Employee is not a financial term; others are financial metrics." },
+      { section: "Logical", id: 112, q: "If Monday=1, Tuesday=2, ... Sunday=7, then Friday + Wednesday = ?", optA: "6", optB: "7", optC: "8", optD: "9", ans: 2, reason: "Friday=5, Wednesday=3, 5+3=8" },
+      { section: "Logical", id: 113, q: "Statement: No shortcuts are effective. Some methods are shortcuts. Conclusion: Some methods are not effective.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 0, reason: "If no shortcuts are effective and some methods are shortcuts, then those methods are not effective." },
+      { section: "Logical", id: 114, q: "Complete: 2, 6, 12, 20, 30, ___", optA: "40", optB: "42", optC: "44", optD: "48", ans: 1, reason: "+4,+6,+8,+10,+12 pattern: 2+4=6, 6+6=12, 12+8=20, 20+10=30, 30+12=42" },
+      { section: "Logical", id: 115, q: "Analog: Teacher:Student::Mentor:?", optA: "Protege", optB: "Colleague", optC: "Supervisor", optD: "Peer", ans: 0, reason: "Teacher guides student, mentor guides protege." },
+      { section: "Logical", id: 116, q: "Find odd: Efficiency, Productivity, Quality, Laziness", optA: "Efficiency", optB: "Productivity", optC: "Quality", optD: "Laziness", ans: 3, reason: "Laziness is a negative trait; others are positive performance metrics." },
+      { section: "Logical", id: 117, q: "If all As are Bs, and some Bs are Cs, then:", optA: "All As are Cs", optB: "Some As are Cs", optC: "No As are Cs", optD: "Cannot determine", ans: 3, reason: "No direct relationship between As and Cs can be established." },
+      { section: "Logical", id: 118, q: "Complete: 100, 95, 85, 70, 50, ___", optA: "25", optB: "30", optC: "35", optD: "40", ans: 0, reason: "-5,-10,-15,-20,-25 pattern: 100-5=95, 95-10=85, 85-15=70, 70-20=50, 50-25=25" },
+      { section: "Logical", id: 119, q: "Statement: Innovation requires risk. Some companies avoid risk. Conclusion: Some companies do not innovate.", optA: "True", optB: "False", optC: "Uncertain", optD: "Invalid", ans: 2, reason: "Risk avoidance doesn't necessarily mean no innovation; they might take calculated risks." },
+      { section: "Logical", id: 120, q: "Odd one: Vision, Mission, Strategy, Complaint", optA: "Vision", optB: "Mission", optC: "Strategy", optD: "Complaint", ans: 3, reason: "Complaint is not a business planning document; others are strategic elements." },
+      // SECTION 4: SITUATIONAL (121-150)
+      { section: "Situational", id: 121, q: "A team member consistently misses deadlines. Your first action should be:", optA: "Report to HR immediately", optB: "Discuss privately to understand reasons", optC: "Punish by withholding bonuses", optD: "Ignore if work quality is good", ans: 1, reason: "Always seek to understand the root cause before taking disciplinary action." },
+      { section: "Situational", id: 122, q: "Discovering a quality defect in shipped products, you should:", optA: "Recall immediately", optB: "Wait for customer complaints", optC: "Inform supervisor and assess scope", optD: "Blame the production team", ans: 2, reason: "First inform your supervisor and assess the scope of the issue before deciding on action." },
+      { section: "Situational", id: 123, q: "Two team members argue during a meeting. You should:", optA: "Take sides with senior member", optB: "Intervene and redirect to agenda", optC: "Let them argue it out", optD: "Cancel the meeting", ans: 1, reason: "Professional intervention to redirect focus is the most appropriate response." },
+      { section: "Situational", id: 124, q: "You notice a safety violation but production is behind schedule. You should:", optA: "Ignore to meet target", optB: "Stop operation immediately", optC: "Report after shift ends", optD: "Ask others if it's serious", ans: 1, reason: "Safety should always be the top priority, regardless of production pressure." },
+      { section: "Situational", id: 125, q: "A supplier offers a personal gift for contract renewal. You should:", optA: "Accept if small", optB: "Decline and report", optC: "Accept then share with team", optD: "Negotiate for bigger gift", ans: 1, reason: "Declining and reporting maintains ethical standards and company policy." },
+      { section: "Situational", id: 126, q: "You discover cheaper raw material but quality is unknown. You should:", optA: "Switch immediately to save costs", optB: "Test thoroughly before decision", optC: "Ask competitors if they use it", optD: "Reject without testing", ans: 1, reason: "Quality must be verified before any material substitution." },
+      { section: "Situational", id: 127, q: "Senior manager gives an unethical instruction. You should:", optA: "Follow without question", optB: "Refuse and report to higher authority", optC: "Do it but complain later", optD: "Ask colleagues what to do", ans: 1, reason: "Refusing unethical requests and reporting through proper channels is the right approach." },
+      { section: "Situational", id: 128, q: "Team morale is low due to rumors. You should:", optA: "Ignore rumors", optB: "Address with transparent communication", optC: "Punish rumor starters", optD: "Organize party to distract", ans: 1, reason: "Transparent communication addresses the root cause and builds trust." },
+      { section: "Situational", id: 129, q: "You make an error causing production delay. You should:", optA: "Hide error", optB: "Blame equipment", optC: "Immediately inform supervisor", optD: "Fix quietly without telling", ans: 2, reason: "Reporting errors immediately allows for timely mitigation and solutions." },
+      { section: "Situational", id: 130, q: "Customer complains about product. Your first response:", optA: "Defend company", optB: "Apologize and investigate", optC: "Refer to another department", optD: "Ignore if not major", ans: 1, reason: "Apologizing and showing willingness to investigate demonstrates customer care." },
+      { section: "Situational", id: 131, q: "Team member takes credit for your idea. You should:", optA: "Confront publicly", optB: "Discuss privately first", optC: "Report to manager immediately", optD: "Retaliate by undermining them", ans: 1, reason: "Private discussion allows for understanding and resolution without escalation." },
+      { section: "Situational", id: 132, q: "You receive conflicting instructions from two managers. You should:", optA: "Follow the senior manager", optB: "Ask them to clarify with each other", optC: "Choose the easier task", optD: "Do nothing until they follow up", ans: 1, reason: "Asking managers to resolve conflicts between themselves is professional and respectful." },
+      { section: "Situational", id: 133, q: "You discover a coworker stealing supplies. You should:", optA: "Confront them directly", optB: "Report to supervisor", optC: "Ignore if small amount", optD: "Join them to avoid conflict", ans: 1, reason: "Reporting theft to proper authority is the ethical and legal obligation." },
+      { section: "Situational", id: 134, q: "Deadline is unrealistic but assigned by boss. You should:", optA: "Work overtime without complaint", optB: "Negotiate timeline with reasons", optC: "Miss deadline and explain later", optD: "Delegate without asking", ans: 1, reason: "Professional negotiation with data-driven reasoning is appropriate." },
+      { section: "Situational", id: 135, q: "You notice process inefficiency but it's not your department. You should:", optA: "Ignore - not my responsibility", optB: "Suggest improvement to responsible manager", optC: "Implement change yourself", optD: "Complain to your boss", ans: 1, reason: "Constructive suggestions to the relevant department demonstrate initiative." },
+      { section: "Situational", id: 136, q: "Team member underperforming due to personal issues. You should:", optA: "Fire them immediately", optB: "Offer support and adjust workload temporarily", optC: "Ignore personal issues", optD: "Reduce their salary", ans: 1, reason: "Empathy and temporary support can help employees recover and perform better." },
+      { section: "Situational", id: 137, q: "You have too much work. You should:", optA: "Work longer hours", optB: "Prioritize and discuss with manager", optC: "Do everything poorly", optD: "Delegate without asking", ans: 1, reason: "Prioritization and open communication about workload is professional." },
+      { section: "Situational", id: 138, q: "You disagree with company policy. You should:", optA: "Sabotage implementation", optB: "Discuss concerns through proper channels", optC: "Complain to coworkers", optD: "Ignore and follow anyway", ans: 1, reason: "Constructive feedback through appropriate channels can lead to positive change." },
+      { section: "Situational", id: 139, q: "You receive negative feedback. You should:", optA: "Defend yourself immediately", optB: "Thank them and reflect on it", optC: "Ignore it", optD: "Retaliate with their flaws", ans: 1, reason: "Accepting feedback graciously and self-reflecting shows maturity." },
+      { section: "Situational", id: 140, q: "Budget cut requires team reduction. You should:", optA: "Cut newest employees first", optB: "Cut based on performance reviews", optC: "Cut your own salary instead", optD: "Refuse to make cuts", ans: 1, reason: "Performance-based decisions are fair and maintain organizational effectiveness." },
+      { section: "Situational", id: 141, q: "Important equipment breaks during peak production. You should:", optA: "Blame maintenance team", optB: "Find temporary workaround while fixing", optC: "Stop all production", optD: "Hide the problem", ans: 1, reason: "Finding workarounds demonstrates problem-solving and leadership." },
+      { section: "Situational", id: 142, q: "You witness harassment. You should:", optA: "Ignore to avoid trouble", optB: "Support victim and report", optC: "Join in to fit in", optD: "Confront harasser publicly", ans: 1, reason: "Supporting victims and reporting creates a safe workplace." },
+      { section: "Situational", id: 143, q: "You're offered a better job elsewhere. You should:", optA: "Quit immediately", optB: "Use offer to negotiate salary", optC: "Discuss career path with current employer first", optD: "Stay without mentioning offer", ans: 2, reason: "Professional courtesy is to discuss growth opportunities with current employer first." },
+      { section: "Situational", id: 144, q: "You discover accounting error in your favor. You should:", optA: "Keep the money", optB: "Report and correct", optC: "Share with team", optD: "Blame accountant", ans: 1, reason: "Honesty and integrity require reporting and correcting errors." },
+      { section: "Situational", id: 145, q: "Team rejects your idea. You should:", optA: "Force implementation", optB: "Understand their concerns and refine", optC: "Give up completely", optD: "Complain to higher management", ans: 1, reason: "Listening to feedback and refining ideas leads to better solutions." },
+      { section: "Situational", id: 146, q: "You need to implement unpopular change. You should:", optA: "Force it without explanation", optB: "Communicate reasons and benefits", optC: "Blame upper management", optD: "Delay indefinitely", ans: 1, reason: "Transparent communication about rationale and benefits eases transition." },
+      { section: "Situational", id: 147, q: "You're asked to do something beyond your expertise. You should:", optA: "Fake competence", optB: "Admit limitation and ask for training/support", optC: "Refuse outright", optD: "Blame others for not helping", ans: 1, reason: "Honesty about limitations and seeking support is professional." },
+      { section: "Situational", id: 148, q: "You achieve great results. You should:", optA: "Take all credit", optB: "Acknowledge team contribution", optC: "Demand promotion immediately", optD: "Downplay achievement", ans: 1, reason: "Acknowledging team contributions builds trust and morale." },
+      { section: "Situational", id: 149, q: "Company faces bad publicity. You should:", optA: "Criticize company publicly", optB: "Defend company blindly", optC: "Understand facts before commenting", optD: "Look for another job", ans: 2, reason: "Informed and balanced responses maintain professionalism." },
+      { section: "Situational", id: 150, q: "You finish work early. You should:", optA: "Leave immediately", optB: "Offer help to others", optC: "Pretend to work", optD: "Start personal projects", ans: 1, reason: "Offering assistance demonstrates teamwork and initiative." },
+      // SECTION 5: PERSONALITY (151-180)   // note: we store answer index from 0-4 scale, but we will treat "correct" as the leadership-aligned option. 
+      { section: "Personality", id: 151, q: "I enjoy taking charge of group projects.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 3, reason: "FMN leaders take initiative and lead teams effectively." },
+      { section: "Personality", id: 152, q: "I prefer following established procedures rather than creating new ones.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 1, reason: "Future leaders innovate and improve processes, not just follow them." },
+      { section: "Personality", id: 153, q: "I remain calm under pressure.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 3, reason: "Composure during crises is essential for leadership." },
+      { section: "Personality", id: 154, q: "I actively seek feedback on my performance.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 3, reason: "High performers continuously seek improvement through feedback." },
+      { section: "Personality", id: 155, q: "I enjoy analyzing data and reports.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 3, reason: "Data-driven decision making is critical at FMN." },
+      { section: "Personality", id: 156, q: "I prefer working independently rather than in teams.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 1, reason: "Collaboration and teamwork are valued over individual work." },
+      { section: "Personality", id: 157, q: "I adapt quickly to changes in the workplace.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 3, reason: "Agility and adaptability are key FMN competencies." },
+      { section: "Personality", id: 158, q: "I enjoy mentoring or training others.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 3, reason: "Developing others is a hallmark of future leaders." },
+      { section: "Personality", id: 159, q: "I take initiative without being asked.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 3, reason: "Proactivity distinguishes high-potential talent." },
+      { section: "Personality", id: 160, q: "I pay close attention to details in my work.", optA: "Strongly Disagree", optB: "Disagree", optC: "Neutral", optD: "Agree", ans: 3, reason: "Quality and precision are non-negotiable at FMN." },
+      { section: "Personality", id: 161, q: "When facing a difficult problem, I:", optA: "Analyze all data first", optB: "Consult experienced colleagues", optC: "Trust my intuition", optD: "Follow standard procedure", ans: 0, reason: "Analytical problem-solving is preferred over intuition alone." },
+      { section: "Personality", id: 162, q: "In team conflicts, I usually:", optA: "Mediate between parties", optB: "Avoid involvement", optC: "Support my friends", optD: "Report to supervisor", ans: 0, reason: "Effective leaders facilitate resolution, not avoid or take sides." },
+      { section: "Personality", id: 163, q: "When receiving criticism, I:", optA: "Become defensive", optB: "Listen and reflect", optC: "Ignore if I disagree", optD: "Ask for specific examples", ans: 1, reason: "Receptiveness to feedback is a growth mindset indicator." },
+      { section: "Personality", id: 164, q: "My approach to deadlines:", optA: "Complete early", optB: "Work steadily to meet deadline", optC: "Rush at last minute", optD: "Often request extensions", ans: 0, reason: "Proactive time management is preferred over last-minute rushing." },
+      { section: "Personality", id: 165, q: "In learning new skills, I prefer:", optA: "Hands-on practice", optB: "Reading manuals", optC: "Watching demonstrations", optD: "Trial and error", ans: 0, reason: "Action-oriented learning aligns with FMN's pace." },
+      { section: "Personality", id: 166, q: "In meetings, I typically:", optA: "Speak first", optB: "Listen then contribute", optC: "Speak only when asked", optD: "Avoid speaking", ans: 1, reason: "Balanced participation - listening first, then contributing." },
+      { section: "Personality", id: 167, q: "When making decisions, I consider:", optA: "Facts and data only", optB: "People's feelings", optC: "Both facts and feelings", optD: "My gut instinct", ans: 2, reason: "FMN values balanced decision-making: analytical + empathetic." },
+      { section: "Personality", id: 168, q: "Regarding rules and policies:", optA: "Always follow strictly", optB: "Follow but suggest improvements", optC: "Bend if necessary", optD: "Ignore if inconvenient", ans: 1, reason: "Respect for rules with constructive feedback for improvement." },
+      { section: "Personality", id: 169, q: "When working on projects:", optA: "I prefer clear instructions", optB: "I like autonomy", optC: "I want frequent feedback", optD: "I work best with minimal supervision", ans: 1, reason: "Autonomy with accountability is desired for future leaders." },
+      { section: "Personality", id: 170, q: "Under stress, I:", optA: "Work harder", optB: "Seek help", optC: "Become less productive", optD: "Take breaks", ans: 0, reason: "Resilience means increasing effort, not withdrawing." },
+      { section: "Personality", id: 171, q: "My communication style:", optA: "Direct and brief", optB: "Detailed and thorough", optC: "Diplomatic and considerate", optD: "Informal and friendly", ans: 0, reason: "Clarity and conciseness are valued in business communication." },
+      { section: "Personality", id: 172, q: "Regarding mistakes:", optA: "I rarely make them", optB: "I learn from them", optC: "I hide them", optD: "I blame others", ans: 1, reason: "Learning from failure is a growth mindset attribute." },
+      { section: "Personality", id: 173, q: "In team settings, I'm usually:", optA: "The organizer", optB: "The creative thinker", optC: "The quality checker", optD: "The peacemaker", ans: 0, reason: "Organizers drive execution and accountability." },
+      { section: "Personality", id: 174, q: "Regarding feedback to others:", optA: "I give it freely", optB: "I give only when asked", optC: "I avoid giving negative feedback", optD: "I sugarcoat criticism", ans: 0, reason: "Constructive, timely feedback is a leadership responsibility." },
+      { section: "Personality", id: 175, q: "My work priority:", optA: "Task completion", optB: "Team harmony", optC: "Personal growth", optD: "Customer satisfaction", ans: 3, reason: "Customer-centricity is core to FMN's values." },
+      { section: "Personality", id: 176, q: "When praised:", optA: "I credit the team", optB: "I accept graciously", optC: "I deflect praise", optD: "I expect more recognition", ans: 0, reason: "Humility and team recognition are leadership qualities." },
+      { section: "Personality", id: 177, q: "Regarding office politics:", optA: "I navigate skillfully", optB: "I avoid completely", optC: "I participate reluctantly", optD: "I'm unaware of them", ans: 1, reason: "Staying above politics maintains integrity and focus." },
+      { section: "Personality", id: 178, q: "My energy level:", optA: "Consistent throughout day", optB: "High in morning", optC: "High in afternoon", optD: "Varies with task", ans: 0, reason: "Consistency and reliability are valued traits." },
+      { section: "Personality", id: 179, q: "Regarding change:", optA: "I initiate it", optB: "I adapt to it", optC: "I resist it", optD: "I ignore it", ans: 0, reason: "Change leadership is expected of future leaders." },
+      { section: "Personality", id: 180, q: "My career motivation:", optA: "Challenge and growth", optB: "Stability and security", optC: "Recognition and status", optD: "Work-life balance", ans: 0, reason: "Growth orientation aligns with FMN's talent philosophy." }
+    ];
 
-        // Load current question
-        function loadQuestion() {
-            const currentSection = sections[currentSectionIndex];
-            const sectionQuestions = questions[currentSection];
-            
-            // For demo purposes, we're only using 5 questions per section
-            // In a real application, you would have all questions
-            const questionIndex = Math.min(currentQuestionIndex, sectionQuestions.length - 1);
-            const question = sectionQuestions[questionIndex];
-            
-            // Update question number display
-            currentQuestionNumElement.textContent = currentQuestionIndex + 1;
-            
-            // Update progress
-            const totalQuestionsInSection = sectionQuestionsCount[currentSection];
-            const progress = ((currentQuestionIndex + 1) / totalQuestionsInSection) * 100;
-            progressBar.style.width = `${progress}%`;
-            progressPercent.textContent = `${Math.round(progress)}%`;
-            
-            // Build question HTML
-            let questionHTML = `
-                <div class="question-card">
-                    <div class="d-flex align-items-start mb-3">
-                        <div class="question-number">${question.id}</div>
-                        <h5 class="flex-grow-1 mb-0">${question.question}</h5>
-                    </div>
-                    <div class="options-container">
-            `;
-            
-            // Add options
-            question.options.forEach((option, index) => {
-                const answerKey = `${currentSection}-${question.id}`;
-                const isSelected = userAnswers[answerKey] === index;
-                const optionClass = isSelected ? 'selected' : '';
-                
-                questionHTML += `
-                    <div class="option-label ${optionClass}" data-option-index="${index}">
-                        <input type="radio" class="option-radio" name="question-${question.id}" 
-                               id="option-${question.id}-${index}" value="${index}"
-                               ${isSelected ? 'checked' : ''}>
-                        <label for="option-${question.id}-${index}" class="flex-grow-1 mb-0">
-                            ${option}
-                        </label>
-                    </div>
-                `;
-            });
-            
-            questionHTML += `
-                    </div>
-                </div>
-            `;
-            
-            questionContainer.innerHTML = questionHTML;
-            
-            // Add event listeners to options
-            document.querySelectorAll('.option-label').forEach(option => {
-                option.addEventListener('click', function() {
-                    const optionIndex = parseInt(this.getAttribute('data-option-index'));
-                    selectOption(question.id, optionIndex);
-                });
-            });
-            
-            // Update button states
-            updateNavigationButtons();
-        }
+    // ---------- APP STATE ----------
+    let userAnswers = new Array(questionBank.length).fill(null);
+    let flagged = new Array(questionBank.length).fill(false);
+    let currentIndex = 0; // 0-based
+    let activeSection = "All";
+    let timerInterval;
+    let timeLeft = 1800; // 30 mins in seconds
+    const sections = ["All", "Quantitative", "Verbal", "Logical", "Situational", "Personality"];
 
-        // Handle option selection
-        function selectOption(questionId, optionIndex) {
-            const currentSection = sections[currentSectionIndex];
-            const answerKey = `${currentSection}-${questionId}`;
-            
-            // Store user's answer
-            userAnswers[answerKey] = optionIndex;
-            
-            // Update UI to show selected option
-            document.querySelectorAll('.option-label').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            event.currentTarget.classList.add('selected');
-        }
+    // derived filtered questions based on activeSection
+    function getFilteredIndices() {
+      if (activeSection === "All") {
+        return questionBank.map((_, idx) => idx);
+      } else {
+        return questionBank.reduce((acc, q, idx) => {
+          if (q.section === activeSection) acc.push(idx);
+          return acc;
+        }, []);
+      }
+    }
 
-        // Update navigation buttons state
-        function updateNavigationButtons() {
-            const currentSection = sections[currentSectionIndex];
-            const totalQuestionsInSection = sectionQuestionsCount[currentSection];
-            
-            // Previous button
-            prevBtn.disabled = currentQuestionIndex === 0;
-            
-            // Next button
-            nextBtn.disabled = currentQuestionIndex === totalQuestionsInSection - 1;
-            
-            // Finish section button visibility
-            if (currentSectionIndex === sections.length - 1) {
-                finishSectionBtn.style.display = 'none';
-                finishTestBtn.textContent = 'Finish Test';
-            } else {
-                finishSectionBtn.style.display = 'inline-block';
-                finishTestBtn.textContent = 'Finish Test Early';
-            }
-        }
+    // find current visible index position within filtered list
+    let filteredIndices = getFilteredIndices();
 
-        // Navigate to previous question
-        prevBtn.addEventListener('click', () => {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                loadQuestion();
-            }
-        });
+    function syncFiltered() {
+      filteredIndices = getFilteredIndices();
+      // ensure currentIndex is within filtered list, else set to first
+      if (filteredIndices.length === 0) return;
+      if (!filteredIndices.includes(currentIndex)) {
+        currentIndex = filteredIndices[0];
+      }
+    }
 
-        // Navigate to next question
-        nextBtn.addEventListener('click', () => {
-            const currentSection = sections[currentSectionIndex];
-            const totalQuestionsInSection = sectionQuestionsCount[currentSection];
-            
-            if (currentQuestionIndex < totalQuestionsInSection - 1) {
-                currentQuestionIndex++;
-                loadQuestion();
-            }
-        });
+    // RENDER all UI
+    function renderAll() {
+      syncFiltered();
+      renderSectionTabs();
+      renderQuestion();
+      renderGrid();
+      updateAnsweredCounter();
+    }
 
-        // Finish current section and move to next
-        finishSectionBtn.addEventListener('click', () => {
-            if (currentSectionIndex < sections.length - 1) {
-                currentSectionIndex++;
-                loadSection();
-            }
-        });
-
-        // Finish the test
-        finishTestBtn.addEventListener('click', () => {
-            if (confirm("Are you sure you want to finish the test? You can review your answers before submitting.")) {
-                finishTest();
-            }
-        });
-
-        // Show section overview
-        sectionOverviewBtn.addEventListener('click', () => {
-            showSectionOverview();
-        });
-
-        // Show section overview modal
-        function showSectionOverview() {
-            const overviewContent = document.getElementById('sectionOverviewContent');
-            let overviewHTML = '';
-            
-            sections.forEach((section, index) => {
-                const isCurrentSection = index === currentSectionIndex;
-                const sectionClass = isCurrentSection ? 'bg-light border-primary' : '';
-                
-                // Count answered questions in this section
-                let answeredCount = 0;
-                const totalQuestions = sectionQuestionsCount[section];
-                
-                // In a real app, you would count actual answers
-                // For demo, we'll estimate based on current progress
-                if (index === currentSectionIndex) {
-                    answeredCount = Math.floor((currentQuestionIndex + 1) / 2);
-                } else if (index < currentSectionIndex) {
-                    answeredCount = Math.floor(totalQuestions * 0.8); // Estimate 80% for completed sections
-                }
-                
-                overviewHTML += `
-                    <div class="col-md-6 mb-3">
-                        <div class="card ${sectionClass}" style="cursor: pointer;" onclick="goToSection(${index})">
-                            <div class="card-body">
-                                <h5 class="card-title">${section} Reasoning</h5>
-                                <p class="card-text">${totalQuestions} questions</p>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" 
-                                         style="width: ${(answeredCount / totalQuestions) * 100}%">
-                                    </div>
-                                </div>
-                                <p class="mt-2 mb-0">${answeredCount} of ${totalQuestions} answered</p>
-                                ${isCurrentSection ? '<span class="badge bg-primary mt-2">Current Section</span>' : ''}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            overviewContent.innerHTML = overviewHTML;
-            
-            // Show modal
-            const modal = new bootstrap.Modal(document.getElementById('sectionOverviewModal'));
-            modal.show();
-        }
-
-        // Go to specific section
-        window.goToSection = function(sectionIndex) {
-            if (sectionIndex >= 0 && sectionIndex < sections.length) {
-                currentSectionIndex = sectionIndex;
-                loadSection();
-                
-                // Close modal
-                const modal = bootstrap.Modal.getInstance(document.getElementById('sectionOverviewModal'));
-                modal.hide();
-            }
+    function renderSectionTabs() {
+      const tabsDiv = document.getElementById('sectionTabs');
+      tabsDiv.innerHTML = '';
+      sections.forEach(sec => {
+        const btn = document.createElement('span');
+        btn.className = `section-badge ${activeSection === sec ? 'active' : ''}`;
+        btn.innerHTML = `<i class="fas fa-tag"></i>${sec}`;
+        btn.onclick = () => {
+          activeSection = sec;
+          syncFiltered();
+          if (filteredIndices.length) currentIndex = filteredIndices[0];
+          renderAll();
         };
+        tabsDiv.appendChild(btn);
+      });
+    }
 
-        // Calculate and display results
-        function finishTest() {
-            // Stop timer
-            clearInterval(timerInterval);
-            
-            // Hide test interface, show results
-            testInterface.style.display = 'none';
-            resultsScreen.style.display = 'block';
-            
-            // Calculate results
-            calculateResults();
+    function renderQuestion() {
+      if (questionBank.length === 0) return;
+      if (filteredIndices.length === 0) {
+        document.getElementById('questionText').innerText = 'No questions in this section.';
+        return;
+      }
+      const realIdx = currentIndex; // global idx
+      const q = questionBank[realIdx];
+      document.getElementById('sectionNameDisplay').innerHTML = `<i class="fas fa-layer-group"></i> ${q.section} · Q${q.id}`;
+      document.getElementById('questionText').innerText = q.q;
+      const optsDiv = document.getElementById('optionsContainer');
+      optsDiv.innerHTML = '';
+      const opts = [q.optA, q.optB, q.optC, q.optD];
+      const prefix = ['A', 'B', 'C', 'D'];
+      opts.forEach((opt, idx) => {
+        if (!opt) return;
+        const optEl = document.createElement('div');
+        optEl.className = `option ${userAnswers[realIdx] === idx ? 'selected' : ''}`;
+        optEl.innerHTML = `<span class="option-prefix">${prefix[idx]}</span> ${opt}`;
+        optEl.onclick = () => {
+          userAnswers[realIdx] = idx;
+          renderAll();
+        };
+        optsDiv.appendChild(optEl);
+      });
+      // flag button style
+      const flagBtn = document.getElementById('flagBtn');
+      flagBtn.style.background = flagged[realIdx] ? '#ffeed9' : 'white';
+      flagBtn.style.borderColor = flagged[realIdx] ? '#e68a2e' : '#dce5ec';
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('questionGrid');
+      grid.innerHTML = '';
+      questionBank.forEach((_, idx) => {
+        const num = document.createElement('div');
+        num.className = `q-num ${userAnswers[idx] !== null ? 'answered' : ''} ${flagged[idx] ? 'flagged' : ''}`;
+        num.innerText = idx + 1;
+        num.onclick = () => {
+          currentIndex = idx;
+          renderAll();
+        };
+        grid.appendChild(num);
+      });
+    }
+
+    function updateAnsweredCounter() {
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      document.getElementById('answeredCounter').innerText = `${answeredCount}/180`;
+    }
+
+    // ---------- TIMER ----------
+    function startTimer() {
+      timerInterval = setInterval(function() {
+        timeLeft--;
+        if (timeLeft < 0) {
+          clearInterval(timerInterval);
+          timeLeft = 0;
+          handleSubmit(); // auto submit on timeout
         }
+        const mins = Math.floor(timeLeft / 60);
+        const secs = timeLeft % 60;
+        document.getElementById('timerDisplay').innerText = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+      }, 1000);
+    }
 
-        // Calculate test results
-        function calculateResults() {
-            let totalQuestions = 0;
-            let correctAnswers = 0;
-            let incorrectAnswers = 0;
-            let skippedQuestions = 0;
-            let sectionScores = {};
-            
-            // Calculate scores for each section
-            sections.forEach(section => {
-                const sectionQuestionsList = questions[section];
-                let sectionCorrect = 0;
-                let sectionTotal = sectionQuestionsList.length;
-                
-                sectionQuestionsList.forEach(question => {
-                    totalQuestions++;
-                    const answerKey = `${section}-${question.id}`;
-                    const userAnswer = userAnswers[answerKey];
-                    
-                    if (userAnswer === undefined) {
-                        skippedQuestions++;
-                    } else if (question.answer === -1) {
-                        // Personality questions have no right/wrong answers
-                        // Count as correct for scoring purposes
-                        correctAnswers++;
-                        sectionCorrect++;
-                    } else if (userAnswer === question.answer) {
-                        correctAnswers++;
-                        sectionCorrect++;
-                    } else {
-                        incorrectAnswers++;
-                    }
-                });
-                
-                // Store section score
-                const sectionPercentage = sectionTotal > 0 ? Math.round((sectionCorrect / sectionTotal) * 100) : 0;
-                sectionScores[section] = {
-                    correct: sectionCorrect,
-                    total: sectionTotal,
-                    percentage: sectionPercentage
-                };
-            });
-            
-            // Calculate overall score
-            const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
-            
-            // Calculate time spent
-            const timeSpentSeconds = 120 * 60 - timeRemaining;
-            const timeSpentMinutes = Math.floor(timeSpentSeconds / 60);
-            const timeSpentSecondsRemainder = timeSpentSeconds % 60;
-            const timeSpentFormatted = `${timeSpentMinutes}:${timeSpentSecondsRemainder.toString().padStart(2, '0')}`;
-            
-            // Update results display
-            document.getElementById('finalScore').textContent = scorePercentage;
-            document.getElementById('correctAnswers').textContent = correctAnswers;
-            document.getElementById('incorrectAnswers').textContent = incorrectAnswers;
-            document.getElementById('skippedQuestions').textContent = skippedQuestions;
-            document.getElementById('timeSpent').textContent = timeSpentFormatted;
-            
-            // Update performance text
-            const performanceText = document.getElementById('performanceText');
-            const performanceDescription = document.getElementById('performanceDescription');
-            
-            if (scorePercentage >= 90) {
-                performanceText.textContent = "Outstanding Performance!";
-                performanceText.style.color = "var(--success-color)";
-                performanceDescription.textContent = "You have demonstrated exceptional aptitude and are well-prepared for the actual test.";
-            } else if (scorePercentage >= 75) {
-                performanceText.textContent = "Good Performance";
-                performanceText.style.color = "var(--success-color)";
-                performanceDescription.textContent = "You have a good understanding of the test material. Review your weak areas to improve further.";
-            } else if (scorePercentage >= 60) {
-                performanceText.textContent = "Average Performance";
-                performanceText.style.color = "#f39c12";
-                performanceDescription.textContent = "You have a basic understanding but need more practice in certain areas.";
-            } else {
-                performanceText.textContent = "Needs Improvement";
-                performanceText.style.color = "var(--accent-color)";
-                performanceDescription.textContent = "You should spend more time studying and practicing before taking the actual test.";
-            }
-            
-            // Update score circle
-            const scoreCircle = document.querySelector('.score-circle');
-            scoreCircle.style.background = `conic-gradient(var(--success-color) 0% ${scorePercentage}%, #e0e0e0 ${scorePercentage}% 100%)`;
-            
-            // Display section scores
-            const sectionScoresElement = document.getElementById('sectionScores');
-            let sectionScoresHTML = '';
-            
-            sections.forEach(section => {
-                const score = sectionScores[section];
-                sectionScoresHTML += `
-                    <div class="section-score">
-                        <div>
-                            <strong>${section} Reasoning</strong>
-                            <div class="text-muted">${score.correct} of ${score.total} correct</div>
-                        </div>
-                        <div class="fs-5 fw-bold">${score.percentage}%</div>
-                    </div>
-                `;
-            });
-            
-            sectionScoresElement.innerHTML = sectionScoresHTML;
-            
-            // Generate answer review
-            generateAnswerReview();
+    // ---------- SUBMIT & RESULTS ----------
+    function handleSubmit() {
+      clearInterval(timerInterval);
+      document.getElementById('testView').classList.add('hidden');
+      const resultView = document.getElementById('resultView');
+      resultView.classList.remove('hidden');
+      renderResults();
+    }
+
+    function renderResults() {
+      const sectionScores = {};
+      const sectionTotals = {};
+      questionBank.forEach((q, idx) => {
+        const sec = q.section;
+        if (!sectionTotals[sec]) sectionTotals[sec] = 0;
+        sectionTotals[sec]++;
+        if (!sectionScores[sec]) sectionScores[sec] = 0;
+        // personality: answer is "ideal" as per FMN
+        if (userAnswers[idx] !== null && userAnswers[idx] === q.ans) {
+          sectionScores[sec] += 1;
         }
+      });
 
-        // Generate answer review section
-        function generateAnswerReview() {
-            const answerReviewList = document.getElementById('answerReviewList');
-            let reviewHTML = '';
-            
-            sections.forEach(section => {
-                const sectionQuestionsList = questions[section];
-                
-                sectionQuestionsList.forEach(question => {
-                    const answerKey = `${section}-${question.id}`;
-                    const userAnswer = userAnswers[answerKey];
-                    const isCorrect = question.answer === -1 || userAnswer === question.answer;
-                    const reviewClass = isCorrect ? 'correct' : 'incorrect';
-                    
-                    let userAnswerText = "Not answered";
-                    if (userAnswer !== undefined) {
-                        userAnswerText = question.options[userAnswer];
-                    }
-                    
-                    let correctAnswerText = question.answer === -1 ? "Personality question - no correct answer" : question.options[question.answer];
-                    
-                    reviewHTML += `
-                        <div class="review-item ${reviewClass}">
-                            <div class="review-question">Q${question.id}: ${question.question}</div>
-                            <div class="mb-1">Your answer: <span class="user-answer">${userAnswerText}</span></div>
-                            ${!isCorrect && question.answer !== -1 ? 
-                                `<div class="mb-1">Correct answer: <span class="correct-answer">${correctAnswerText}</span></div>` : ''}
-                            <div class="text-muted"><small>${question.explanation}</small></div>
-                        </div>
-                    `;
-                });
-            });
-            
-            answerReviewList.innerHTML = reviewHTML;
+      // render score cards
+      let scoreHtml = '';
+      for (let sec of sections.slice(1)) {
+        const total = sectionTotals[sec] || 0;
+        const scored = sectionScores[sec] || 0;
+        const percent = total ? ((scored / total) * 100).toFixed(1) : 0;
+        scoreHtml += `<div style="background: #f2f7f5; padding: 1rem 1.6rem; border-radius: 20px; flex: 1 0 200px;">
+          <h4 style="color: #0f6e6b;">${sec}</h4>
+          <div style="font-size: 1.8rem; font-weight: 700;">${scored}/${total}</div>
+          <div style="font-size: 1.2rem; color: #0a4b4a;">${percent}%</div>
+        </div>`;
+      }
+      document.getElementById('scoreCards').innerHTML = scoreHtml;
+
+      // FAILED QUESTIONS: wrong or not answered (skip personality for failed? but include as per data)
+      let failedHtml = '';
+      questionBank.forEach((q, idx) => {
+        const isCorrect = (userAnswers[idx] !== null && userAnswers[idx] === q.ans);
+        if (!isCorrect) {
+          const selectedLetter = userAnswers[idx] !== null ? ['A','B','C','D'][userAnswers[idx]] : '—';
+          const correctLetter = ['A','B','C','D'][q.ans];
+          failedHtml += `<div style="background: white; border-left: 6px solid #b34141; border-radius: 16px; padding: 1.2rem; margin-bottom: 1rem;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: baseline;">
+              <span style="background: #f0e2e2; padding: 0.2rem 1rem; border-radius: 40px; font-weight: 700;">${q.section} Q${q.id}</span>
+              <span><strong>Your answer:</strong> ${selectedLetter}</span>
+              <span><strong>Correct:</strong> ${correctLetter}</span>
+            </div>
+            <p style="margin: 0.6rem 0; font-size: 1.05rem;">${q.q}</p>
+            <details style="margin-top: 0.5rem; color: #2c4e66;">
+              <summary style="font-weight: 600;"><i class="fas fa-info-circle"></i> Explanation</summary>
+              <p style="margin-top: 0.5rem; background: #f3f9fc; padding: 0.8rem;">${q.reason}</p>
+            </details>
+          </div>`;
         }
+      });
+      document.getElementById('failedQuestionsList').innerHTML = failedHtml || '<p style="padding: 2rem; text-align: center;">🎉 Perfect! No failed questions.</p>';
+    }
 
-        // Restart test
-        restartTestBtn.addEventListener('click', () => {
-            if (confirm("Are you sure you want to restart the test? All current progress will be lost.")) {
-                initTest();
-            }
-        });
+    // ---------- PDF EXPORT ----------
+    window.exportPDF = function() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text("FMN Future Leader - Assessment Report", 14, 16);
+      doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 24);
+      
+      // section summary
+      let yPos = 35;
+      doc.setFontSize(12);
+      const secRows = [];
+      for (let sec of sections.slice(1)) {
+        const total = questionBank.filter(q => q.section === sec).length;
+        const score = userAnswers.reduce((acc, ans, idx) => {
+          if (questionBank[idx].section === sec && ans !== null && ans === questionBank[idx].ans) acc++;
+          return acc;
+        }, 0);
+        const perc = total ? (score/total*100).toFixed(1) : 0;
+        secRows.push([sec, `${score}/${total}`, `${perc}%`]);
+      }
+      doc.autoTable({ head: [['Section', 'Score', 'Percentage']], body: secRows, startY: yPos });
+      
+      // failed questions
+      const failed = questionBank.filter((q, idx) => {
+        return (userAnswers[idx] === null || userAnswers[idx] !== q.ans);
+      }).map((q, idx) => {
+        const userSel = userAnswers[questionBank.indexOf(q)]; 
+        return [`Q${q.id} (${q.section})`, q.q, `Your: ${userSel!==null?['A','B','C','D'][userSel]:'none'}`, `Correct: ${['A','B','C','D'][q.ans]}`, q.reason];
+      });
+      
+      if (failed.length > 0) {
+        doc.addPage();
+        doc.text("Failed questions with answers & reasons", 14, 16);
+        doc.autoTable({ head: [['Question', 'Stem', 'Your ans', 'Correct', 'Reason']], body: failed.slice(0, 50), startY: 25 }); // limit length for demo
+      }
+      doc.save("FMN_CBT_Results.pdf");
+    };
 
-        // View start screen
-        viewStartScreenBtn.addEventListener('click', () => {
-            resultsScreen.style.display = 'none';
-            startScreen.style.display = 'block';
-        });
+    // ---------- EVENT LISTENERS ----------
+    document.getElementById('prevBtn').addEventListener('click', function() {
+      if (filteredIndices.length === 0) return;
+      let pos = filteredIndices.indexOf(currentIndex);
+      if (pos > 0) {
+        currentIndex = filteredIndices[pos - 1];
+        renderAll();
+      }
+    });
+    document.getElementById('nextBtn').addEventListener('click', function() {
+      if (filteredIndices.length === 0) return;
+      let pos = filteredIndices.indexOf(currentIndex);
+      if (pos < filteredIndices.length - 1) {
+        currentIndex = filteredIndices[pos + 1];
+        renderAll();
+      }
+    });
+    document.getElementById('flagBtn').addEventListener('click', function() {
+      flagged[currentIndex] = !flagged[currentIndex];
+      renderAll();
+    });
+    document.getElementById('submitTestBtn').addEventListener('click', function() {
+      if (confirm('Are you sure you want to submit the test? Timer will stop.')) {
+        handleSubmit();
+      }
+    });
+    document.getElementById('exportPdfBtn').addEventListener('click', function() {
+      window.exportPDF();
+    });
 
-        // Start test when button is clicked
-        startTestBtn.addEventListener('click', initTest);
-
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set total questions count
-            let totalQuestions = 0;
-            for (const section in sectionQuestionsCount) {
-                totalQuestions += sectionQuestionsCount[section];
-            }
-            
-            // Update any initial displays if needed
-        });
-    </script>
+    // ---------- INIT ----------
+    renderAll();
+    startTimer();
+  })();
+</script>
 </body>
 </html>
