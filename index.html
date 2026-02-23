@@ -1,851 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍊 ORANGE GROUP · FMN Future Leader CBT</title>
-    <!-- jsPDF for PDF export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            background: white;
-            border-radius: 40px;
-            padding: 2rem;
-            box-shadow: 0 30px 60px rgba(249, 115, 22, 0.3);
-        }
-        /* Orange Theme */
-        .orange-gradient {
-            background: linear-gradient(135deg, #f97316, #fb923c);
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-            background: #fff7ed;
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            border: 2px solid #fed7aa;
-        }
-        .title h1 {
-            color: #f97316;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .title p {
-            color: #9a3412;
-            font-size: 0.9rem;
-        }
-        .timer {
-            background: #f97316;
-            color: white;
-            font-size: 2rem;
-            font-weight: 700;
-            padding: 0.5rem 2rem;
-            border-radius: 50px;
-            box-shadow: 0 4px 0 #c2410c;
-        }
-        .section-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .filter-btn {
-            background: #ffedd5;
-            border: 2px solid #fed7aa;
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            color: #9a3412;
-        }
-        .filter-btn.active {
-            background: #f97316;
-            border-color: #f97316;
-            color: white;
-        }
-        .filter-btn:hover {
-            background: #f97316;
-            color: white;
-        }
-        .main-panel {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-        }
-        .question-panel {
-            background: #fff7ed;
-            border-radius: 30px;
-            padding: 2rem;
-            border: 2px solid #fed7aa;
-        }
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-        .section-badge {
-            background: #f97316;
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        .flag-btn {
-            background: white;
-            border: 2px solid #fed7aa;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #9a3412;
-        }
-        .flag-btn.flagged {
-            background: #f97316;
-            border-color: #f97316;
-            color: white;
-        }
-        .question-text {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin: 1.5rem 0;
-            line-height: 1.6;
-            color: #422006;
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        .option {
-            background: white;
-            border: 2px solid #fed7aa;
-            border-radius: 15px;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .option:hover {
-            border-color: #f97316;
-            background: #fff;
-        }
-        .option.selected {
-            background: #f97316;
-            border-color: #f97316;
-            color: white;
-        }
-        .option.selected .option-prefix {
-            background: white;
-            color: #f97316;
-        }
-        .option-prefix {
-            width: 2rem;
-            height: 2rem;
-            background: #ffedd5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: #9a3412;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .btn {
-            background: white;
-            border: 2px solid #fed7aa;
-            padding: 0.8rem 1.8rem;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            color: #9a3412;
-        }
-        .btn-primary {
-            background: #f97316;
-            border-color: #f97316;
-            color: white;
-        }
-        .btn-primary:hover {
-            background: #fb923c;
-        }
-        .btn:hover {
-            background: #f97316;
-            color: white;
-        }
-        .grid-panel {
-            background: #fff7ed;
-            border-radius: 30px;
-            padding: 1.5rem;
-            border: 2px solid #fed7aa;
-        }
-        .question-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-        .grid-item {
-            background: white;
-            border: 2px solid #fed7aa;
-            border-radius: 10px;
-            padding: 0.8rem 0;
-            text-align: center;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            color: #9a3412;
-        }
-        .grid-item:hover {
-            border-color: #f97316;
-        }
-        .grid-item.answered {
-            background: #f97316;
-            color: white;
-            border-color: #f97316;
-        }
-        .grid-item.flagged {
-            border: 3px solid #f97316;
-            background: #ffedd5;
-        }
-        .legend {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        .legend-color {
-            width: 1rem;
-            height: 1rem;
-            border-radius: 4px;
-        }
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            font-size: 1.2rem;
-            color: #f97316;
-        }
-        .hidden {
-            display: none !important;
-        }
-        .results-container {
-            margin-top: 2rem;
-        }
-        .score-card {
-            background: #fff7ed;
-            border-radius: 30px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 2px solid #fed7aa;
-        }
-        .section-scores {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .section-score {
-            background: white;
-            border-radius: 20px;
-            padding: 1.2rem;
-            text-align: center;
-            border: 2px solid #fed7aa;
-        }
-        .section-score h4 {
-            color: #f97316;
-            margin-bottom: 0.5rem;
-        }
-        .section-score .percentage {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #f97316;
-        }
-        .failed-question {
-            background: #fff7ed;
-            border-left: 6px solid #f97316;
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border: 2px solid #fed7aa;
-        }
-        .failed-header {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 0.8rem;
-            flex-wrap: wrap;
-        }
-        .failed-tag {
-            background: #f97316;
-            color: white;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-weight: 600;
-        }
-        .explanation {
-            background: white;
-            border-radius: 15px;
-            padding: 1rem;
-            margin-top: 1rem;
-            border: 2px solid #fed7aa;
-        }
-        .pdf-btn {
-            background: #f97316;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-        .pdf-btn:hover {
-            background: #fb923c;
-        }
-        .welcome-card {
-            text-align: center;
-            padding: 3rem;
-            background: #fff7ed;
-            border-radius: 40px;
-            border: 2px solid #fed7aa;
-        }
-        .name-input {
-            width: 100%;
-            max-width: 400px;
-            padding: 1rem;
-            border: 2px solid #fed7aa;
-            border-radius: 50px;
-            font-size: 1rem;
-            margin: 2rem auto;
-            display: block;
-        }
-        .name-input:focus {
-            outline: none;
-            border-color: #f97316;
-        }
-        .orange-text {
-            color: #f97316;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional CBT Practice</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body { background:#f4f6f9; }
+.question-card { min-height:300px; }
+.timer { font-weight:bold; font-size:18px; }
+.correct { color:green; }
+.wrong { color:red; }
+.passage-box { background:#fff; padding:15px; border-radius:8px; border:1px solid #ddd; margin-bottom:15px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- Welcome Screen -->
-        <div id="welcomeScreen">
-            <div class="welcome-card">
-                <h1 style="font-size: 3rem; margin-bottom: 1rem;">🍊</h1>
-                <h1 class="orange-text" style="font-size: 2rem;">ORANGE GROUP</h1>
-                <h2 style="margin: 2rem 0 1rem;">FMN Future Leader Assessment</h2>
-                <p style="margin-bottom: 2rem; color: #666;">60 Questions · 30 Minutes · 5 Sections</p>
-                <input type="text" id="candidateName" class="name-input" placeholder="Enter your full name">
-                <button id="startTestBtn" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">Start Test</button>
-            </div>
-        </div>
 
-        <!-- Test Screen -->
-        <div id="testScreen" class="hidden">
-            <div class="header">
-                <div class="title">
-                    <h1>🍊 ORANGE GROUP</h1>
-                    <p><span id="candidateDisplay"></span> · <span id="answeredCount">0/60</span></p>
-                </div>
-                <div class="timer" id="timerDisplay">30:00</div>
-            </div>
+<div class="container mt-4">
 
-            <div class="section-filters" id="sectionFilters"></div>
+<div id="instructionScreen">
 
-            <div class="main-panel">
-                <div class="question-panel">
-                    <div class="question-header">
-                        <span class="section-badge" id="currentSection">Quantitative</span>
-                        <button class="flag-btn" id="flagBtn">🚩 Flag</button>
-                    </div>
-                    <div class="question-text" id="questionText"></div>
-                    <div class="options" id="optionsContainer"></div>
-                    <div class="nav-buttons">
-                        <button class="btn" id="prevBtn">← Previous</button>
-                        <button class="btn btn-primary" id="submitBtn">Submit Test</button>
-                        <button class="btn" id="nextBtn">Next →</button>
-                    </div>
-                </div>
+<h3 class="text-center mb-3">CBT Practice Examination</h3>
 
-                <div class="grid-panel">
-                    <h3 style="color: #f97316; margin-bottom: 1rem;">Question Navigator</h3>
-                    <div class="question-grid" id="questionGrid"></div>
-                    <div class="legend">
-                        <div class="legend-item"><span class="legend-color" style="background: #f97316;"></span> Answered</div>
-                        <div class="legend-item"><span class="legend-color" style="background: #ffedd5; border: 2px solid #f97316;"></span> Flagged</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="card p-4">
 
-        <!-- Results Screen -->
-        <div id="resultsScreen" class="hidden">
-            <div class="header">
-                <div class="title">
-                    <h1>🍊 Assessment Results</h1>
-                    <p><span id="resultCandidate"></span></p>
-                </div>
-                <button id="exportPdfBtn" class="pdf-btn">📄 Export PDF Report</button>
-            </div>
+<h5>Instructions:</h5>
+<ul>
+<li>Total Questions: 25</li>
+<li>15 Quantitative</li>
+<li>5 Reasoning</li>
+<li>5 Comprehension</li>
+<li>Total Time: 30 Minutes</li>
+<li>All questions carry equal marks</li>
+<li>Do not refresh or close browser</li>
+</ul>
 
-            <div class="results-container">
-                <div class="score-card">
-                    <h2 style="color: #f97316; margin-bottom: 1rem;">Overall Score: <span id="overallScore">0%</span></h2>
-                    <div class="section-scores" id="sectionScores"></div>
-                </div>
+<div class="mt-3">
+<label class="form-label">Enter Your Full Name</label>
+<input type="text" id="candidateName" class="form-control">
+</div>
 
-                <h2 style="color: #f97316; margin-bottom: 1rem;">❌ Failed Questions</h2>
-                <div id="failedQuestions"></div>
-            </div>
-        </div>
+<button class="btn btn-primary mt-3" onclick="startExam()">Start Exam</button>
 
-        <div id="loading" class="loading">Loading questions from questions.txt...</div>
-    </div>
+</div>
+</div>
 
-    <script>
-        // Global variables
-        let allQuestions = [];
-        let testQuestions = [];
-        let userAnswers = [];
-        let flagged = [];
-        let currentIndex = 0;
-        let currentFilter = 'All';
-        let candidateName = '';
-        let timeLeft = 1800; // 30 minutes in seconds
-        let timerInterval = null;
+<div id="examScreen" style="display:none;">
 
-        // Load questions from questions.txt
-        async function loadQuestions() {
-            try {
-                const response = await fetch('questions.txt');
-                const text = await response.text();
-                allQuestions = parseQuestions(text);
-                
-                // Select 60 random questions (12 from each section)
-                testQuestions = selectRandomQuestions(allQuestions, 60);
-                userAnswers = new Array(testQuestions.length).fill(null);
-                flagged = new Array(testQuestions.length).fill(false);
-                
-                document.getElementById('loading').classList.add('hidden');
-                document.getElementById('welcomeScreen').classList.remove('hidden');
-            } catch (error) {
-                document.getElementById('loading').innerHTML = 'Error loading questions.txt. Make sure the file exists.';
-                console.error(error);
-            }
-        }
+<div class="d-flex justify-content-between mb-3">
+<div>Candidate: <b id="displayName"></b></div>
+<div>Time Left: <span id="timer" class="text-danger timer"></span></div>
+</div>
 
-        // Parse the FMN pipe-separated format
-        function parseQuestions(text) {
-            const lines = text.split('\n');
-            const questions = [];
-            
-            for (let line of lines) {
-                line = line.trim();
-                if (!line || line.startsWith('//') || line.includes('SECTION') || line.includes('=')) continue;
-                
-                const parts = line.split('||').map(p => p.trim());
-                if (parts.length >= 9) {
-                    questions.push({
-                        section: parts[0],
-                        id: parseInt(parts[1]),
-                        question: parts[2],
-                        options: [parts[3], parts[4], parts[5], parts[6]],
-                        answer: parseInt(parts[7]),
-                        explanation: parts[8]
-                    });
-                }
-            }
-            return questions;
-        }
+<div id="questionContainer"></div>
 
-        // Select random questions maintaining section balance (12 per section = 60 total)
-        function selectRandomQuestions(questions, totalCount) {
-            const sections = ['Quantitative', 'Verbal', 'Logical', 'Situational', 'Personality'];
-            const perSection = 12; // 12 from each section = 60 total
-            const selected = [];
-            
-            sections.forEach(section => {
-                const sectionQs = questions.filter(q => q.section === section);
-                const shuffled = [...sectionQs].sort(() => Math.random() - 0.5);
-                selected.push(...shuffled.slice(0, perSection));
-            });
-            
-            return selected.sort(() => Math.random() - 0.5); // Shuffle final order
-        }
+<div class="mt-3 d-flex justify-content-between">
+<button class="btn btn-secondary" onclick="prevQuestion()">Previous</button>
+<button class="btn btn-primary" onclick="nextQuestion()">Next</button>
+<button class="btn btn-success" onclick="submitExam()">Submit</button>
+</div>
 
-        // Render section filters
-        function renderFilters() {
-            const sections = ['All', 'Quantitative', 'Verbal', 'Logical', 'Situational', 'Personality'];
-            const filtersDiv = document.getElementById('sectionFilters');
-            filtersDiv.innerHTML = '';
-            
-            sections.forEach(section => {
-                const btn = document.createElement('button');
-                btn.className = `filter-btn ${currentFilter === section ? 'active' : ''}`;
-                btn.textContent = section;
-                btn.onclick = () => {
-                    currentFilter = section;
-                    updateQuestionDisplay();
-                };
-                filtersDiv.appendChild(btn);
-            });
-        }
+</div>
 
-        // Get filtered question indices
-        function getFilteredIndices() {
-            if (currentFilter === 'All') {
-                return testQuestions.map((_, i) => i);
-            }
-            return testQuestions.reduce((acc, q, i) => {
-                if (q.section === currentFilter) acc.push(i);
-                return acc;
-            }, []);
-        }
+<div id="resultScreen" style="display:none;" class="mt-4"></div>
 
-        // Update question display based on current index and filter
-        function updateQuestionDisplay() {
-            const filtered = getFilteredIndices();
-            if (filtered.length === 0) return;
-            
-            if (!filtered.includes(currentIndex)) {
-                currentIndex = filtered[0];
-            }
-            
-            renderQuestion();
-            renderGrid();
-        }
+</div>
 
-        // Render current question
-        function renderQuestion() {
-            const q = testQuestions[currentIndex];
-            document.getElementById('currentSection').textContent = q.section;
-            document.getElementById('questionText').textContent = q.question;
-            
-            const flagBtn = document.getElementById('flagBtn');
-            flagBtn.classList.toggle('flagged', flagged[currentIndex]);
-            flagBtn.textContent = flagged[currentIndex] ? '🚩 Flagged' : '🚩 Flag';
-            
-            const optionsDiv = document.getElementById('optionsContainer');
-            optionsDiv.innerHTML = '';
-            
-            q.options.forEach((opt, idx) => {
-                const optDiv = document.createElement('div');
-                optDiv.className = `option ${userAnswers[currentIndex] === idx ? 'selected' : ''}`;
-                optDiv.innerHTML = `<span class="option-prefix">${String.fromCharCode(65 + idx)}</span> ${opt}`;
-                optDiv.onclick = () => {
-                    userAnswers[currentIndex] = idx;
-                    renderQuestion();
-                    renderGrid();
-                };
-                optionsDiv.appendChild(optDiv);
-            });
-        }
+<script>
 
-        // Render question grid
-        function renderGrid() {
-            const grid = document.getElementById('questionGrid');
-            grid.innerHTML = '';
-            
-            testQuestions.forEach((q, i) => {
-                const item = document.createElement('div');
-                item.className = `grid-item ${userAnswers[i] !== null ? 'answered' : ''} ${flagged[i] ? 'flagged' : ''}`;
-                item.textContent = i + 1;
-                item.onclick = () => {
-                    currentIndex = i;
-                    updateQuestionDisplay();
-                };
-                grid.appendChild(item);
-            });
-            
-            const answered = userAnswers.filter(a => a !== null).length;
-            document.getElementById('answeredCount').textContent = `${answered}/60`;
-        }
+// QUESTION BANK
 
-        // Timer functions
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                updateTimer();
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    submitTest();
-                }
-            }, 1000);
-        }
+const quantitative = [
+{q:"Break-even: Selling 240, variable 150, fixed 180000. Units?",o:["1000","1500","2000","2500"],a:2},
+{q:"Revenue 10M, target 20% margin. Expenses 7.5M. Max extra expense?",o:["300k","400k","500k","600k"],a:2},
+{q:"If 40% of 500 is increased by 20%, result?",o:["200","240","220","260"],a:1},
+{q:"Overtime after 40hrs at 1.5x. Worked 50hrs at $20/hr. Gross pay?",o:["1100","1200","1300","1400"],a:2},
+{q:"Simple interest on 5000 at 10% for 3 years?",o:["1000","1500","1200","1300"],a:1},
+{q:"15% of 8000?",o:["1000","1100","1200","1300"],a:2},
+{q:"If cost = 100 + 5q, q=50. Cost?",o:["300","350","400","450"],a:1},
+{q:"Ratio 2:3 total 100. Larger share?",o:["40","50","60","70"],a:2},
+{q:"Increase 200 by 25%",o:["240","250","260","270"],a:1},
+{q:"300 reduced by 20%",o:["220","230","240","250"],a:2},
+{q:"Compound 1000 at 10% 1 year?",o:["1100","1200","1000","1150"],a:0},
+{q:"Profit if SP 150 CP 120?",o:["20","25","30","35"],a:2},
+{q:"If 5 workers complete job in 10 days. 10 workers need?",o:["4","5","6","7"],a:1},
+{q:"20% of 250?",o:["40","45","50","55"],a:2},
+{q:"If revenue 500k, expense 400k, margin?",o:["15%","20%","25%","30%"],a:1},
+{q:"Stock 10000, sold 4000. Remaining?",o:["5000","6000","7000","8000"],a:1}
+];
 
-        function updateTimer() {
-            const mins = Math.floor(timeLeft / 60);
-            const secs = timeLeft % 60;
-            document.getElementById('timerDisplay').textContent = 
-                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
+const reasoning = [
+{q:"Reducing training weakens because?",o:["Costs high","Errors increase","Competitors reduce","Margins low"],a:1},
+{q:"Raising price increases revenue if?",o:["Demand elastic","Demand stable","Costs rise","Competitors exit"],a:1},
+{q:"AI improved profit therefore AI always works. Flaw?",o:["Generalization","Assumption","Bias","None"],a:0},
+{q:"Similar rockets imply copying. Weakens?",o:["Design screened","Only one design feasible","Workers move","Color scheme"],a:1},
+{q:"Private ownership caused profit rise. Weakness?",o:["Single example","Recent data","Partial ownership","Timing"],a:0},
+{q:"Higher interest offsets default. Weakens?",o:["Defaults rise","Costs low","Rates stable","Unemployment"],a:0}
+];
 
-        // Submit test and show results
-        function submitTest() {
-            clearInterval(timerInterval);
-            
-            // Calculate section scores
-            const sectionScores = {};
-            const sectionTotals = {};
-            
-            testQuestions.forEach((q, i) => {
-                if (!sectionTotals[q.section]) {
-                    sectionTotals[q.section] = 0;
-                    sectionScores[q.section] = 0;
-                }
-                sectionTotals[q.section]++;
-                if (userAnswers[i] !== null && userAnswers[i] === q.answer) {
-                    sectionScores[q.section]++;
-                }
-            });
-            
-            // Display section scores
-            const sectionScoresDiv = document.getElementById('sectionScores');
-            sectionScoresDiv.innerHTML = '';
-            
-            let totalCorrect = 0;
-            let totalQuestions = 0;
-            
-            for (let section in sectionTotals) {
-                const score = sectionScores[section] || 0;
-                const total = sectionTotals[section];
-                const percentage = ((score / total) * 100).toFixed(1);
-                
-                totalCorrect += score;
-                totalQuestions += total;
-                
-                sectionScoresDiv.innerHTML += `
-                    <div class="section-score">
-                        <h4>${section}</h4>
-                        <div class="percentage">${percentage}%</div>
-                        <div>${score}/${total}</div>
-                    </div>
-                `;
-            }
-            
-            const overallPercentage = ((totalCorrect / totalQuestions) * 100).toFixed(1);
-            document.getElementById('overallScore').textContent = `${overallPercentage}%`;
-            document.getElementById('resultCandidate').textContent = candidateName;
-            
-            // Display failed questions
-            const failedDiv = document.getElementById('failedQuestions');
-            failedDiv.innerHTML = '';
-            
-            testQuestions.forEach((q, i) => {
-                const isCorrect = userAnswers[i] !== null && userAnswers[i] === q.answer;
-                if (!isCorrect) {
-                    const userAnswerLetter = userAnswers[i] !== null ? 
-                        String.fromCharCode(65 + userAnswers[i]) : 'Not answered';
-                    const correctLetter = String.fromCharCode(65 + q.answer);
-                    
-                    failedDiv.innerHTML += `
-                        <div class="failed-question">
-                            <div class="failed-header">
-                                <span class="failed-tag">${q.section} Q${q.id}</span>
-                                <span style="color: #9a3412;"><strong>Your answer:</strong> ${userAnswerLetter}</span>
-                                <span style="color: #9a3412;"><strong>Correct:</strong> ${correctLetter}</span>
-                            </div>
-                            <p style="color: #422006; margin-bottom: 0.5rem;"><strong>${q.question}</strong></p>
-                            <div class="explanation">
-                                <strong style="color: #f97316;">Explanation:</strong>
-                                <p style="color: #422006; margin-top: 0.5rem;">${q.explanation}</p>
-                            </div>
-                        </div>
-                    `;
-                }
-            });
-            
-            if (failedDiv.innerHTML === '') {
-                failedDiv.innerHTML = '<p style="color: #f97316; text-align: center; padding: 2rem;">🎉 Perfect score! No failed questions.</p>';
-            }
-            
-            // Show results screen
-            document.getElementById('testScreen').classList.add('hidden');
-            document.getElementById('resultsScreen').classList.remove('hidden');
-        }
+const comprehensionPassage = `
+Research shows productivity increases when employees are given autonomy. 
+However, too much autonomy without structure reduces accountability. 
+Effective leadership balances independence with measurable expectations.
+`;
 
-        // Export PDF
-        function exportPDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            // Title
-            doc.setFontSize(20);
-            doc.setTextColor(249, 115, 22); // Orange color
-            doc.text('🍊 ORANGE GROUP - FMN Future Leader Assessment', 14, 22);
-            
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.text(`Candidate: ${candidateName}`, 14, 32);
-            doc.text(`Date: ${new Date().toLocaleString()}`, 14, 38);
-            doc.text(`Test: 60 Questions | 30 Minutes | 5 Sections`, 14, 44);
-            
-            // Section scores table
-            const sections = ['Quantitative', 'Verbal', 'Logical', 'Situational', 'Personality'];
-            const sectionData = [];
-            let totalCorrect = 0;
-            let totalQuestions = 0;
-            
-            sections.forEach(section => {
-                const total = testQuestions.filter(q => q.section === section).length;
-                const score = testQuestions.reduce((acc, q, i) => {
-                    if (q.section === section && userAnswers[i] !== null && userAnswers[i] === q.answer) acc++;
-                    return acc;
-                }, 0);
-                const percentage = ((score / total) * 100).toFixed(1);
-                sectionData.push([section, `${score}/${total}`, `${percentage}%`]);
-                
-                totalCorrect += score;
-                totalQuestions += total;
-            });
-            
-            const overallPercentage = ((totalCorrect / totalQuestions) * 100).toFixed(1);
-            sectionData.push(['OVERALL', `${totalCorrect}/${totalQuestions}`, `${overallPercentage}%`]);
-            
-            doc.autoTable({
-                head: [['Section', 'Score', 'Percentage']],
-                body: sectionData,
-                startY: 50,
-                theme: 'striped',
-                headStyles: { fillColor: [249, 115, 22] },
-                foot: [['', '', '']]
-            });
-            
-            // Failed questions
-            const failedQuestions = testQuestions.filter((q, i) => 
-                userAnswers[i] === null || userAnswers[i] !== q.answer
-            );
-            
-            if (failedQuestions.length > 0) {
-                doc.addPage();
-                doc.setFontSize(16);
-                doc.setTextColor(249, 115, 22);
-                doc.text('Failed Questions with Explanations', 14, 16);
-                
-                let yPos = 25;
-                failedQuestions.forEach((q, index) => {
-                    const questionIndex = testQuestions.indexOf(q);
-                    const userAnswer = userAnswers[questionIndex] !== null ?
-                        String.fromCharCode(65 + userAnswers[questionIndex]) : 'Not answered';
-                    const correctAnswer = String.fromCharCode(65 + q.answer);
-                    
-                    doc.setFontSize(11);
-                    doc.setTextColor(0, 0, 0);
-                    doc.text(`${index + 1}. ${q.section} Q${q.id}`, 14, yPos);
-                    
-                    // Question text (wrap if needed)
-                    const questionLines = doc.splitTextToSize(`Q: ${q.question}`, 180);
-                    doc.text(questionLines, 14, yPos + 6);
-                    
-                    doc.text(`Your: ${userAnswer} | Correct: ${correctAnswer}`, 14, yPos + 12 + (questionLines.length * 5));
-                    
-                    // Explanation (wrap)
-                    const explanationLines = doc.splitTextToSize(`Why: ${q.explanation}`, 180);
-                    doc.text(explanationLines, 14, yPos + 18 + (questionLines.length * 5));
-                    
-                    yPos += 24 + (questionLines.length * 5) + (explanationLines.length * 5);
-                    
-                    if (yPos > 250) {
-                        doc.addPage();
-                        yPos = 20;
-                    }
-                });
-            }
-            
-            doc.save(`ORANGE_GROUP_${candidateName.replace(/\s/g, '_')}_Results.pdf`);
-        }
+const comprehension = [
+{q:"Productivity increases when employees are given?",o:["Micromanagement","Autonomy","No rules","No oversight"],a:1},
+{q:"Too much autonomy leads to?",o:["Higher morale","Lower accountability","Better profit","More control"],a:1},
+{q:"Effective leadership requires?",o:["Strict rules","Balance","No structure","Full freedom"],a:1},
+{q:"Main idea?",o:["Autonomy alone","Structure alone","Balance needed","Micromanagement best"],a:2},
+{q:"Accountability relates to?",o:["Responsibility","Freedom","Creativity","Isolation"],a:0},
+{q:"Passage tone?",o:["Critical","Balanced","Aggressive","Humorous"],a:1}
+];
 
-        // Event listeners
-        document.getElementById('startTestBtn').onclick = () => {
-            const name = document.getElementById('candidateName').value.trim();
-            if (!name) {
-                alert('Please enter your name');
-                return;
-            }
-            candidateName = name;
-            document.getElementById('candidateDisplay').textContent = candidateName;
-            
-            document.getElementById('welcomeScreen').classList.add('hidden');
-            document.getElementById('testScreen').classList.remove('hidden');
-            
-            renderFilters();
-            renderQuestion();
-            renderGrid();
-            startTimer();
-        };
+// RANDOM SELECTION
 
-        document.getElementById('flagBtn').onclick = () => {
-            flagged[currentIndex] = !flagged[currentIndex];
-            renderQuestion();
-            renderGrid();
-        };
+function pickRandom(arr, num){
+return arr.sort(()=>0.5-Math.random()).slice(0,num);
+}
 
-        document.getElementById('prevBtn').onclick = () => {
-            const filtered = getFilteredIndices();
-            const pos = filtered.indexOf(currentIndex);
-            if (pos > 0) {
-                currentIndex = filtered[pos - 1];
-                renderQuestion();
-            }
-        };
+let examQuestions=[];
+let current=0;
+let answers=[];
+let time=1800;
+let timerInterval;
 
-        document.getElementById('nextBtn').onclick = () => {
-            const filtered = getFilteredIndices();
-            const pos = filtered.indexOf(currentIndex);
-            if (pos < filtered.length - 1) {
-                currentIndex = filtered[pos + 1];
-                renderQuestion();
-            }
-        };
+function startExam(){
 
-        document.getElementById('submitBtn').onclick = () => {
-            if (confirm('Are you sure you want to submit the test? This action cannot be undone.')) {
-                submitTest();
-            }
-        };
+let name=document.getElementById("candidateName").value.trim();
+if(name===""){ alert("Enter your name"); return;}
 
-        document.getElementById('exportPdfBtn').onclick = exportPDF;
+document.getElementById("displayName").innerText=name;
 
-        // Start loading questions
-        loadQuestions();
-    </script>
+examQuestions=[
+...pickRandom(quantitative,15),
+...pickRandom(reasoning,5),
+...pickRandom(comprehension,5)
+];
+
+examQuestions=examQuestions.sort(()=>0.5-Math.random());
+
+answers=new Array(examQuestions.length).fill(null);
+
+document.getElementById("instructionScreen").style.display="none";
+document.getElementById("examScreen").style.display="block";
+
+renderQuestion();
+startTimer();
+}
+
+function renderQuestion(){
+let q=examQuestions[current];
+let html="";
+
+if(comprehension.includes(q)){
+html+=`<div class="passage-box"><b>Passage:</b><br>${comprehensionPassage}</div>`;
+}
+
+html+=`<div class="card p-3 question-card">
+<h5>Question ${current+1} of ${examQuestions.length}</h5>
+<p>${q.q}</p>`;
+
+q.o.forEach((opt,i)=>{
+html+=`
+<div class="form-check">
+<input class="form-check-input" type="radio" name="option"
+${answers[current]===i?"checked":""}
+onclick="answers[${current}]=${i}">
+<label class="form-check-label">${opt}</label>
+</div>`;
+});
+
+html+="</div>";
+
+document.getElementById("questionContainer").innerHTML=html;
+}
+
+function nextQuestion(){ if(current<examQuestions.length-1){current++;renderQuestion();}}
+function prevQuestion(){ if(current>0){current--;renderQuestion();}}
+
+function startTimer(){
+updateTimer();
+timerInterval=setInterval(()=>{
+time--;
+updateTimer();
+if(time<=0){clearInterval(timerInterval);submitExam();}
+},1000);
+}
+
+function updateTimer(){
+let m=Math.floor(time/60);
+let s=time%60;
+document.getElementById("timer").innerText=`${m}:${s<10?"0"+s:s}`;
+}
+
+function submitExam(){
+
+clearInterval(timerInterval);
+
+let score=0;
+examQuestions.forEach((q,i)=>{ if(answers[i]===q.a)score++; });
+
+let resultHTML=`<h3>Exam Result</h3>
+<p>Candidate: ${document.getElementById("displayName").innerText}</p>
+<p>Score: ${score}/25</p>
+<button class="btn btn-dark" onclick="exportResult(${score})">Export Result</button>`;
+
+document.getElementById("examScreen").style.display="none";
+document.getElementById("resultScreen").style.display="block";
+document.getElementById("resultScreen").innerHTML=resultHTML;
+}
+
+function exportResult(score){
+
+let content=`CBT RESULT\nCandidate: ${document.getElementById("displayName").innerText}\nScore: ${score}/25\n\n`;
+
+examQuestions.forEach((q,i)=>{
+content+=`Q${i+1}: ${q.q}\n`;
+content+=`Correct Answer: ${q.o[q.a]}\n\n`;
+});
+
+let blob=new Blob([content],{type:"text/plain"});
+let url=URL.createObjectURL(blob);
+let a=document.createElement("a");
+a.href=url;
+a.download="CBT_Result.txt";
+a.click();
+}
+
+</script>
+
 </body>
 </html>
