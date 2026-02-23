@@ -1,0 +1,349 @@
+SECTION A: QUANTITATIVE
+
+1. Overtime + Deductions (Harder Version)
+Maria earns $18/hour. She earns 1.5× pay after 40 hours and 2× pay after 55 hours. She worked 63 hours this week. She contributes: 8% to retirement (pre-tax), 4% to health insurance (pre-tax). Then pays 12% tax on remaining income. How much is her final paycheck?
+A) $1,012
+B) $1,089
+C) $1,124
+D) $1,178
+
+2. Project Timeline (Non-Uniform Workdays)
+A project requires: Phase 1: 36 business days, Phase 2: 24 business days, Phase 3: 18 business days. Team works: 5 days per week for first 6 weeks, 6 days per week afterward. If project starts March 3, when is the deadline? (No holidays.)
+A) April 28
+B) May 5
+C) May 12
+D) May 19
+
+3. Workforce Allocation (Multi-Stage)
+A company must complete 180,000 labor hours this year. First 9 months: 120,000 hours completed by full-time staff. Last 3 months: remaining hours done by freelancers. Each freelancer works 160 hours per month. How many freelancers are required?
+A) 105
+B) 125
+C) 145
+D) 165
+
+4. Stock Investment with Price Fluctuation
+A company has $60,000 to invest. Hour 1 price = $3.20. Hour 2 price increases 30%. Hour 3 price decreases 20% from hour 2. They buy 8,000 shares in hour 1. How many shares can they buy in hour 3?
+A) 8,450
+B) 9,100
+C) 9,840
+D) 10,200
+
+5. Work Completion Sequence
+A 500-hour project: Employee A completes 1/4 of the project. Employee B completes 1/3 of remaining. Employee C completes 1/2 of remaining. Employee D completes 60% of remaining. How many hours are left?
+A) 24
+B) 30
+C) 36
+D) 42
+
+6. Profit Margin Reverse Calculation
+A department expects $12M revenue. Target profit margin = 18%. Current expenses = $9.4M. Actual employee cost = 1.8× salary. What is the maximum salary they can offer a new employee?
+A) $68,000
+B) $74,000
+C) $78,000
+D) $82,000
+
+7. Cost Function with Volume
+Cost function: C(q) = 1200 + 4q − 0.02q². Where q = units produced. If they produce 200 units, what is total cost?
+A) $1,200
+B) $1,400
+C) $1,600
+D) $1,800
+
+8. Rotating Shift System
+Two teams rotate weekly. Day shift closing becomes next day shift opening. Night shift same. Each team works 48 hrs/week. Project requires 960 hours over 4 weeks. How many workers per shift are needed?
+A) 3
+B) 4
+C) 5
+D) 6
+
+9. Salary Adjustment (Layered Raise)
+Salaries: 48k, 36k, 39k, 44k, 52k, 30k. Company: Raises lowest salary to 42k. Gives everyone 3% raise. Then gives additional $2,000 bonus to those earning above 45k (after adjustment). What is total cost increase?
+A) $18,220
+B) $19,440
+C) $20,960
+D) $21,850
+
+10. Production + Storage (Advanced Inventory)
+Warehouse max = 80,000 units. Current stock = 25,000. Pre-orders = 10,000 immediate shipment. Production = 4,000/week. Orders = 2,200/week. How long to reach capacity?
+A) 25 weeks
+B) 27 weeks
+C) 30 weeks
+D) 33 weeks
+
+11. Company Work Share Ratio (Complex Chain)
+Company B does 3× Company C. Company A does 2× Company B. Company D does 1/2 of Company C. Total contract = $6,000,000. How much does Company D receive?
+A) $300,000
+B) $400,000
+C) $450,000
+D) $500,000
+
+12. Investment Share Percentage
+Alex invested 3× Ben. Chris invested 2× Alex. Dana invested 1/3 of Chris. Total profit = $54,000. What % does Chris receive?
+A) 42%
+B) 46%
+C) 48%
+D) 52%
+
+13. Multi-Week Labor Coverage
+Project = 3,600 hours over 6 weeks. Week 1–2: 20% complete. Week 3–4: 50% complete. Week 5–6: remaining. Each worker works 45 hrs/week. How many workers are there?
+A) 18
+B) 20
+C) 22
+D) 24
+
+14. Break-Even Analysis
+Selling price per unit = $240. Variable cost = $150. Fixed cost = $180,000. How many units must be sold to break even?
+A) 1,800
+B) 2,000
+C) 2,200
+D) 2,400
+
+15. Compound Productivity Drop
+A factory produces 5,000 units/week. Week 2 production drops 15%. Week 3 increases 10% from week 2. Week 4 increases 5% from week 3. Total production over 4 weeks?
+A) 18,900
+B) 19,200
+C) 19,600
+D) 20,100
+
+16. Kim's Paycheck (Official)
+Kim is paid $15 per normal working hours and will get 2x the hourly rate for every hour over 45. This week she works 62 hours. Kim is required to invest 10% in a pre-tax company retirement fund and pays 3% to a pre-tax health savings account. How much is her paycheck this week?
+A) $1048.08
+B) $1020.35
+C) $1030.95
+D) $1059.08
+
+17. Critical Path Timeline (Official)
+The critical path of a project includes 45 business days in phase one, 20 business days in phase two, 15 business days in phase three, and 10 business days in phase four. The workforce is expected to work six days per week. If the project started on 2nd January, when is the deadline? Do not include any holidays or employee time off.
+A) April 17th
+B) May 28th
+C) March 15th
+D) April 25th
+
+18. Freelancer Allocation (Official)
+Accounting department of “NERDS” company has 120,000 hours of work to complete for the next year. 80,000 hours can be completed in the first 8 months, then the remaining 40,000 hours must be completed in the last 4 months. Company plans to add freelancers to handle the additional work in the last 4 months. A Freelancer works 200 hours per month. Approximately how many freelancers will company need to hire?
+A) 160
+B) 80
+C) 100
+D) 50
+
+19. Stock Purchase Fluctuation (Official)
+XYZ Company has a budget of $40,000 and seeks to buy stocks from NVR Company. In the first hour, unit price of a stock is $2.8 and in the second hour price has increased by 25%. XYZ company bought 10,000 stocks in first hour. Approximately how many stocks would they buy in second hour?
+A) 6200
+B) 4800
+C) 3429
+D) 5763
+
+20. Editing Project Hours (Official)
+A editing project is budgeted to take 300 hours but can be completed whenever the team has spare time. Olivia, Kris, Jacky, and Zion are working on this project. Olivia completes one-third of the project. Kris completes one-fifth of the work remaining. Jacky completes half of the work remaining. How many hours are left for Zion to complete?
+A) 160
+B) 80
+C) 100
+D) 50
+
+21. Maximum Salary Offer (Official)
+Larry needs to hire a new employee. Current projections indicate that the department will generate 8 million USD in gross revenue. Larry is expected to maintain a 15% annual profit margin. Current projected expenses for the year are 6.3 million USD. For budgeting purposes, the actual cost of an employee is assumed to be twice the employee’s annual salary. Based on his budget and current projections, what is the maximum salary Larry can offer a new employee?
+A) $450,000
+B) $500,000
+C) $250,000
+D) $750,000
+
+22. Smartphone Assembly Cost (Official)
+Cost for assembling a smart phone is given in formula C(q) = 500 - 2q. Where C is cost, and q is cost for parts. If cost for parts equal $75, find total cost to assemble 1500 smart phones.
+A) $525,000
+B) $5,200
+C) $25,400
+D) $145,235
+
+23. Project Hours Remaining (Official)
+A project is estimated to take 300 hours but can be completed whenever the team has spare time. Three employees will take turns working on the project. The first employee completes one-third of the project. The second completes one-fifth of the work remaining. The third completes one-half of the work remaining. How many hours are left for the fourth employee to complete?
+A) 160
+B) 80
+C) 40
+D) 200
+
+24. Salary Adjustment Total Cost (Official)
+The current salaries in Sasha’s department are $42,000, $32,000, $33,000, $38,000, and $50,000. Sasha wants to adjust the lowest salary up to $40,000. If Sasha gives every employee a $1,000 raise in addition to adjusting the lowest salary, find the total cost for the increment?
+A) $19,000
+B) $23,000
+C) $25,000
+D) $32,000
+
+25. Table Profit Calculation (Official)
+A company that produces dining room tables determines that market price of a table is $150. They make 15% profit percentage from each table. This month they produce 2800 tables. Find their profit.
+A) $68,000
+B) $72,000
+C) $63,000
+D) $52,000
+
+26. Technician Count (Official)
+A project is budgeted for 2400 hours and will last 3 weeks. Technicians will cover 25% of the project for the first week and then 60% for the final two weeks. If each technician normally works 40 hours per week, how many technicians are there?
+A) 22
+B) 12
+C) 40
+D) 32
+
+27. Warehouse Capacity Time (Official)
+Harry’s company can store 50,000 units of their new product in the warehouse, the maximum capacity for the warehouse. They sold 20,000 in pre-orders that will need to be shipped immediately. They can produce 3000 units per week, and they are receiving 1500 orders per week. How long will it take to fill the warehouse to maximum capacity based on the current production rate?
+A) 40 weeks
+B) 20 weeks
+C) 80 weeks
+D) 100 weeks
+
+28. Company Work Share Payout (Official)
+Four companies are partnering to do a large-scale project. 2nd company will complete twice as much work as 1st company. 1st company will complete 3 times as much work as 3rd company. 3rd company will complete four times as much work as 4th company. If the total job costs $4,100,000. How much money should 4th company receive?
+A) $10,000
+B) $100,000
+C) $400,000
+D) $1,200,000
+
+29. Investment Profit Percentage (Official)
+Roy, Sydney, Mila, Taniya invested money on a project. Roy invested twice as Sydney. Mila invested twice as Roy. Taniya invested half as Mila. If the total profit of the project is $27,000. What percentage of profit should Mila receive?
+A) 66.66%
+B) 44.44%
+C) 52%
+D) 61.42%
+
+30. Labor Hours Coverage (Official)
+A project is budgeted for 1200 hours and will last 4 weeks. A labor covered 30% of the workload in the first two weeks and then covered 60% for the final two weeks. If a labor normally works 50 hours per week, how many total hours will the labor cover?
+A) 220
+B) 540
+C) 360
+D) 180
+
+SECTION B: REASONING
+
+31. Weakening Argument (Original)
+A company claims reducing training costs will increase profit because training expenses are high. Which statement weakens this argument most?
+A) Training costs are 12% of total expenses.
+B) Employees who receive less training make more errors.
+C) Competitors also reduced training costs.
+D) Profit margins are currently low.
+
+32. Assumption Question (Original)
+A firm increases prices to increase revenue. Which must be true for this to succeed?
+A) Demand is perfectly elastic.
+B) Customers are unaware of price change.
+C) Demand will not significantly decrease.
+D) Competitors will also increase prices.
+
+33. Flawed Logic (Original)
+Company X profits rose after adopting AI software. Therefore AI always increases profit. What is the flaw?
+A) correlation not causation
+B) small sample size
+C) false analogy
+D) circular reasoning
+
+34. Marketing Campaign (Original)
+A marketing team launches a campaign and sales rise 5%. They conclude the campaign was effective. Which weakens?
+A) A competitor's sales fell 2%.
+B) The economy grew 4% that quarter.
+C) They spent 20% more on ads.
+D) The campaign was only in one region.
+
+35. Manager MBA Logic (Original)
+All managers in company Y have an MBA. John is a manager. Therefore John has an MBA. This reasoning is:
+A) valid
+B) invalid, because managers might not have MBA
+C) invalid, because John could be new
+D) depends
+
+36. Corporation D Healthcare (Official)
+Corporation D produces and sells widgets that are identical from those produced and sold by Corporation A. Given the hazard nature of producing these widgets, worker healthcare accounts for one-tenth of the price of producing at both Firm D and Firm A. Corporation D is looking to obtain a competitive advantage over Corporation A, and in an aim to attain such, Firm D should lower the amount it spends on worker healthcare. Which of the following, if true, would most weaken the argument above?
+A) Since Firm D strictly manages its cash flow and only purchases materials for manufacturing on an as-needed basis, its suppliers do not provide mass discounting.
+B) Reducing expenditures on worker healthcare would reduce the productiveness of workers, leading to reduced quality and quantity of widgets manufactured.
+C) Corporation A has taken over 45% of Corporation's D business in the last three years.
+D) Corporation D currently spends 10% more on worker healthcare than does Corporation A.
+
+37. Open-Source Software (Official)
+Financial expert: Although open-source software has earned fame in the previous years, its usefulness is entirely limited. This is because the most creative plans originate from software designers, not volunteers. Journalist: I, too, was once dubious about whether open-source software would become a viable feature. However, I realized that this unit could not have been produced without the open-source software volunteers who allowed me to interview them. The journalist’s response to the economist is flawed for which of the following reasons?
+A) The journalist has changed his mind about open-source software
+B) The journalist refused to question any software designers for his unit.
+C) The journalist does not cover the economist’s argument that software designers are more skilled than volunteers.
+D) The journalist does not cover the popularity of open-source software.
+
+38. Interest Rate Plan (Official)
+Administrator: Over the last several years, we have more than tripled our revenues, but profits have consistently declined due to a rising number of purchasers who have failed to pay their balances. To compensate for these higher default rates, we will raise the interest charged on balances from an annual percentage rate (APR) of 10.5% to an APR of 12%. This raise will be enough to make up for the lost profits. Which of the following statements, if true, would most seriously undermine the plan?
+A) Many other firms have undergone a similar tendency in their default rates.
+B) The firm's operating expenses are above the company’s average and can be considerably reduced, thus raising margins.
+C) The raise in default rates was because of an increase in unemployment, but unemployment rates are expected to go down in the coming months.
+D) A rise in the APR charged on credit card balances frequently leads to higher rates of default.
+
+39. Rocket Ship Design (Official)
+Firm Y and Firm Z have each been constructing a rocket ship able to fly to Mars. After six years of design and building, the rocket ships have been revealed to the public, which clearly identifies the rocket ships are so similar in design as to be indistinguishable. Therefore, one of the firms must have had information concerning the design of the other rocket ship. Which of the following, if true, would most call in to question the validity of the argument?
+A) The engineers in-charge of the design and construction of the rocket ship are subjected to a meticulous screening step.
+B) Every spaceship uses a distinct color scheme, which matches that of every firm’s logo.
+C) Most workers recently in the employ of firm Y were working for firm Z before the establishment of the rocket ship.
+D) There is only one feasible design given the materials that provide the aerodynamic requirements to reach Mars.
+
+40. Private vs Public Ownership (Official)
+Salim: The profitability of Firm Y increased after reverting to private ownership 10 years ago. This is clearly proof that a business will always perform better under private ownership rather than public. John: Wrong. A close view at the data shows that Y has been profitable since they assigned a first-class manager, which happened while Y was still in the public domain. Which of the following best identifies the weakness in Salim’s conclusion?
+A) The claim Salim cites comes from only observed occurrence, that of Firm Y.
+B) The profitability of Firm Y might be only for a while.
+C) Salim’s statement is open to the possibility that the cause he cites came after the impact he assigns to it.
+D) No mention is made of firms that are partially government owned and partially personally owned.
+
+SECTION C: COMPREHENSION
+
+Passage: Research shows that productivity increases when employees are given autonomy. However, excessive autonomy without structure reduces accountability. Studies suggest the most effective leaders balance independence with measurable expectations.
+
+41. According to the passage, productivity increases when:
+A) Employees are micromanaged
+B) Employees are given autonomy
+C) There is no accountability
+D) Structure is eliminated
+
+42. The main idea is:
+A) Autonomy alone drives success
+B) Accountability reduces productivity
+C) Leadership requires balance
+D) Structure prevents creativity
+
+43. Based on the passage, what happens with excessive autonomy?
+A) Higher productivity
+B) Reduced accountability
+C) Better measurable expectations
+D) Increased structure
+
+44. The passage suggests that effective leaders:
+A) give complete freedom
+B) combine autonomy with expectations
+C) remove all structure
+D) focus only on accountability
+
+45. Which statement is consistent with the passage?
+A) Autonomy always boosts output
+B) Independence without limits may weaken responsibility
+C) Structure is unnecessary
+D) Accountability matters more than autonomy
+
+Passage: Throughout history, strong leaders have been described by their traits. Therefore, leadership research has long sought to identify the personality, social, physical, or intellectual attributes that differentiate leaders from non-leaders. Trait theories of leadership focus on personal qualities and characteristics. Leadership emergence and effectiveness are often evaluated separately vis-à-vis trait studies. For personality, a comprehensive review of the leadership literature organized around the Big Five framework has found extraversion to be the most predictive trait of effective leadership. However, extraversion sometimes relates more to the way leaders emerge than to their effectiveness. Sociable and dominant people are more likely to assert themselves in group situations, which can help extraverts be identified as leaders, but effective leaders are not domineering. One study found leaders who scored remarkably high in assertiveness, a facet of extraversion, were less effective than those who were moderately high. So, although extraversion can predict effective leadership, the relationship may be due to unique facets of the trait. Unlike agreeableness and emotional stability, which seem not to predict leadership, conscientiousness, and openness to experience may predict leadership, especially leader effectiveness. For example, one recent study indicated that top management teams that were high in conscientiousness positively influenced organizational performance through their leadership. Conscientiousness and extraversion are positively related to leaders’ self-efficacy, and people are more likely to follow someone who is confident he or she is going in the right direction, allowing these leaders to emerge. In sum, leaders who like being around people and can assert themselves (extraverted), are disciplined and able to keep commitments they make (conscientious) and are creative and flexible (open) have an apparent advantage when it comes to leadership.
+
+46. Which of the following traits do NOT predict leadership effectiveness?
+A) Agreeableness
+B) Emotional Stability
+C) Introversion
+D) All the above
+
+47. Which of the following are said to be an advantage when it comes to leadership?
+A) People who assert themselves
+B) People who keep commitments
+C) People who are flexible
+D) All the above
+
+48. According to the text, trait theories of leadership focus on:
+A) Personal qualities and characteristics
+B) Intrinsic values and attributes
+C) Principles and ascribed features
+D) Answers A and C
+
+49. What does the term vis-à-vis mean, or refer to, in the first paragraph?
+A) Relating to
+B) Agreeableness
+C) More-or-less
+D) Sameness
+
+50. Which trait around the leadership literature of the Big Five is believed to be most predictive of leadership?
+A) Extraversion
+B) Emotional stability
+C) Introversion
+D) Domineering
