@@ -3,220 +3,849 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📋 CBT · random 25 · external questions.txt</title>
-    <!-- Bootstrap 5 + Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- html2pdf (PDF export) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>🍊 ORANGE GROUP · FMN Future Leader CBT</title>
+    <!-- jsPDF for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
     <style>
-        body { background: #f4f7fc; font-family: 'Segoe UI', Roboto, system-ui; }
-        .navbar-brand { font-weight: 600; }
-        .card { border: none; border-radius: 20px; box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
-        .card-header { background-color: white; border-bottom: 1px solid #e9ecef; padding: 1.5rem 1.5rem 0.5rem 1.5rem; border-radius: 20px 20px 0 0 !important; }
-        .badge-section { font-size: 0.8rem; padding: 0.4rem 0.9rem; border-radius: 30px; }
-        .question-text { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.75rem; }
-        .options-list .form-check { padding: 0.7rem 1rem; margin-bottom: 8px; border-radius: 16px; background: #f8faff; border: 1px solid transparent; }
-        .options-list .form-check:hover { background: #eef2ff; border-color: #c7d2fe; }
-        .form-check-input:checked { background-color: #0d6efd; border-color: #0d6efd; }
-        .progress-custom { height: 8px; border-radius: 20px; background: #dee2ed; }
-        .progress-bar-custom { background: #0d6efd; border-radius: 20px; }
-        .email-badge { background: #f9fafc; border-radius: 50px; padding: 0.4rem 1.5rem; border: 1px solid #d4dae5; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            border-radius: 40px;
+            padding: 2rem;
+            box-shadow: 0 30px 60px rgba(249, 115, 22, 0.3);
+        }
+        /* Orange Theme */
+        .orange-gradient {
+            background: linear-gradient(135deg, #f97316, #fb923c);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #fff7ed;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            border: 2px solid #fed7aa;
+        }
+        .title h1 {
+            color: #f97316;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .title p {
+            color: #9a3412;
+            font-size: 0.9rem;
+        }
+        .timer {
+            background: #f97316;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 0 #c2410c;
+        }
+        .section-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .filter-btn {
+            background: #ffedd5;
+            border: 2px solid #fed7aa;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #9a3412;
+        }
+        .filter-btn.active {
+            background: #f97316;
+            border-color: #f97316;
+            color: white;
+        }
+        .filter-btn:hover {
+            background: #f97316;
+            color: white;
+        }
+        .main-panel {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        .question-panel {
+            background: #fff7ed;
+            border-radius: 30px;
+            padding: 2rem;
+            border: 2px solid #fed7aa;
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .section-badge {
+            background: #f97316;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .flag-btn {
+            background: white;
+            border: 2px solid #fed7aa;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #9a3412;
+        }
+        .flag-btn.flagged {
+            background: #f97316;
+            border-color: #f97316;
+            color: white;
+        }
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            color: #422006;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .option {
+            background: white;
+            border: 2px solid #fed7aa;
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .option:hover {
+            border-color: #f97316;
+            background: #fff;
+        }
+        .option.selected {
+            background: #f97316;
+            border-color: #f97316;
+            color: white;
+        }
+        .option.selected .option-prefix {
+            background: white;
+            color: #f97316;
+        }
+        .option-prefix {
+            width: 2rem;
+            height: 2rem;
+            background: #ffedd5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #9a3412;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .btn {
+            background: white;
+            border: 2px solid #fed7aa;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #9a3412;
+        }
+        .btn-primary {
+            background: #f97316;
+            border-color: #f97316;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #fb923c;
+        }
+        .btn:hover {
+            background: #f97316;
+            color: white;
+        }
+        .grid-panel {
+            background: #fff7ed;
+            border-radius: 30px;
+            padding: 1.5rem;
+            border: 2px solid #fed7aa;
+        }
+        .question-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .grid-item {
+            background: white;
+            border: 2px solid #fed7aa;
+            border-radius: 10px;
+            padding: 0.8rem 0;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #9a3412;
+        }
+        .grid-item:hover {
+            border-color: #f97316;
+        }
+        .grid-item.answered {
+            background: #f97316;
+            color: white;
+            border-color: #f97316;
+        }
+        .grid-item.flagged {
+            border: 3px solid #f97316;
+            background: #ffedd5;
+        }
+        .legend {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .legend-color {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 4px;
+        }
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.2rem;
+            color: #f97316;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .results-container {
+            margin-top: 2rem;
+        }
+        .score-card {
+            background: #fff7ed;
+            border-radius: 30px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid #fed7aa;
+        }
+        .section-scores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .section-score {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 2px solid #fed7aa;
+        }
+        .section-score h4 {
+            color: #f97316;
+            margin-bottom: 0.5rem;
+        }
+        .section-score .percentage {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f97316;
+        }
+        .failed-question {
+            background: #fff7ed;
+            border-left: 6px solid #f97316;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 2px solid #fed7aa;
+        }
+        .failed-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .failed-tag {
+            background: #f97316;
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .explanation {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 2px solid #fed7aa;
+        }
+        .pdf-btn {
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .pdf-btn:hover {
+            background: #fb923c;
+        }
+        .welcome-card {
+            text-align: center;
+            padding: 3rem;
+            background: #fff7ed;
+            border-radius: 40px;
+            border: 2px solid #fed7aa;
+        }
+        .name-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem;
+            border: 2px solid #fed7aa;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin: 2rem auto;
+            display: block;
+        }
+        .name-input:focus {
+            outline: none;
+            border-color: #f97316;
+        }
+        .orange-text {
+            color: #f97316;
+        }
     </style>
 </head>
 <body>
-
-<!-- header with fixed details -->
-<nav class="navbar navbar-light bg-white py-3 shadow-sm">
     <div class="container">
-        <span class="navbar-brand"><i class="fa-regular fa-pen-to-square me-2 text-primary"></i>Official CBT · external txt</span>
-        <div class="d-flex align-items-center gap-3">
-            <span class="email-badge"><i class="fa-regular fa-envelope me-2"></i>collinsagu2019@gmail.com</span>
-            <span class="bg-light px-4 py-2 rounded-pill"><i class="fa-regular fa-pen-to-square me-2"></i>Quilgo ID: <strong>1</strong></span>
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen">
+            <div class="welcome-card">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">🍊</h1>
+                <h1 class="orange-text" style="font-size: 2rem;">ORANGE GROUP</h1>
+                <h2 style="margin: 2rem 0 1rem;">FMN Future Leader Assessment</h2>
+                <p style="margin-bottom: 2rem; color: #666;">60 Questions · 30 Minutes · 5 Sections</p>
+                <input type="text" id="candidateName" class="name-input" placeholder="Enter your full name">
+                <button id="startTestBtn" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">Start Test</button>
+            </div>
         </div>
-    </div>
-</nav>
 
-<!-- warning strip -->
-<div class="container mt-3">
-    <div class="alert alert-warning d-flex align-items-center py-3 rounded-4">
-        <i class="fa-regular fa-floppy-disk fs-5 me-3"></i>
-        <span><strong>Autosave disabled.</strong> Do not close or refresh.</span>
-    </div>
-</div>
+        <!-- Test Screen -->
+        <div id="testScreen" class="hidden">
+            <div class="header">
+                <div class="title">
+                    <h1>🍊 ORANGE GROUP</h1>
+                    <p><span id="candidateDisplay"></span> · <span id="answeredCount">0/60</span></p>
+                </div>
+                <div class="timer" id="timerDisplay">30:00</div>
+            </div>
 
-<!-- timer and progress -->
-<div class="container mt-3">
-    <div class="d-flex justify-content-between align-items-center">
-        <div><span class="fw-semibold"><span id="answeredCount">0</span>/25 answered</span> <span class="text-secondary mx-2">|</span> <span>15 Math · 5 Reasoning · 5 Comp.</span></div>
-        <div class="d-flex gap-3">
-            <span class="bg-light px-4 py-2 rounded-pill fw-semibold"><i class="fa-regular fa-hourglass-half me-1 text-danger"></i><span id="timerDisplay">60:00</span></span>
-            <button class="btn btn-outline-secondary rounded-pill px-4" id="resetBtn"><i class="fa-solid fa-arrow-rotate-left me-1"></i>Reset</button>
-            <button class="btn btn-primary rounded-pill px-4" id="exportPdfBtn"><i class="fa-regular fa-file-pdf me-2"></i>Export PDF</button>
+            <div class="section-filters" id="sectionFilters"></div>
+
+            <div class="main-panel">
+                <div class="question-panel">
+                    <div class="question-header">
+                        <span class="section-badge" id="currentSection">Quantitative</span>
+                        <button class="flag-btn" id="flagBtn">🚩 Flag</button>
+                    </div>
+                    <div class="question-text" id="questionText"></div>
+                    <div class="options" id="optionsContainer"></div>
+                    <div class="nav-buttons">
+                        <button class="btn" id="prevBtn">← Previous</button>
+                        <button class="btn btn-primary" id="submitBtn">Submit Test</button>
+                        <button class="btn" id="nextBtn">Next →</button>
+                    </div>
+                </div>
+
+                <div class="grid-panel">
+                    <h3 style="color: #f97316; margin-bottom: 1rem;">Question Navigator</h3>
+                    <div class="question-grid" id="questionGrid"></div>
+                    <div class="legend">
+                        <div class="legend-item"><span class="legend-color" style="background: #f97316;"></span> Answered</div>
+                        <div class="legend-item"><span class="legend-color" style="background: #ffedd5; border: 2px solid #f97316;"></span> Flagged</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="progress progress-custom mt-3">
-        <div id="progressBar" class="progress-bar progress-bar-custom" style="width:0%"></div>
-    </div>
-</div>
 
-<!-- questions container -->
-<div class="container mt-4">
-    <div class="row" id="questionsContainer">
-        <div class="col-12 text-center py-5 text-secondary">Loading questions from questions.txt ...</div>
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="hidden">
+            <div class="header">
+                <div class="title">
+                    <h1>🍊 Assessment Results</h1>
+                    <p><span id="resultCandidate"></span></p>
+                </div>
+                <button id="exportPdfBtn" class="pdf-btn">📄 Export PDF Report</button>
+            </div>
+
+            <div class="results-container">
+                <div class="score-card">
+                    <h2 style="color: #f97316; margin-bottom: 1rem;">Overall Score: <span id="overallScore">0%</span></h2>
+                    <div class="section-scores" id="sectionScores"></div>
+                </div>
+
+                <h2 style="color: #f97316; margin-bottom: 1rem;">❌ Failed Questions</h2>
+                <div id="failedQuestions"></div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">Loading questions from questions.txt...</div>
     </div>
-</div>
 
-<!-- hidden PDF area -->
-<div id="pdfAnswerSheet" style="display: none;"></div>
-
-<!-- footer -->
-<div class="container mt-5 mb-4">
-    <hr class="opacity-25">
-    <div class="d-flex justify-content-between small text-secondary">
-        <span>© Orange Groups Limited.</span>
-        <span><i class="fa-regular fa-flag me-1"></i> Report</span>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    (function() {
-        // all data comes from external questions.txt
+    <script>
+        // Global variables
         let allQuestions = [];
-        let questions = [];
-        let timerInterval;
-        let secondsLeft = 3600; // 60 min
+        let testQuestions = [];
+        let userAnswers = [];
+        let flagged = [];
+        let currentIndex = 0;
+        let currentFilter = 'All';
+        let candidateName = '';
+        let timeLeft = 1800; // 30 minutes in seconds
+        let timerInterval = null;
 
-        // fetch and initialize
+        // Load questions from questions.txt
         async function loadQuestions() {
             try {
                 const response = await fetch('questions.txt');
-                if (!response.ok) throw new Error('questions.txt not found');
-                const rawText = await response.text();
-                allQuestions = parseQuestionsFromTxt(rawText);
-                // assign sections based on index (0-29 math, 30-39 reasoning, 40-49 comp)
-                for (let i=0; i<allQuestions.length; i++) {
-                    if (i<30) allQuestions[i].section = 'Math';
-                    else if (i<40) allQuestions[i].section = 'Reasoning';
-                    else allQuestions[i].section = 'Comprehension';
-                }
-                // pick random 25
-                questions = pickRandomSet();
-                render();
-                updateProgress();
+                const text = await response.text();
+                allQuestions = parseQuestions(text);
+                
+                // Select 60 random questions (12 from each section)
+                testQuestions = selectRandomQuestions(allQuestions, 60);
+                userAnswers = new Array(testQuestions.length).fill(null);
+                flagged = new Array(testQuestions.length).fill(false);
+                
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('welcomeScreen').classList.remove('hidden');
             } catch (error) {
-                document.getElementById('questionsContainer').innerHTML = 
-                    `<div class="col-12 text-center py-5 text-danger">Error: ${error.message}.<br>Make sure questions.txt is in the same folder.</div>`;
+                document.getElementById('loading').innerHTML = 'Error loading questions.txt. Make sure the file exists.';
+                console.error(error);
             }
         }
 
-        // parser
-        function parseQuestionsFromTxt(raw) {
-            const lines = raw.split(/\r?\n/);
+        // Parse the FMN pipe-separated format
+        function parseQuestions(text) {
+            const lines = text.split('\n');
             const questions = [];
-            let currentQ = null;
-            let optionsBuffer = [];
-            let section = 'Math';
+            
             for (let line of lines) {
                 line = line.trim();
-                if (line === '') continue;
-                if (line.includes('SECTION A:')) { section = 'Math'; continue; }
-                if (line.includes('SECTION B:')) { section = 'Reasoning'; continue; }
-                if (line.includes('SECTION C:')) { section = 'Comprehension'; continue; }
-
-                if (/^\d+\./.test(line) && !line.startsWith('A)') && !line.startsWith('B)') && !line.startsWith('C)') && !line.startsWith('D)')) {
-                    if (currentQ && optionsBuffer.length >= 4) {
-                        currentQ.options = [...optionsBuffer];
-                        questions.push(currentQ);
-                    }
-                    currentQ = { id: questions.length+1, text: line.replace(/^\d+\.\s*/,''), section, options: [], selected: null };
-                    optionsBuffer = [];
-                } else if (/^[A-D]\)/.test(line) && currentQ) {
-                    optionsBuffer.push(line);
+                if (!line || line.startsWith('//') || line.includes('SECTION') || line.includes('=')) continue;
+                
+                const parts = line.split('||').map(p => p.trim());
+                if (parts.length >= 9) {
+                    questions.push({
+                        section: parts[0],
+                        id: parseInt(parts[1]),
+                        question: parts[2],
+                        options: [parts[3], parts[4], parts[5], parts[6]],
+                        answer: parseInt(parts[7]),
+                        explanation: parts[8]
+                    });
                 }
             }
-            if (currentQ && optionsBuffer.length>=4) { currentQ.options = [...optionsBuffer]; questions.push(currentQ); }
             return questions;
         }
 
-        function pickRandomSet() {
-            const mathPool = allQuestions.filter(q => q.section === 'Math');
-            const reasonPool = allQuestions.filter(q => q.section === 'Reasoning');
-            const compPool = allQuestions.filter(q => q.section === 'Comprehension');
-            const shuffle = (arr,n) => arr.sort(()=>0.5-Math.random()).slice(0,n);
-            const selected = [...shuffle(mathPool,15), ...shuffle(reasonPool,5), ...shuffle(compPool,5)];
-            return selected.sort(()=>0.5-Math.random()).map((q,i)=>{ q.displayId = i+1; return q; });
-        }
-
-        function render() {
-            const container = document.getElementById('questionsContainer');
-            let html = '';
-            questions.forEach((q, idx)=>{
-                const opts = q.options.map((opt, optIdx)=>{
-                    const letter = String.fromCharCode(65+optIdx);
-                    const checked = q.selected === letter ? 'checked' : '';
-                    return `<div class="form-check"><input class="form-check-input" type="radio" name="q${idx}" id="q${idx}_${letter}" value="${letter}" ${checked}><label class="form-check-label w-100" for="q${idx}_${letter}">${opt}</label></div>`;
-                }).join('');
-                const color = q.section==='Math'?'primary':(q.section==='Reasoning'?'success':'warning');
-                html += `<div class="col-md-6 mb-4"><div class="card"><div class="card-header d-flex"><span class="badge-section bg-${color} bg-opacity-10 text-${color} border border-${color} border-opacity-25">Q${q.displayId} · ${q.section}</span></div><div class="card-body"><div class="question-text">${q.text}</div><div class="options-list">${opts}</div></div></div></div>`;
+        // Select random questions maintaining section balance (12 per section = 60 total)
+        function selectRandomQuestions(questions, totalCount) {
+            const sections = ['Quantitative', 'Verbal', 'Logical', 'Situational', 'Personality'];
+            const perSection = 12; // 12 from each section = 60 total
+            const selected = [];
+            
+            sections.forEach(section => {
+                const sectionQs = questions.filter(q => q.section === section);
+                const shuffled = [...sectionQs].sort(() => Math.random() - 0.5);
+                selected.push(...shuffled.slice(0, perSection));
             });
-            container.innerHTML = html;
-            attachListeners();
-            updateProgress();
+            
+            return selected.sort(() => Math.random() - 0.5); // Shuffle final order
         }
 
-        function attachListeners() {
-            document.querySelectorAll('input[type="radio"]').forEach(r => {
-                r.addEventListener('change', function(e){
-                    const name = this.name;
-                    const idx = parseInt(name.substring(1));
-                    if (questions[idx]) questions[idx].selected = this.value;
-                    updateProgress();
-                });
+        // Render section filters
+        function renderFilters() {
+            const sections = ['All', 'Quantitative', 'Verbal', 'Logical', 'Situational', 'Personality'];
+            const filtersDiv = document.getElementById('sectionFilters');
+            filtersDiv.innerHTML = '';
+            
+            sections.forEach(section => {
+                const btn = document.createElement('button');
+                btn.className = `filter-btn ${currentFilter === section ? 'active' : ''}`;
+                btn.textContent = section;
+                btn.onclick = () => {
+                    currentFilter = section;
+                    updateQuestionDisplay();
+                };
+                filtersDiv.appendChild(btn);
             });
         }
 
-        function updateProgress() {
-            const answered = questions.filter(q=>q.selected!=null).length;
-            document.getElementById('answeredCount').innerText = answered;
-            document.getElementById('progressBar').style.width = (answered/25*100)+'%';
+        // Get filtered question indices
+        function getFilteredIndices() {
+            if (currentFilter === 'All') {
+                return testQuestions.map((_, i) => i);
+            }
+            return testQuestions.reduce((acc, q, i) => {
+                if (q.section === currentFilter) acc.push(i);
+                return acc;
+            }, []);
         }
 
+        // Update question display based on current index and filter
+        function updateQuestionDisplay() {
+            const filtered = getFilteredIndices();
+            if (filtered.length === 0) return;
+            
+            if (!filtered.includes(currentIndex)) {
+                currentIndex = filtered[0];
+            }
+            
+            renderQuestion();
+            renderGrid();
+        }
+
+        // Render current question
+        function renderQuestion() {
+            const q = testQuestions[currentIndex];
+            document.getElementById('currentSection').textContent = q.section;
+            document.getElementById('questionText').textContent = q.question;
+            
+            const flagBtn = document.getElementById('flagBtn');
+            flagBtn.classList.toggle('flagged', flagged[currentIndex]);
+            flagBtn.textContent = flagged[currentIndex] ? '🚩 Flagged' : '🚩 Flag';
+            
+            const optionsDiv = document.getElementById('optionsContainer');
+            optionsDiv.innerHTML = '';
+            
+            q.options.forEach((opt, idx) => {
+                const optDiv = document.createElement('div');
+                optDiv.className = `option ${userAnswers[currentIndex] === idx ? 'selected' : ''}`;
+                optDiv.innerHTML = `<span class="option-prefix">${String.fromCharCode(65 + idx)}</span> ${opt}`;
+                optDiv.onclick = () => {
+                    userAnswers[currentIndex] = idx;
+                    renderQuestion();
+                    renderGrid();
+                };
+                optionsDiv.appendChild(optDiv);
+            });
+        }
+
+        // Render question grid
+        function renderGrid() {
+            const grid = document.getElementById('questionGrid');
+            grid.innerHTML = '';
+            
+            testQuestions.forEach((q, i) => {
+                const item = document.createElement('div');
+                item.className = `grid-item ${userAnswers[i] !== null ? 'answered' : ''} ${flagged[i] ? 'flagged' : ''}`;
+                item.textContent = i + 1;
+                item.onclick = () => {
+                    currentIndex = i;
+                    updateQuestionDisplay();
+                };
+                grid.appendChild(item);
+            });
+            
+            const answered = userAnswers.filter(a => a !== null).length;
+            document.getElementById('answeredCount').textContent = `${answered}/60`;
+        }
+
+        // Timer functions
         function startTimer() {
-            if(timerInterval) clearInterval(timerInterval);
-            timerInterval = setInterval(()=>{
-                if(secondsLeft<=0){ clearInterval(timerInterval); alert('Time expired!'); }
-                else {
-                    secondsLeft--;
-                    const m = Math.floor(secondsLeft/60), s = secondsLeft%60;
-                    document.getElementById('timerDisplay').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimer();
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitTest();
                 }
-            },1000);
+            }, 1000);
         }
 
-        // reset button
-        document.getElementById('resetBtn').addEventListener('click', ()=>{
-            questions = pickRandomSet();
-            render();
-            secondsLeft = 3600;
-            document.getElementById('timerDisplay').innerText = '60:00';
-            updateProgress();
-        });
+        function updateTimer() {
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
 
-        // PDF export
-        document.getElementById('exportPdfBtn').addEventListener('click', ()=>{
-            let summary = `<h3>Answer summary - ${new Date()}</h3><p>collinsagu2019@gmail.com | Quilgo ID: 1</p><ul>`;
-            questions.forEach(q=> summary += `<li>Q${q.displayId} (${q.section}): ${q.selected || 'Not answered'}</li>`);
-            summary += '</ul>';
-            document.getElementById('pdfAnswerSheet').innerHTML = summary;
-            html2pdf().from(document.getElementById('pdfAnswerSheet')).set({filename:'CBT_results.pdf'}).save();
-        });
+        // Submit test and show results
+        function submitTest() {
+            clearInterval(timerInterval);
+            
+            // Calculate section scores
+            const sectionScores = {};
+            const sectionTotals = {};
+            
+            testQuestions.forEach((q, i) => {
+                if (!sectionTotals[q.section]) {
+                    sectionTotals[q.section] = 0;
+                    sectionScores[q.section] = 0;
+                }
+                sectionTotals[q.section]++;
+                if (userAnswers[i] !== null && userAnswers[i] === q.answer) {
+                    sectionScores[q.section]++;
+                }
+            });
+            
+            // Display section scores
+            const sectionScoresDiv = document.getElementById('sectionScores');
+            sectionScoresDiv.innerHTML = '';
+            
+            let totalCorrect = 0;
+            let totalQuestions = 0;
+            
+            for (let section in sectionTotals) {
+                const score = sectionScores[section] || 0;
+                const total = sectionTotals[section];
+                const percentage = ((score / total) * 100).toFixed(1);
+                
+                totalCorrect += score;
+                totalQuestions += total;
+                
+                sectionScoresDiv.innerHTML += `
+                    <div class="section-score">
+                        <h4>${section}</h4>
+                        <div class="percentage">${percentage}%</div>
+                        <div>${score}/${total}</div>
+                    </div>
+                `;
+            }
+            
+            const overallPercentage = ((totalCorrect / totalQuestions) * 100).toFixed(1);
+            document.getElementById('overallScore').textContent = `${overallPercentage}%`;
+            document.getElementById('resultCandidate').textContent = candidateName;
+            
+            // Display failed questions
+            const failedDiv = document.getElementById('failedQuestions');
+            failedDiv.innerHTML = '';
+            
+            testQuestions.forEach((q, i) => {
+                const isCorrect = userAnswers[i] !== null && userAnswers[i] === q.answer;
+                if (!isCorrect) {
+                    const userAnswerLetter = userAnswers[i] !== null ? 
+                        String.fromCharCode(65 + userAnswers[i]) : 'Not answered';
+                    const correctLetter = String.fromCharCode(65 + q.answer);
+                    
+                    failedDiv.innerHTML += `
+                        <div class="failed-question">
+                            <div class="failed-header">
+                                <span class="failed-tag">${q.section} Q${q.id}</span>
+                                <span style="color: #9a3412;"><strong>Your answer:</strong> ${userAnswerLetter}</span>
+                                <span style="color: #9a3412;"><strong>Correct:</strong> ${correctLetter}</span>
+                            </div>
+                            <p style="color: #422006; margin-bottom: 0.5rem;"><strong>${q.question}</strong></p>
+                            <div class="explanation">
+                                <strong style="color: #f97316;">Explanation:</strong>
+                                <p style="color: #422006; margin-top: 0.5rem;">${q.explanation}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            if (failedDiv.innerHTML === '') {
+                failedDiv.innerHTML = '<p style="color: #f97316; text-align: center; padding: 2rem;">🎉 Perfect score! No failed questions.</p>';
+            }
+            
+            // Show results screen
+            document.getElementById('testScreen').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.remove('hidden');
+        }
 
-        // start
+        // Export PDF
+        function exportPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Title
+            doc.setFontSize(20);
+            doc.setTextColor(249, 115, 22); // Orange color
+            doc.text('🍊 ORANGE GROUP - FMN Future Leader Assessment', 14, 22);
+            
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Candidate: ${candidateName}`, 14, 32);
+            doc.text(`Date: ${new Date().toLocaleString()}`, 14, 38);
+            doc.text(`Test: 60 Questions | 30 Minutes | 5 Sections`, 14, 44);
+            
+            // Section scores table
+            const sections = ['Quantitative', 'Verbal', 'Logical', 'Situational', 'Personality'];
+            const sectionData = [];
+            let totalCorrect = 0;
+            let totalQuestions = 0;
+            
+            sections.forEach(section => {
+                const total = testQuestions.filter(q => q.section === section).length;
+                const score = testQuestions.reduce((acc, q, i) => {
+                    if (q.section === section && userAnswers[i] !== null && userAnswers[i] === q.answer) acc++;
+                    return acc;
+                }, 0);
+                const percentage = ((score / total) * 100).toFixed(1);
+                sectionData.push([section, `${score}/${total}`, `${percentage}%`]);
+                
+                totalCorrect += score;
+                totalQuestions += total;
+            });
+            
+            const overallPercentage = ((totalCorrect / totalQuestions) * 100).toFixed(1);
+            sectionData.push(['OVERALL', `${totalCorrect}/${totalQuestions}`, `${overallPercentage}%`]);
+            
+            doc.autoTable({
+                head: [['Section', 'Score', 'Percentage']],
+                body: sectionData,
+                startY: 50,
+                theme: 'striped',
+                headStyles: { fillColor: [249, 115, 22] },
+                foot: [['', '', '']]
+            });
+            
+            // Failed questions
+            const failedQuestions = testQuestions.filter((q, i) => 
+                userAnswers[i] === null || userAnswers[i] !== q.answer
+            );
+            
+            if (failedQuestions.length > 0) {
+                doc.addPage();
+                doc.setFontSize(16);
+                doc.setTextColor(249, 115, 22);
+                doc.text('Failed Questions with Explanations', 14, 16);
+                
+                let yPos = 25;
+                failedQuestions.forEach((q, index) => {
+                    const questionIndex = testQuestions.indexOf(q);
+                    const userAnswer = userAnswers[questionIndex] !== null ?
+                        String.fromCharCode(65 + userAnswers[questionIndex]) : 'Not answered';
+                    const correctAnswer = String.fromCharCode(65 + q.answer);
+                    
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    doc.text(`${index + 1}. ${q.section} Q${q.id}`, 14, yPos);
+                    
+                    // Question text (wrap if needed)
+                    const questionLines = doc.splitTextToSize(`Q: ${q.question}`, 180);
+                    doc.text(questionLines, 14, yPos + 6);
+                    
+                    doc.text(`Your: ${userAnswer} | Correct: ${correctAnswer}`, 14, yPos + 12 + (questionLines.length * 5));
+                    
+                    // Explanation (wrap)
+                    const explanationLines = doc.splitTextToSize(`Why: ${q.explanation}`, 180);
+                    doc.text(explanationLines, 14, yPos + 18 + (questionLines.length * 5));
+                    
+                    yPos += 24 + (questionLines.length * 5) + (explanationLines.length * 5);
+                    
+                    if (yPos > 250) {
+                        doc.addPage();
+                        yPos = 20;
+                    }
+                });
+            }
+            
+            doc.save(`ORANGE_GROUP_${candidateName.replace(/\s/g, '_')}_Results.pdf`);
+        }
+
+        // Event listeners
+        document.getElementById('startTestBtn').onclick = () => {
+            const name = document.getElementById('candidateName').value.trim();
+            if (!name) {
+                alert('Please enter your name');
+                return;
+            }
+            candidateName = name;
+            document.getElementById('candidateDisplay').textContent = candidateName;
+            
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('testScreen').classList.remove('hidden');
+            
+            renderFilters();
+            renderQuestion();
+            renderGrid();
+            startTimer();
+        };
+
+        document.getElementById('flagBtn').onclick = () => {
+            flagged[currentIndex] = !flagged[currentIndex];
+            renderQuestion();
+            renderGrid();
+        };
+
+        document.getElementById('prevBtn').onclick = () => {
+            const filtered = getFilteredIndices();
+            const pos = filtered.indexOf(currentIndex);
+            if (pos > 0) {
+                currentIndex = filtered[pos - 1];
+                renderQuestion();
+            }
+        };
+
+        document.getElementById('nextBtn').onclick = () => {
+            const filtered = getFilteredIndices();
+            const pos = filtered.indexOf(currentIndex);
+            if (pos < filtered.length - 1) {
+                currentIndex = filtered[pos + 1];
+                renderQuestion();
+            }
+        };
+
+        document.getElementById('submitBtn').onclick = () => {
+            if (confirm('Are you sure you want to submit the test? This action cannot be undone.')) {
+                submitTest();
+            }
+        };
+
+        document.getElementById('exportPdfBtn').onclick = exportPDF;
+
+        // Start loading questions
         loadQuestions();
-        startTimer();
-    })();
-</script>
+    </script>
 </body>
 </html>
