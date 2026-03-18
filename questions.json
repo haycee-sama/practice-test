@@ -394,4 +394,2069 @@
       "question": "The most common type of enclosure for outdoor motors is:",
       "options": ["Open", "TEFC", "SPDP", "TENV"],
       "correct": "B",
-      "explanation": "TEFC (Totally Enclosed Fan Cooled) motors are most common for ou
+      "explanation": "TEFC (Totally Enclosed Fan Cooled) motors are most common for outdoor use as they protect against environment."
+    },
+    {
+      "question": "The unit of reactive power is:",
+      "options": ["Watt", "VA", "VAR", "VArh"],
+      "correct": "C",
+      "explanation": "Reactive power is measured in VAR (Volt-Ampere Reactive)."
+    },
+    {
+      "question": "A varactor diode is used for:",
+      "options": ["Rectification", "Voltage regulation", "Variable capacitance", "Switching"],
+      "correct": "C",
+      "explanation": "Varactor diodes are used as voltage-controlled capacitors in tuning circuits."
+    },
+    {
+      "question": "The main advantage of a star-delta starter is:",
+      "options": ["Low starting current", "High starting torque", "Low cost", "Simple operation"],
+      "correct": "A",
+      "explanation": "Star-delta starters reduce starting current to about 1/3 of direct online starting."
+    },
+    {
+      "question": "The most commonly used semiconductor material is:",
+      "options": ["Germanium", "Silicon", "Gallium arsenide", "Cadmium sulfide"],
+      "correct": "B",
+      "explanation": "Silicon is the most widely used semiconductor due to its abundance, temperature stability, and oxide properties."
+    },
+    {
+      "question": "In a 3-phase system, the power factor is defined as:",
+      "options": ["R/Z", "P/S", "Q/S", "cos φ"],
+      "correct": "B",
+      "explanation": "Power factor = Real Power (P) / Apparent Power (S) = kW/kVA."
+    },
+    {
+      "question": "The speed of a DC shunt motor can be increased by:",
+      "options": ["Increasing armature resistance", "Decreasing field current", "Increasing field current", "Decreasing armature voltage"],
+      "correct": "B",
+      "explanation": "Speed is inversely proportional to field flux, so decreasing field current increases speed."
+    },
+    {
+      "question": "A 100W, 230V bulb has a resistance of approximately:",
+      "options": ["230Ω", "529Ω", "1000Ω", "2300Ω"],
+      "correct": "B",
+      "explanation": "R = V²/P = 230²/100 = 52900/100 = 529Ω."
+    },
+    {
+      "question": "The purpose of a lightning arrester is to:",
+      "options": ["Absorb lightning energy", "Divert surge to ground", "Protect against overvoltage", "All of the above"],
+      "correct": "D",
+      "explanation": "Lightning arresters protect equipment by diverting high voltage surges to ground."
+    },
+    {
+      "question": "In a parallel RLC circuit at resonance, the impedance is:",
+      "options": ["Maximum", "Minimum", "Zero", "Infinite"],
+      "correct": "A",
+      "explanation": "In parallel resonance, impedance is maximum and equal to L/(RC)."
+    },
+    {
+      "question": "The most common type of motor used in ceiling fans is:",
+      "options": ["Induction motor", "Synchronous motor", "Universal motor", "Capacitor start motor"],
+      "correct": "A",
+      "explanation": "Ceiling fans use single-phase induction motors, typically capacitor-start capacitor-run types."
+    },
+    {
+      "question": "The function of a fuse is to:",
+      "options": ["Open circuit on overcurrent", "Short circuit on overcurrent", "Regulate voltage", "Improve power factor"],
+      "correct": "A",
+      "explanation": "A fuse melts and opens the circuit when current exceeds its rating, protecting equipment."
+    },
+    {
+      "question": "The rotor of an alternator is usually:",
+      "options": ["Salient pole for low speed", "Cylindrical for high speed", "Both types exist", "None of the above"],
+      "correct": "C",
+      "explanation": "Both salient pole (low speed, hydro) and cylindrical (high speed, thermal) rotors are used."
+    },
+    {
+      "question": "The bandwidth of a series RLC circuit is given by:",
+      "options": ["R/L", "1/RC", "R/2πL", "2πR/L"],
+      "correct": "A",
+      "explanation": "Bandwidth = R/L radians/sec or R/(2πL) Hz for a series RLC circuit."
+    },
+    {
+      "question": "The most efficient lighting source is:",
+      "options": ["Incandescent", "Fluorescent", "LED", "CFL"],
+      "correct": "C",
+      "explanation": "LEDs are the most efficient, with efficacy up to 200 lumens/watt."
+    },
+    {
+      "question": "A 3-phase induction motor is wound for 4 poles and 50Hz. The synchronous speed is:",
+      "options": ["750 RPM", "1000 RPM", "1500 RPM", "3000 RPM"],
+      "correct": "C",
+      "explanation": "Ns = (120 × f)/P = (120 × 50)/4 = 1500 RPM."
+    },
+    {
+      "question": "The main advantage of an autotransformer over a two-winding transformer is:",
+      "options": ["Lower cost", "Higher efficiency", "Better voltage regulation", "All of the above"],
+      "correct": "D",
+      "explanation": "Autotransformers are smaller, cheaper, and more efficient but lack isolation."
+    },
+    {
+      "question": "The most common type of single-phase motor used in refrigerators is:",
+      "options": ["Split phase", "Capacitor start", "Shaded pole", "Universal"],
+      "correct": "B",
+      "explanation": "Refrigerator compressors typically use capacitor-start induction-run motors for high starting torque."
+    },
+    {
+      "question": "The power consumed by a pure capacitor is:",
+      "options": ["Zero", "Maximum", "V²/Xc", "I²Xc"],
+      "correct": "A",
+      "explanation": "Ideal capacitors consume no real power; they store and return energy to the source."
+    },
+    {
+      "question": "The SI unit of magnetic flux is:",
+      "options": ["Tesla", "Weber", "Gauss", "Maxwell"],
+      "correct": "B",
+      "explanation": "Weber (Wb) is the SI unit of magnetic flux. 1 Wb = 10⁸ Maxwell."
+    },
+    {
+      "question": "In a DC generator, the armature reaction causes:",
+      "options": ["Spark at brushes", "Reduced voltage", "Distorted field", "All of the above"],
+      "correct": "D",
+      "explanation": "Armature reaction causes field distortion, reduced voltage, and sparking at brushes."
+    },
+    {
+      "question": "The starting torque of a capacitor start motor is:",
+      "options": ["Low", "Medium", "High", "Very high"],
+      "correct": "C",
+      "explanation": "Capacitor start motors have high starting torque due to the phase shift created by the capacitor."
+    },
+    {
+      "question": "The most commonly used motor for electric traction is:",
+      "options": ["DC series motor", "DC shunt motor", "Induction motor", "Synchronous motor"],
+      "correct": "A",
+      "explanation": "DC series motors are preferred for traction due to high starting torque and variable speed capability."
+    },
+    {
+      "question": "The dielectric constant of air is approximately:",
+      "options": ["0", "1", "8.85", "∞"],
+      "correct": "B",
+      "explanation": "The relative permittivity (dielectric constant) of air is approximately 1."
+    },
+    {
+      "question": "A 1000μF capacitor is charged to 100V. The stored energy is:",
+      "options": ["5J", "10J", "50J", "100J"],
+      "correct": "A",
+      "explanation": "E = ½CV² = 0.5 × 1000×10⁻⁶ × 100² = 0.5 × 0.001 × 10000 = 5J."
+    },
+    {
+      "question": "The main function of a transformer core is to:",
+      "options": ["Provide low reluctance path", "Provide mechanical support", "Dissipate heat", "Reduce losses"],
+      "correct": "A",
+      "explanation": "The core provides a low reluctance path for magnetic flux to flow between windings."
+    },
+    {
+      "question": "In a thyristor, the latching current is:",
+      "options": ["Greater than holding current", "Less than holding current", "Equal to holding current", "Independent of holding current"],
+      "correct": "A",
+      "explanation": "Latching current is the minimum current to turn on and is greater than holding current needed to stay on."
+    },
+    {
+      "question": "The most accurate instrument for power measurement in AC circuits is:",
+      "options": ["Ammeter", "Voltmeter", "Wattmeter", "Energy meter"],
+      "correct": "C",
+      "explanation": "Wattmeters directly measure real power in AC circuits, accounting for power factor."
+    },
+    {
+      "question": "The speed of an induction motor can be varied by:",
+      "options": ["Changing frequency", "Changing poles", "Changing voltage", "All of the above"],
+      "correct": "D",
+      "explanation": "Induction motor speed can be varied by frequency, pole changing, or voltage control (with VFDs)."
+    },
+    {
+      "question": "The most common type of fault in underground cables is:",
+      "options": ["Open circuit", "Short circuit", "Earth fault", "All of the above"],
+      "correct": "C",
+      "explanation": "Earth faults are most common in underground cables due to insulation breakdown to ground."
+    },
+    {
+      "question": "The efficiency of a transformer is maximum at:",
+      "options": ["Full load", "Half load", "70.7% load", "Any load"],
+      "correct": "C",
+      "explanation": "Maximum efficiency occurs when copper loss = iron loss, typically at about 70-80% of full load."
+    },
+    {
+      "question": "A 3-phase motor draws 10A at 400V with 0.8 pf. The power input is:",
+      "options": ["4.8 kW", "5.54 kW", "6.4 kW", "8 kW"],
+      "correct": "B",
+      "explanation": "P = √3 × VL × IL × pf = 1.732 × 400 × 10 × 0.8 = 5542W = 5.54 kW."
+    }
+  ],
+  "mechanical": [
+    {
+      "question": "The unit of force in SI system is:",
+      "options": ["Dyne", "Newton", "Joule", "Watt"],
+      "correct": "B",
+      "explanation": "Newton (N) is the SI unit of force, defined as the force needed to accelerate 1 kg mass at 1 m/s²."
+    },
+    {
+      "question": "Young's modulus is a measure of:",
+      "options": ["Stiffness", "Strength", "Hardness", "Toughness"],
+      "correct": "A",
+      "explanation": "Young's modulus measures the stiffness of a material, relating stress to strain in elastic region."
+    },
+    {
+      "question": "Which law states that pressure applied to a confined fluid is transmitted equally in all directions?",
+      "options": ["Bernoulli's principle", "Pascal's law", "Archimedes' principle", "Boyle's law"],
+      "correct": "B",
+      "explanation": "Pascal's law is fundamental to hydraulic systems, stating pressure is transmitted equally throughout a confined fluid."
+    },
+    {
+      "question": "The efficiency of a Carnot engine depends on:",
+      "options": ["Working substance", "Type of fuel", "Temperature of reservoirs", "Pressure ratio"],
+      "correct": "C",
+      "explanation": "Carnot efficiency depends only on the absolute temperatures of hot and cold reservoirs: η = 1 - T₂/T₁."
+    },
+    {
+      "question": "A wheelbarrow is an example of which class of lever?",
+      "options": ["First class", "Second class", "Third class", "Fourth class"],
+      "correct": "B",
+      "explanation": "In a second-class lever, the load is between the fulcrum and effort (wheelbarrow, nutcracker)."
+    },
+    {
+      "question": "The specific heat capacity of water is approximately:",
+      "options": ["1 J/kgK", "4.18 J/kgK", "4.18 kJ/kgK", "418 J/kgK"],
+      "correct": "C",
+      "explanation": "Water has a high specific heat of 4.18 kJ/kgK, meaning it takes 4.18 kJ to raise 1 kg by 1°C."
+    },
+    {
+      "question": "Which of the following is not a thermodynamic property?",
+      "options": ["Pressure", "Temperature", "Volume", "Work"],
+      "correct": "D",
+      "explanation": "Work is a path function, not a property. Pressure, temperature, and volume are properties."
+    },
+    {
+      "question": "The Reynolds number is used to determine:",
+      "options": ["Flow velocity", "Flow regime", "Pressure drop", "Heat transfer"],
+      "correct": "B",
+      "explanation": "Reynolds number determines whether flow is laminar (Re < 2000) or turbulent (Re > 4000)."
+    },
+    {
+      "question": "A tensile test is used to determine:",
+      "options": ["Hardness", "Toughness", "Ultimate tensile strength", "Fatigue strength"],
+      "correct": "C",
+      "explanation": "Tensile testing determines material properties like yield strength, ultimate tensile strength, and elongation."
+    },
+    {
+      "question": "The first law of thermodynamics is a statement of:",
+      "options": ["Conservation of mass", "Conservation of energy", "Conservation of momentum", "Entropy increase"],
+      "correct": "B",
+      "explanation": "First law states energy cannot be created or destroyed, only converted from one form to another."
+    },
+    {
+      "question": "A gear with 20 teeth meshes with a 40-tooth gear. The speed ratio is:",
+      "options": ["1:2", "2:1", "1:1", "4:1"],
+      "correct": "B",
+      "explanation": "Speed ratio = Teeth driven/Teeth driver = 40/20 = 2:1, so the larger gear rotates at half speed."
+    },
+    {
+      "question": "The unit of power in SI is:",
+      "options": ["Joule", "Newton-meter", "Watt", "Horsepower"],
+      "correct": "C",
+      "explanation": "Watt (W) is the SI unit of power, equal to 1 joule per second."
+    },
+    {
+      "question": "A material that returns to its original shape after deformation is called:",
+      "options": ["Plastic", "Elastic", "Ductile", "Brittle"],
+      "correct": "B",
+      "explanation": "Elastic materials deform under stress and return to original shape when stress is removed."
+    },
+    {
+      "question": "The boiling point of water at standard atmospheric pressure is:",
+      "options": ["90°C", "100°C", "110°C", "120°C"],
+      "correct": "B",
+      "explanation": "Water boils at 100°C (212°F) at standard atmospheric pressure (101.325 kPa)."
+    },
+    {
+      "question": "Which type of bearing is designed to take axial loads?",
+      "options": ["Ball bearing", "Roller bearing", "Thrust bearing", "Journal bearing"],
+      "correct": "C",
+      "explanation": "Thrust bearings are specifically designed to handle axial (thrust) loads along the shaft axis."
+    },
+    {
+      "question": "The process of removing material using a grinding wheel is called:",
+      "options": ["Milling", "Turning", "Grinding", "Drilling"],
+      "correct": "C",
+      "explanation": "Grinding uses an abrasive wheel to remove material and achieve fine surface finish."
+    },
+    {
+      "question": "Stress is defined as:",
+      "options": ["Force per unit area", "Force × distance", "Force × velocity", "Force per unit volume"],
+      "correct": "A",
+      "explanation": "Stress (σ) = Force/Area, measured in Pascals (Pa) or N/m²."
+    },
+    {
+      "question": "The function of a flywheel is to:",
+      "options": ["Store energy", "Smooth speed fluctuations", "Increase torque", "All of the above"],
+      "correct": "D",
+      "explanation": "Flywheels store rotational energy and help smooth out speed variations in engines and machines."
+    },
+    {
+      "question": "Which of the following is a vector quantity?",
+      "options": ["Mass", "Temperature", "Velocity", "Energy"],
+      "correct": "C",
+      "explanation": "Velocity has both magnitude and direction, making it a vector. Mass, temperature, and energy are scalars."
+    },
+    {
+      "question": "The mechanical advantage of a simple machine is:",
+      "options": ["Output force/Input force", "Input force/Output force", "Output distance/Input distance", "Efficiency × 100"],
+      "correct": "A",
+      "explanation": "Mechanical advantage = Load/Effort = Output force/Input force."
+    },
+    {
+      "question": "A 10 kg mass is lifted 2 meters. The work done (g=10 m/s²) is:",
+      "options": ["20 J", "100 J", "200 J", "1000 J"],
+      "correct": "C",
+      "explanation": "Work = Force × distance = mgh = 10 × 10 × 2 = 200 J."
+    },
+    {
+      "question": "Poisson's ratio is defined as:",
+      "options": ["Lateral strain/Axial strain", "Axial strain/Lateral strain", "Stress/Strain", "Strain/Stress"],
+      "correct": "A",
+      "explanation": "Poisson's ratio (ν) is the negative ratio of lateral strain to axial strain in uniaxial loading."
+    },
+    {
+      "question": "The critical speed of a rotating shaft is the speed at which:",
+      "options": ["Maximum torque occurs", "Resonance occurs", "Maximum power occurs", "Minimum vibration occurs"],
+      "correct": "B",
+      "explanation": "Critical speed is when the rotational frequency matches the shaft's natural frequency, causing resonance."
+    },
+    {
+      "question": "Which welding process uses an electric arc and consumable electrode?",
+      "options": ["TIG", "MIG", "Spot welding", "Oxy-acetylene"],
+      "correct": "B",
+      "explanation": "MIG (Metal Inert Gas) welding uses a continuous consumable wire electrode and shielding gas."
+    },
+    {
+      "question": "The coefficient of friction is defined as:",
+      "options": ["Frictional force/Normal force", "Normal force/Frictional force", "Frictional force × Normal force", "Work/Time"],
+      "correct": "A",
+      "explanation": "μ = F/N, where F is frictional force and N is normal reaction force."
+    },
+    {
+      "question": "A 4-stroke engine completes one power cycle in:",
+      "options": ["1 crankshaft revolution", "2 crankshaft revolutions", "4 crankshaft revolutions", "1 camshaft revolution"],
+      "correct": "B",
+      "explanation": "In a 4-stroke engine, each power stroke occurs every 2 revolutions of the crankshaft."
+    },
+    {
+      "question": "The purpose of a thermostat in an engine cooling system is to:",
+      "options": ["Regulate coolant temperature", "Increase coolant flow", "Prevent boiling", "Reduce noise"],
+      "correct": "A",
+      "explanation": "Thermostat maintains optimal engine temperature by controlling coolant flow to the radiator."
+    },
+    {
+      "question": "Which of the following is not a type of gear?",
+      "options": ["Spur gear", "Helical gear", "Bevel gear", "Pulley"],
+      "correct": "D",
+      "explanation": "Pulleys are used with belts for power transmission, not a type of gear."
+    },
+    {
+      "question": "The unit of angular velocity is:",
+      "options": ["m/s", "rad/s", "rev/s", "Both B and C"],
+      "correct": "D",
+      "explanation": "Angular velocity can be expressed in rad/s or rev/s (RPM)."
+    },
+    {
+      "question": "Cast iron is an alloy of:",
+      "options": ["Iron and carbon", "Iron and chromium", "Iron and nickel", "Iron and manganese"],
+      "correct": "A",
+      "explanation": "Cast iron is primarily iron with 2-4% carbon, plus silicon and other elements."
+    },
+    {
+      "question": "The function of a governor in an engine is to:",
+      "options": ["Control speed", "Control fuel flow", "Control timing", "Control temperature"],
+      "correct": "A",
+      "explanation": "Governor automatically controls engine speed by regulating fuel supply based on load."
+    },
+    {
+      "question": "A man weighing 600 N climbs stairs of height 3 m. The work done is:",
+      "options": ["200 J", "600 J", "1800 J", "3600 J"],
+      "correct": "C",
+      "explanation": "Work = Force × distance = 600 N × 3 m = 1800 J."
+    },
+    {
+      "question": "The process of heating and slow cooling to soften metal is:",
+      "options": ["Quenching", "Tempering", "Annealing", "Normalizing"],
+      "correct": "C",
+      "explanation": "Annealing involves heating and slow cooling to soften metal, relieve stresses, and improve ductility."
+    },
+    {
+      "question": "Bernoulli's equation is based on the principle of conservation of:",
+      "options": ["Mass", "Energy", "Momentum", "Vorticity"],
+      "correct": "B",
+      "explanation": "Bernoulli's equation represents conservation of energy in fluid flow: P/ρ + v²/2 + gh = constant."
+    },
+    {
+      "question": "The melting point of ice at standard pressure is:",
+      "options": ["-4°C", "0°C", "4°C", "32°C"],
+      "correct": "B",
+      "explanation": "Ice melts at 0°C (32°F) at standard atmospheric pressure."
+    },
+    {
+      "question": "Which of the following is a dimensionless quantity?",
+      "options": ["Force", "Pressure", "Strain", "Stress"],
+      "correct": "C",
+      "explanation": "Strain = change in length/original length, so it has no units."
+    },
+    {
+      "question": "The function of a clutch is to:",
+      "options": ["Connect/disconnect power", "Change speed", "Change torque", "Absorb shocks"],
+      "correct": "A",
+      "explanation": "A clutch engages and disengages power transmission between engine and gearbox."
+    },
+    {
+      "question": "A simply supported beam with point load at center has maximum bending moment:",
+      "options": ["At supports", "At load point", "Throughout beam", "At quarter points"],
+      "correct": "B",
+      "explanation": "Maximum bending moment occurs at the center under the point load."
+    },
+    {
+      "question": "The specific gravity of mercury is approximately:",
+      "options": ["1", "3.6", "13.6", "1000"],
+      "correct": "C",
+      "explanation": "Mercury has specific gravity of about 13.6, meaning it's 13.6 times denser than water."
+    },
+    {
+      "question": "In a four-stroke engine, the intake valve opens:",
+      "options": ["During power stroke", "Before TDC", "After TDC", "At BDC"],
+      "correct": "B",
+      "explanation": "Intake valve typically opens slightly before TDC (top dead center) for better cylinder filling."
+    },
+    {
+      "question": "The process of cutting threads with a die is called:",
+      "options": ["Tapping", "Threading", "Dieing", "Turning"],
+      "correct": "B",
+      "explanation": "Threading with a die cuts external threads. Tapping cuts internal threads."
+    },
+    {
+      "question": "Hooke's law states that stress is proportional to:",
+      "options": ["Force", "Strain", "Area", "Length"],
+      "correct": "B",
+      "explanation": "Hooke's law: stress ∝ strain within elastic limit, with Young's modulus as constant."
+    },
+    {
+      "question": "The unit of kinematic viscosity is:",
+      "options": ["m²/s", "N·s/m²", "Pa·s", "kg/m·s"],
+      "correct": "A",
+      "explanation": "Kinematic viscosity (ν) = μ/ρ, with units m²/s."
+    },
+    {
+      "question": "A 50 kg object accelerates at 2 m/s². The force required is:",
+      "options": ["25 N", "50 N", "100 N", "200 N"],
+      "correct": "C",
+      "explanation": "F = ma = 50 × 2 = 100 N."
+    },
+    {
+      "question": "The main advantage of a V-belt drive over flat belt is:",
+      "options": ["Higher efficiency", "Less slip", "More power transmission", "Longer life"],
+      "correct": "C",
+      "explanation": "V-belts can transmit more power due to wedging action in grooves, reducing slip."
+    },
+    {
+      "question": "Which of the following is not a mode of heat transfer?",
+      "options": ["Conduction", "Convection", "Radiation", "Reflection"],
+      "correct": "D",
+      "explanation": "Reflection is an optical phenomenon, not a mode of heat transfer."
+    },
+    {
+      "question": "The purpose of a differential in an automobile is to:",
+      "options": ["Change speed", "Allow different wheel speeds", "Increase torque", "Reduce vibration"],
+      "correct": "B",
+      "explanation": "Differential allows wheels to rotate at different speeds when turning corners."
+    },
+    {
+      "question": "A 2 kW motor runs for 5 hours. The energy consumed is:",
+      "options": ["2 kWh", "5 kWh", "10 kWh", "20 kWh"],
+      "correct": "C",
+      "explanation": "Energy = Power × Time = 2 kW × 5 h = 10 kWh."
+    },
+    {
+      "question": "The hardness of a material is measured by:",
+      "options": ["Tensile test", "Impact test", "Hardness test", "Fatigue test"],
+      "correct": "C",
+      "explanation": "Hardness tests include Brinell, Rockwell, Vickers, and Shore methods."
+    },
+    {
+      "question": "In a single plate clutch, the torque capacity depends on:",
+      "options": ["Friction radius", "Number of surfaces", "Friction coefficient", "All of the above"],
+      "correct": "D",
+      "explanation": "Torque capacity depends on friction coefficient, normal force, mean radius, and number of surfaces."
+    },
+    {
+      "question": "The property of a material to resist indentation is called:",
+      "options": ["Strength", "Hardness", "Toughness", "Stiffness"],
+      "correct": "B",
+      "explanation": "Hardness is resistance to indentation or scratching, measured by various tests."
+    },
+    {
+      "question": "A 100 kg mass on earth weighs approximately:",
+      "options": ["100 N", "500 N", "1000 N", "5000 N"],
+      "correct": "C",
+      "explanation": "Weight = mg = 100 × 9.81 ≈ 1000 N (actually 981 N)."
+    },
+    {
+      "question": "The function of a piston ring is to:",
+      "options": ["Seal combustion chamber", "Control oil", "Transfer heat", "All of the above"],
+      "correct": "D",
+      "explanation": "Piston rings seal gases, control oil, and transfer heat from piston to cylinder wall."
+    },
+    {
+      "question": "A material that fractures without significant plastic deformation is:",
+      "options": ["Ductile", "Brittle", "Malleable", "Tough"],
+      "correct": "B",
+      "explanation": "Brittle materials (like glass, cast iron) fail suddenly with little or no plastic deformation."
+    },
+    {
+      "question": "The efficiency of a machine is always:",
+      "options": ["Greater than 1", "Equal to 1", "Less than 1", "Unpredictable"],
+      "correct": "C",
+      "explanation": "Due to friction and other losses, efficiency is always less than 1 (100%)."
+    },
+    {
+      "question": "A 5 kg object has kinetic energy of 100 J. Its velocity is:",
+      "options": ["2 m/s", "4.47 m/s", "6.32 m/s", "10 m/s"],
+      "correct": "C",
+      "explanation": "KE = ½mv², so v = √(2KE/m) = √(200/5) = √40 = 6.32 m/s."
+    },
+    {
+      "question": "The process of joining metals using heat and filler metal below 450°C is:",
+      "options": ["Welding", "Brazing", "Soldering", "Forging"],
+      "correct": "C",
+      "explanation": "Soldering uses filler metal melting below 450°C. Brazing uses above 450°C but below base metal melting point."
+    },
+    {
+      "question": "The center of gravity of a uniform rod is at its:",
+      "options": ["End", "Middle", "Quarter point", "Depends on material"],
+      "correct": "B",
+      "explanation": "For a uniform rod, the center of gravity is at its geometric center."
+    },
+    {
+      "question": "In a reciprocating pump, the function of an air vessel is to:",
+      "options": ["Store air", "Reduce acceleration head", "Increase flow", "Reduce friction"],
+      "correct": "B",
+      "explanation": "Air vessels reduce acceleration head and provide uniform flow in reciprocating pumps."
+    },
+    {
+      "question": "The unit of pressure in SI is:",
+      "options": ["N/m", "N/m²", "N·m", "kg/m²"],
+      "correct": "B",
+      "explanation": "Pressure = Force/Area, unit is Pascal (Pa) = N/m²."
+    },
+    {
+      "question": "A heat engine receives heat at 1000 K and rejects at 300 K. Maximum efficiency is:",
+      "options": ["30%", "50%", "70%", "90%"],
+      "correct": "C",
+      "explanation": "Carnot efficiency = 1 - T₂/T₁ = 1 - 300/1000 = 0.7 or 70%."
+    },
+    {
+      "question": "The main alloying element in stainless steel is:",
+      "options": ["Nickel", "Chromium", "Manganese", "Vanadium"],
+      "correct": "B",
+      "explanation": "Chromium (>10.5%) provides corrosion resistance in stainless steel by forming protective oxide layer."
+    },
+    {
+      "question": "A 3 m long steel bar expands by 3 mm when heated. The strain is:",
+      "options": ["0.001", "0.01", "0.1", "1.0"],
+      "correct": "A",
+      "explanation": "Strain = ΔL/L = 0.003/3 = 0.001."
+    },
+    {
+      "question": "The function of a radiator in an engine cooling system is to:",
+      "options": ["Heat coolant", "Cool coolant", "Store coolant", "Pressurize coolant"],
+      "correct": "B",
+      "explanation": "Radiator dissipates heat from coolant to the atmosphere through fins and tubes."
+    },
+    {
+      "question": "Which of the following is a scalar quantity?",
+      "options": ["Force", "Velocity", "Acceleration", "Mass"],
+      "correct": "D",
+      "explanation": "Mass has only magnitude, no direction, making it a scalar quantity."
+    },
+    {
+      "question": "The process of removing metal by a rotating cutter is called:",
+      "options": ["Turning", "Milling", "Drilling", "Grinding"],
+      "correct": "B",
+      "explanation": "Milling uses a rotating multi-point cutter to remove material from a workpiece."
+    },
+    {
+      "question": "The tendency of a material to resist fracture is called:",
+      "options": ["Hardness", "Strength", "Toughness", "Brittleness"],
+      "correct": "C",
+      "explanation": "Toughness is the ability to absorb energy before fracture, measured by impact tests."
+    },
+    {
+      "question": "A 1000 kg car accelerates from rest to 20 m/s in 10 s. The force is:",
+      "options": ["1000 N", "2000 N", "4000 N", "8000 N"],
+      "correct": "B",
+      "explanation": "a = Δv/t = 20/10 = 2 m/s², F = ma = 1000 × 2 = 2000 N."
+    },
+    {
+      "question": "The main advantage of disc brakes over drum brakes is:",
+      "options": ["Better cooling", "Lower cost", "Simpler design", "Longer life"],
+      "correct": "A",
+      "explanation": "Disc brakes provide better heat dissipation and less fade under repeated braking."
+    },
+    {
+      "question": "The unit of work in SI is:",
+      "options": ["Newton", "Joule", "Watt", "Pascal"],
+      "correct": "B",
+      "explanation": "Joule (J) is the SI unit of work, equal to 1 N·m."
+    },
+    {
+      "question": "A material with high thermal conductivity is:",
+      "options": ["Wood", "Glass", "Copper", "Rubber"],
+      "correct": "C",
+      "explanation": "Copper has high thermal conductivity, making it suitable for heat exchangers and cookware."
+    },
+    {
+      "question": "The function of a camshaft is to:",
+      "options": ["Open valves", "Close valves", "Control valve timing", "All of the above"],
+      "correct": "D",
+      "explanation": "Camshaft operates valves by converting rotary motion to reciprocating motion through cams."
+    },
+    {
+      "question": "A 2 m long beam has a point load of 1000 N at center. The maximum bending moment is:",
+      "options": ["250 N·m", "500 N·m", "1000 N·m", "2000 N·m"],
+      "correct": "B",
+      "explanation": "Mmax = PL/4 = 1000 × 2/4 = 500 N·m."
+    },
+    {
+      "question": "The process of heating and rapid cooling to harden steel is:",
+      "options": ["Annealing", "Quenching", "Tempering", "Normalizing"],
+      "correct": "B",
+      "explanation": "Quenching involves rapid cooling from high temperature to form hard martensite structure."
+    },
+    {
+      "question": "The velocity ratio of a simple machine is:",
+      "options": ["Distance moved by effort/Distance moved by load", "Distance moved by load/Distance moved by effort", "Load/Effort", "Effort/Load"],
+      "correct": "A",
+      "explanation": "Velocity ratio = Effort distance/Load distance."
+    },
+    {
+      "question": "A 50 kg object has potential energy of 1000 J. The height is (g=10 m/s²):",
+      "options": ["1 m", "2 m", "5 m", "10 m"],
+      "correct": "B",
+      "explanation": "PE = mgh, so h = PE/(mg) = 1000/(50×10) = 2 m."
+    },
+    {
+      "question": "The main alloying element in brass is:",
+      "options": ["Tin", "Zinc", "Lead", "Nickel"],
+      "correct": "B",
+      "explanation": "Brass is an alloy of copper and zinc, with proportions varying for different properties."
+    },
+    {
+      "question": "In a four-stroke engine, the power stroke occurs:",
+      "options": ["Every revolution", "Every two revolutions", "Every four revolutions", "Randomly"],
+      "correct": "B",
+      "explanation": "Power stroke occurs once every two crankshaft revolutions in a four-stroke engine."
+    },
+    {
+      "question": "The function of a journal bearing is to:",
+      "options": ["Support radial loads", "Support axial loads", "Support both loads", "Reduce friction"],
+      "correct": "A",
+      "explanation": "Journal bearings primarily support radial loads on rotating shafts."
+    },
+    {
+      "question": "The unit of moment of force is:",
+      "options": ["N", "N/m", "N·m", "N/m²"],
+      "correct": "C",
+      "explanation": "Moment of force (torque) = Force × perpendicular distance, unit N·m."
+    },
+    {
+      "question": "A 10 N force moves an object 5 m. The work done is:",
+      "options": ["2 J", "15 J", "50 J", "100 J"],
+      "correct": "C",
+      "explanation": "Work = Force × distance = 10 × 5 = 50 J."
+    },
+    {
+      "question": "The process of making a hole with a rotating tool is called:",
+      "options": ["Turning", "Milling", "Drilling", "Boring"],
+      "correct": "C",
+      "explanation": "Drilling uses a rotating drill bit to create cylindrical holes."
+    },
+    {
+      "question": "The coefficient of restitution for perfectly elastic collision is:",
+      "options": ["0", "0.5", "1", "∞"],
+      "correct": "C",
+      "explanation": "e = 1 for perfectly elastic collision, e = 0 for perfectly inelastic."
+    },
+    {
+      "question": "A 2 kg object moving at 3 m/s has momentum of:",
+      "options": ["1.5 kg·m/s", "5 kg·m/s", "6 kg·m/s", "9 kg·m/s"],
+      "correct": "C",
+      "explanation": "Momentum = mass × velocity = 2 × 3 = 6 kg·m/s."
+    },
+    {
+      "question": "The main advantage of an automatic transmission is:",
+      "options": ["Better fuel economy", "Ease of operation", "Higher power", "Lower cost"],
+      "correct": "B",
+      "explanation": "Automatic transmissions provide ease of driving by eliminating clutch operation and gear shifting."
+    },
+    {
+      "question": "The property of a material to be drawn into wire is called:",
+      "options": ["Ductility", "Malleability", "Brittleness", "Hardness"],
+      "correct": "A",
+      "explanation": "Ductility allows materials to be drawn into wires. Malleability allows hammering into sheets."
+    },
+    {
+      "question": "A 100 W motor runs for 10 hours. The energy in kWh is:",
+      "options": ["0.1 kWh", "1 kWh", "10 kWh", "100 kWh"],
+      "correct": "B",
+      "explanation": "Energy = 0.1 kW × 10 h = 1 kWh."
+    },
+    {
+      "question": "The function of a connecting rod is to:",
+      "options": ["Connect piston to crankshaft", "Transfer power", "Convert motion", "All of the above"],
+      "correct": "D",
+      "explanation": "Connecting rod transfers force from piston to crankshaft, converting reciprocating to rotary motion."
+    },
+    {
+      "question": "The unit of frequency is:",
+      "options": ["Second", "Hertz", "Radian", "Cycle"],
+      "correct": "B",
+      "explanation": "Hertz (Hz) is the SI unit of frequency, equal to 1 cycle per second."
+    },
+    {
+      "question": "A 5 kg object is dropped from 10 m. Its velocity just before impact (g=10 m/s²) is:",
+      "options": ["10 m/s", "14.14 m/s", "20 m/s", "100 m/s"],
+      "correct": "B",
+      "explanation": "v = √(2gh) = √(2×10×10) = √200 = 14.14 m/s."
+    },
+    {
+      "question": "The process of joining metals by heating and hammering is called:",
+      "options": ["Welding", "Forging", "Casting", "Rolling"],
+      "correct": "B",
+      "explanation": "Forging shapes metal by compressive forces, often with heating and hammering or pressing."
+    },
+    {
+      "question": "The modulus of rigidity is also known as:",
+      "options": ["Young's modulus", "Shear modulus", "Bulk modulus", "Elastic modulus"],
+      "correct": "B",
+      "explanation": "Modulus of rigidity (G) relates shear stress to shear strain."
+    },
+    {
+      "question": "A 100 kg mass on the moon (g=1.6 m/s²) weighs:",
+      "options": ["100 N", "160 N", "1000 N", "1600 N"],
+      "correct": "B",
+      "explanation": "Weight = mg = 100 × 1.6 = 160 N."
+    },
+    {
+      "question": "The main advantage of a turbocharger is:",
+      "options": ["Increased power", "Better fuel economy", "Lower emissions", "All of the above"],
+      "correct": "D",
+      "explanation": "Turbochargers increase engine power by forcing more air into cylinders, improving efficiency."
+    },
+    {
+      "question": "The unit of thermal conductivity is:",
+      "options": ["W/mK", "W/m²K", "J/kgK", "kJ/kg"],
+      "correct": "A",
+      "explanation": "Thermal conductivity (k) units are W/m·K, measuring heat transfer through material."
+    },
+    {
+      "question": "A material that shows significant plastic deformation before fracture is:",
+      "options": ["Brittle", "Ductile", "Hard", "Stiff"],
+      "correct": "B",
+      "explanation": "Ductile materials (like mild steel) undergo significant plastic deformation before failure."
+    },
+    {
+      "question": "The function of a shock absorber is to:",
+      "options": ["Absorb vibrations", "Damp oscillations", "Improve ride comfort", "All of the above"],
+      "correct": "D",
+      "explanation": "Shock absorbers damp spring oscillations, providing smooth ride and vehicle control."
+    }
+  ],
+  "materials": [
+    {
+      "question": "The crystal structure of iron at room temperature is:",
+      "options": ["FCC", "BCC", "HCP", "Simple cubic"],
+      "correct": "B",
+      "explanation": "Iron at room temperature (α-ferrite) has BCC structure, changing to FCC (austenite) above 912°C."
+    },
+    {
+      "question": "Which element is added to steel to improve corrosion resistance?",
+      "options": ["Nickel", "Chromium", "Manganese", "Silicon"],
+      "correct": "B",
+      "explanation": "Chromium forms a protective oxide layer on steel, making it stainless."
+    },
+    {
+      "question": "The process of heating steel above critical temperature and cooling in air is:",
+      "options": ["Annealing", "Normalizing", "Quenching", "Tempering"],
+      "correct": "B",
+      "explanation": "Normalizing involves air cooling to refine grain structure and relieve stresses."
+    },
+    {
+      "question": "Which of the following is not a ferrous metal?",
+      "options": ["Cast iron", "Mild steel", "Stainless steel", "Brass"],
+      "correct": "D",
+      "explanation": "Brass is a non-ferrous alloy of copper and zinc, containing no iron."
+    },
+    {
+      "question": "The hardness of a material is measured by:",
+      "options": ["Brinell test", "Charpy test", "Tensile test", "Fatigue test"],
+      "correct": "A",
+      "explanation": "Brinell, Rockwell, and Vickers tests measure hardness by indentation."
+    },
+    {
+      "question": "Austenite is a solid solution of carbon in:",
+      "options": ["α-iron", "γ-iron", "δ-iron", "Cementite"],
+      "correct": "B",
+      "explanation": "Austenite is FCC γ-iron with carbon in solid solution, stable above 727°C."
+    },
+    {
+      "question": "The main constituent of glass is:",
+      "options": ["Silica", "Lime", "Soda", "Alumina"],
+      "correct": "A",
+      "explanation": "Glass is primarily silicon dioxide (silica) with other additives."
+    },
+    {
+      "question": "Which process makes steel hard and brittle?",
+      "options": ["Annealing", "Normalizing", "Quenching", "Tempering"],
+      "correct": "C",
+      "explanation": "Quenching produces hard, brittle martensite by rapid cooling."
+    },
+    {
+      "question": "The ability of a material to absorb energy before fracture is:",
+      "options": ["Strength", "Hardness", "Toughness", "Stiffness"],
+      "correct": "C",
+      "explanation": "Toughness is the energy absorbed up to fracture, measured by impact tests."
+    },
+    {
+      "question": "Pearlite is a mixture of:",
+      "options": ["Ferrite and cementite", "Austenite and cementite", "Ferrite and austenite", "Martensite and cementite"],
+      "correct": "A",
+      "explanation": "Pearlite is a lamellar mixture of ferrite (α-iron) and cementite (Fe₃C)."
+    },
+    {
+      "question": "The most abundant metal in earth's crust is:",
+      "options": ["Iron", "Aluminum", "Copper", "Calcium"],
+      "correct": "B",
+      "explanation": "Aluminum is the most abundant metal (8% of crust), followed by iron (5%)."
+    },
+    {
+      "question": "Which of the following is a thermoplastic?",
+      "options": ["Bakelite", "Epoxy", "Polyethylene", "Melamine"],
+      "correct": "C",
+      "explanation": "Polyethylene is thermoplastic (reversible softening). Bakelite and epoxy are thermosets."
+    },
+    {
+      "question": "Grey cast iron contains carbon mainly in the form of:",
+      "options": ["Cementite", "Graphite", "Martensite", "Austenite"],
+      "correct": "B",
+      "explanation": "Grey cast iron has carbon as graphite flakes, giving it good machinability and damping properties."
+    },
+    {
+      "question": "The phenomenon of gradual deformation under constant stress is called:",
+      "options": ["Fatigue", "Creep", "Stress relaxation", "Strain hardening"],
+      "correct": "B",
+      "explanation": "Creep is time-dependent deformation under constant stress, important at high temperatures."
+    },
+    {
+      "question": "Which material has the highest electrical conductivity?",
+      "options": ["Copper", "Aluminum", "Silver", "Gold"],
+      "correct": "C",
+      "explanation": "Silver has the highest electrical conductivity, followed by copper and gold."
+    },
+    {
+      "question": "The crystal structure of aluminum is:",
+      "options": ["BCC", "FCC", "HCP", "Tetragonal"],
+      "correct": "B",
+      "explanation": "Aluminum has FCC structure, which contributes to its high ductility and formability."
+    },
+    {
+      "question": "Martensite is produced by:",
+      "options": ["Slow cooling", "Rapid quenching", "Tempering", "Annealing"],
+      "correct": "B",
+      "explanation": "Martensite forms by diffusionless transformation during rapid quenching of austenite."
+    },
+    {
+      "question": "The main alloying element in duralumin is:",
+      "options": ["Copper", "Magnesium", "Manganese", "Silicon"],
+      "correct": "A",
+      "explanation": "Duralumin is aluminum-copper alloy (4-5% Cu) with Mg and Mn, used in aircraft."
+    },
+    {
+      "question": "Which test measures impact strength?",
+      "options": ["Brinell", "Charpy", "Tensile", "Hardness"],
+      "correct": "B",
+      "explanation": "Charpy and Izod tests measure impact strength by striking a notched specimen."
+    },
+    {
+      "question": "The temperature at which a material loses its magnetic properties is:",
+      "options": ["Melting point", "Curie point", "Glass transition", "Recrystallization"],
+      "correct": "B",
+      "explanation": "Curie temperature is where ferromagnetic materials become paramagnetic."
+    },
+    {
+      "question": "Invar alloy is known for its:",
+      "options": ["High strength", "Low thermal expansion", "High conductivity", "Magnetic properties"],
+      "correct": "B",
+      "explanation": "Invar (Fe-Ni alloy) has very low coefficient of thermal expansion."
+    },
+    {
+      "question": "The process of heating hardened steel to improve toughness is:",
+      "options": ["Annealing", "Normalizing", "Tempering", "Quenching"],
+      "correct": "C",
+      "explanation": "Tempering reduces brittleness of martensite by heating below critical temperature."
+    },
+    {
+      "question": "Which of the following is an amorphous material?",
+      "options": ["Quartz", "Glass", "Iron", "Copper"],
+      "correct": "B",
+      "explanation": "Glass is amorphous (non-crystalline), while metals have crystalline structure."
+    },
+    {
+      "question": "The unit cell of BCC structure contains how many atoms?",
+      "options": ["2", "4", "6", "8"],
+      "correct": "A",
+      "explanation": "BCC unit cell has 1 atom at center + 8 corner atoms (each 1/8) = 2 atoms total."
+    },
+    {
+      "question": "Which element is essential for age hardening of aluminum alloys?",
+      "options": ["Silicon", "Copper", "Magnesium", "Zinc"],
+      "correct": "B",
+      "explanation": "Copper in aluminum forms precipitates during age hardening, increasing strength."
+    },
+    {
+      "question": "The property of returning to original shape after deformation is:",
+      "options": ["Plasticity", "Elasticity", "Ductility", "Malleability"],
+      "correct": "B",
+      "explanation": "Elasticity allows material to return to original shape when load is removed."
+    },
+    {
+      "question": "Cast iron contains carbon from:",
+      "options": ["0.1-0.3%", "0.5-1.0%", "2-4%", "5-7%"],
+      "correct": "C",
+      "explanation": "Cast iron typically contains 2-4% carbon, much higher than steel (<2%)."
+    },
+    {
+      "question": "The main alloying element in bronze is:",
+      "options": ["Zinc", "Tin", "Lead", "Nickel"],
+      "correct": "B",
+      "explanation": "Bronze is copper-tin alloy, while brass is copper-zinc."
+    },
+    {
+      "question": "Which of the following is a ceramic material?",
+      "options": ["PVC", "Nylon", "Alumina", "Steel"],
+      "correct": "C",
+      "explanation": "Alumina (Al₂O₃) is a ceramic, while PVC and nylon are polymers."
+    },
+    {
+      "question": "The process of case hardening involves:",
+      "options": ["Surface hardening", "Through hardening", "Softening", "Grain refinement"],
+      "correct": "A",
+      "explanation": "Case hardening produces hard surface while maintaining tough core."
+    },
+    {
+      "question": "The fatigue limit of a material is the stress level below which:",
+      "options": ["Failure never occurs", "Failure always occurs", "Elastic deformation occurs", "Plastic deformation occurs"],
+      "correct": "A",
+      "explanation": "Fatigue limit is stress below which material can withstand infinite cycles without failure."
+    },
+    {
+      "question": "Which microstructure is hardest in steel?",
+      "options": ["Pearlite", "Ferrite", "Austenite", "Martensite"],
+      "correct": "D",
+      "explanation": "Martensite is the hardest and most brittle microstructure in steel."
+    },
+    {
+      "question": "The main purpose of adding manganese to steel is to:",
+      "options": ["Increase hardness", "Remove sulfur", "Improve corrosion resistance", "Increase strength"],
+      "correct": "B",
+      "explanation": "Manganese combines with sulfur to form MnS, preventing hot shortness."
+    },
+    {
+      "question": "Which polymer is used for making non-stick coatings?",
+      "options": ["Nylon", "PTFE", "PVC", "Polyethylene"],
+      "correct": "B",
+      "explanation": "PTFE (Teflon) has low friction and non-stick properties."
+    },
+    {
+      "question": "The phenomenon of loss of strength at high temperatures is called:",
+      "options": ["Creep", "Fatigue", "Stress rupture", "Hot shortness"],
+      "correct": "D",
+      "explanation": "Hot shortness is loss of strength/ductility at high temperatures due to impurities."
+    },
+    {
+      "question": "Which of the following is a refractory material?",
+      "options": ["Alumina", "Brass", "Steel", "Lead"],
+      "correct": "A",
+      "explanation": "Refractory materials (alumina, magnesia) withstand high temperatures without melting."
+    },
+    {
+      "question": "The atomic packing factor for FCC structure is:",
+      "options": ["0.68", "0.74", "0.82", "0.92"],
+      "correct": "B",
+      "explanation": "FCC has APF of 0.74, the highest for common metallic structures."
+    },
+    {
+      "question": "Shape memory alloys remember their:",
+      "options": ["Original shape", "Color", "Hardness", "Magnetic properties"],
+      "correct": "A",
+      "explanation": "Shape memory alloys (like Nitinol) return to pre-deformed shape when heated."
+    },
+    {
+      "question": "The main alloying element in nichrome is:",
+      "options": ["Nickel and chromium", "Iron and carbon", "Copper and zinc", "Aluminum and magnesium"],
+      "correct": "A",
+      "explanation": "Nichrome is nickel-chromium alloy used for heating elements."
+    },
+    {
+      "question": "Which test is used to determine hardenability of steel?",
+      "options": ["Jominy test", "Tensile test", "Impact test", "Hardness test"],
+      "correct": "A",
+      "explanation": "Jominy end-quench test measures hardenability by cooling rate effect on hardness."
+    },
+    {
+      "question": "The process of forming metal by hammering or pressing is called:",
+      "options": ["Casting", "Forging", "Rolling", "Extrusion"],
+      "correct": "B",
+      "explanation": "Forging shapes metal through compressive forces, often with heating."
+    },
+    {
+      "question": "Which material has the highest melting point?",
+      "options": ["Iron", "Tungsten", "Platinum", "Titanium"],
+      "correct": "B",
+      "explanation": "Tungsten has the highest melting point (3422°C) of all metals."
+    },
+    {
+      "question": "The eutectoid composition of steel is:",
+      "options": ["0.2% C", "0.4% C", "0.8% C", "1.2% C"],
+      "correct": "C",
+      "explanation": "Eutectoid steel has 0.8% carbon, transforming to pearlite on cooling."
+    },
+    {
+      "question": "Which of the following is not a composite material?",
+      "options": ["Fiberglass", "Carbon fiber", "Concrete", "Steel"],
+      "correct": "D",
+      "explanation": "Steel is a homogeneous alloy, not a composite of different materials."
+    },
+    {
+      "question": "The phenomenon of increasing strength by plastic deformation is:",
+      "options": ["Work hardening", "Age hardening", "Precipitation hardening", "Solution hardening"],
+      "correct": "A",
+      "explanation": "Work hardening (strain hardening) increases strength through plastic deformation."
+    },
+    {
+      "question": "Invar alloy is used in:",
+      "options": ["Precision instruments", "Cutting tools", "Magnets", "Springs"],
+      "correct": "A",
+      "explanation": "Invar's low thermal expansion makes it ideal for precision instruments and clocks."
+    },
+    {
+      "question": "The main constituent of cement is:",
+      "options": ["Calcium silicate", "Aluminum oxide", "Iron oxide", "Magnesium oxide"],
+      "correct": "A",
+      "explanation": "Portland cement mainly contains tricalcium and dicalcium silicate."
+    },
+    {
+      "question": "Which of the following is a superalloy?",
+      "options": ["Inconel", "Duralumin", "Brass", "Cast iron"],
+      "correct": "A",
+      "explanation": "Inconel is nickel-chromium superalloy for high-temperature applications."
+    },
+    {
+      "question": "The process of removing dissolved gases from metal is called:",
+      "options": ["Degassing", "Deoxidation", "Refining", "Annealing"],
+      "correct": "A",
+      "explanation": "Degassing removes dissolved hydrogen and other gases from molten metal."
+    },
+    {
+      "question": "Which crystal structure has the highest atomic packing factor?",
+      "options": ["BCC", "FCC", "HCP", "Simple cubic"],
+      "correct": "B",
+      "explanation": "FCC and HCP both have APF 0.74, highest for metals."
+    },
+    {
+      "question": "The main alloying element in monel metal is:",
+      "options": ["Copper and nickel", "Iron and carbon", "Aluminum and zinc", "Tin and lead"],
+      "correct": "A",
+      "explanation": "Monel is nickel-copper alloy with excellent corrosion resistance."
+    },
+    {
+      "question": "Which of the following is a natural polymer?",
+      "options": ["Nylon", "Polyester", "Rubber", "PVC"],
+      "correct": "C",
+      "explanation": "Natural rubber from latex is a natural polymer (polyisoprene)."
+    },
+    {
+      "question": "The temperature at which a polymer becomes brittle is called:",
+      "options": ["Glass transition temperature", "Melting point", "Curie temperature", "Recrystallization temperature"],
+      "correct": "A",
+      "explanation": "Glass transition temperature (Tg) is where polymer changes from rubbery to glassy state."
+    },
+    {
+      "question": "Which element is added to copper to make bronze?",
+      "options": ["Zinc", "Tin", "Nickel", "Aluminum"],
+      "correct": "B",
+      "explanation": "Bronze is copper-tin alloy, historically significant for tools and weapons."
+    },
+    {
+      "question": "The process of heating and cooling without phase change is called:",
+      "options": ["Annealing", "Stress relieving", "Normalizing", "Tempering"],
+      "correct": "B",
+      "explanation": "Stress relieving heats below transformation temperature to reduce residual stresses."
+    },
+    {
+      "question": "Which of the following is a magnetic material?",
+      "options": ["Copper", "Aluminum", "Iron", "Brass"],
+      "correct": "C",
+      "explanation": "Iron is ferromagnetic, along with nickel, cobalt, and their alloys."
+    },
+    {
+      "question": "The unit cell of HCP structure contains how many atoms?",
+      "options": ["2", "4", "6", "8"],
+      "correct": "C",
+      "explanation": "HCP unit cell contains 6 atoms (effective count considering shared atoms)."
+    },
+    {
+      "question": "Which of the following is a semi-conductor material?",
+      "options": ["Copper", "Silicon", "Aluminum", "Iron"],
+      "correct": "B",
+      "explanation": "Silicon is a semiconductor with conductivity between conductors and insulators."
+    },
+    {
+      "question": "The main purpose of adding silicon to steel is to:",
+      "options": ["Increase strength", "Improve magnetic properties", "Increase hardness", "Improve corrosion resistance"],
+      "correct": "B",
+      "explanation": "Silicon improves magnetic properties in electrical steels."
+    },
+    {
+      "question": "Which material is used for making permanent magnets?",
+      "options": ["Soft iron", "Alnico", "Silicon steel", "Cast iron"],
+      "correct": "B",
+      "explanation": "Alnico (Al-Ni-Co) alloys make strong permanent magnets."
+    },
+    {
+      "question": "The phenomenon of failure under cyclic loading is called:",
+      "options": ["Creep", "Fatigue", "Stress corrosion", "Hydrogen embrittlement"],
+      "correct": "B",
+      "explanation": "Fatigue failure occurs under repeated cyclic stresses below yield strength."
+    },
+    {
+      "question": "Which of the following is a noble metal?",
+      "options": ["Iron", "Copper", "Gold", "Aluminum"],
+      "correct": "C",
+      "explanation": "Gold is noble metal with high corrosion resistance."
+    },
+    {
+      "question": "The process of coating steel with zinc is called:",
+      "options": ["Galvanizing", "Anodizing", "Plating", "Painting"],
+      "correct": "A",
+      "explanation": "Galvanizing applies zinc coating to protect steel from corrosion."
+    },
+    {
+      "question": "Which microstructure is softest in steel?",
+      "options": ["Martensite", "Pearlite", "Ferrite", "Cementite"],
+      "correct": "C",
+      "explanation": "Ferrite is pure iron phase, soft and ductile."
+    }
+  ],
+  "mechatronics": [
+    {
+      "question": "A PID controller consists of which three terms?",
+      "options": ["Proportional, Integral, Derivative", "Position, Integral, Derivative", "Power, Integral, Derivative", "Proportional, Inertia, Damping"],
+      "correct": "A",
+      "explanation": "PID combines Proportional (P), Integral (I), and Derivative (D) control actions."
+    },
+    {
+      "question": "Which sensor is commonly used for distance measurement in robotics?",
+      "options": ["Thermistor", "Ultrasonic sensor", "Photodiode", "Strain gauge"],
+      "correct": "B",
+      "explanation": "Ultrasonic sensors measure distance by timing sound wave reflections."
+    },
+    {
+      "question": "An actuator converts:",
+      "options": ["Electrical energy to mechanical motion", "Mechanical motion to electrical", "Light to electricity", "Heat to motion"],
+      "correct": "A",
+      "explanation": "Actuators convert electrical/hydraulic/pneumatic energy into mechanical motion."
+    },
+    {
+      "question": "What does a stepper motor do?",
+      "options": ["Rotates continuously", "Moves in discrete steps", "Produces linear motion", "Generates electricity"],
+      "correct": "B",
+      "explanation": "Stepper motors rotate in precise angular steps for position control."
+    },
+    {
+      "question": "A LVDT measures:",
+      "options": ["Linear displacement", "Angular displacement", "Temperature", "Pressure"],
+      "correct": "A",
+      "explanation": "Linear Variable Differential Transformer measures linear position/displacement."
+    },
+    {
+      "question": "What is the function of a DAC?",
+      "options": ["Analog to digital conversion", "Digital to analog conversion", "Amplify signals", "Filter noise"],
+      "correct": "B",
+      "explanation": "DAC converts digital signals to analog voltages or currents."
+    },
+    {
+      "question": "In a closed-loop control system, feedback is used to:",
+      "options": ["Reduce error", "Increase power", "Simplify design", "Reduce cost"],
+      "correct": "A",
+      "explanation": "Feedback compares output to reference and reduces error."
+    },
+    {
+      "question": "Which device measures angular position?",
+      "options": ["Encoder", "Thermocouple", "Strain gauge", "LDR"],
+      "correct": "A",
+      "explanation": "Encoders provide digital feedback of angular position or speed."
+    },
+    {
+      "question": "A microcontroller is:",
+      "options": ["A computer on a chip", "A memory device", "A power supply", "A sensor"],
+      "correct": "A",
+      "explanation": "Microcontrollers integrate CPU, memory, and I/O on single chip."
+    },
+    {
+      "question": "A strain gauge measures:",
+      "options": ["Temperature", "Pressure", "Deformation", "Light"],
+      "correct": "C",
+      "explanation": "Strain gauges measure deformation by resistance change under strain."
+    },
+    {
+      "question": "What is the brain of a PLC?",
+      "options": ["CPU", "Power supply", "I/O modules", "Programming device"],
+      "correct": "A",
+      "explanation": "CPU executes user program and controls PLC operation."
+    },
+    {
+      "question": "Which is an example of an input device?",
+      "options": ["Motor", "Limit switch", "Relay", "Solenoid"],
+      "correct": "B",
+      "explanation": "Limit switches provide input signals about position to control system."
+    },
+    {
+      "question": "A thermocouple measures:",
+      "options": ["Pressure", "Temperature", "Flow", "Level"],
+      "correct": "B",
+      "explanation": "Thermocouples generate voltage proportional to temperature difference."
+    },
+    {
+      "question": "A relay is an example of:",
+      "options": ["Sensor", "Actuator", "Electromechanical switch", "Power supply"],
+      "correct": "C",
+      "explanation": "Relays use electromagnet to mechanically switch electrical contacts."
+    },
+    {
+      "question": "An H-bridge circuit is used to:",
+      "options": ["Control motor direction", "Amplify signals", "Convert power", "Filter noise"],
+      "correct": "A",
+      "explanation": "H-bridge allows DC motor to run forward or reverse by switching polarity."
+    },
+    {
+      "question": "Which programming language is commonly used for PLCs?",
+      "options": ["Python", "Java", "Ladder logic", "C++"],
+      "correct": "C",
+      "explanation": "Ladder logic mimics relay diagrams for industrial control programming."
+    },
+    {
+      "question": "A tachometer measures:",
+      "options": ["Temperature", "Rotational speed", "Pressure", "Flow"],
+      "correct": "B",
+      "explanation": "Tachometers measure rotational speed of shafts or motors."
+    },
+    {
+      "question": "Brushless DC motors are preferred because they:",
+      "options": ["Have higher efficiency", "Are cheaper", "Are simpler", "Need no controller"],
+      "correct": "A",
+      "explanation": "Brushless DC motors have higher efficiency and longer life than brushed motors."
+    },
+    {
+      "question": "A photo-interrupter detects:",
+      "options": ["Temperature", "Light intensity", "Object presence", "Color"],
+      "correct": "C",
+      "explanation": "Photo-interrupters detect objects by breaking light beam between emitter and detector."
+    },
+    {
+      "question": "The derivative term in PID controller:",
+      "options": ["Reduces steady-state error", "Improves response speed", "Reduces overshoot", "Increases stability"],
+      "correct": "C",
+      "explanation": "Derivative action anticipates error and reduces overshoot."
+    },
+    {
+      "question": "What is mechatronics?",
+      "options": ["Mechanics only", "Electronics only", "Integration of mechanics, electronics, and computing", "Software engineering"],
+      "correct": "C",
+      "explanation": "Mechatronics synergistically integrates mechanical, electronic, and computer engineering."
+    },
+    {
+      "question": "A solenoid is a type of:",
+      "options": ["Sensor", "Linear actuator", "Rotary actuator", "Controller"],
+      "correct": "B",
+      "explanation": "Solenoids provide linear motion using electromagnetic force."
+    },
+    {
+      "question": "A flyback diode protects against:",
+      "options": ["Overcurrent", "Overvoltage", "Reverse EMF spikes", "Short circuit"],
+      "correct": "C",
+      "explanation": "Flyback diodes suppress voltage spikes from inductive loads when switched off."
+    },
+    {
+      "question": "Which sensor uses Hall effect?",
+      "options": ["Temperature sensor", "Magnetic field sensor", "Pressure sensor", "Light sensor"],
+      "correct": "B",
+      "explanation": "Hall effect sensors detect magnetic fields and are used for position/speed sensing."
+    },
+    {
+      "question": "A potentiometer measures:",
+      "options": ["Temperature", "Linear or angular position", "Pressure", "Flow"],
+      "correct": "B",
+      "explanation": "Potentiometers measure position by voltage division across resistive element."
+    },
+    {
+      "question": "What does SCADA stand for?",
+      "options": ["Supervisory Control And Data Acquisition", "System Control And Data Analysis", "Supervisory Computer And Display Application", "System Control And Display Acquisition"],
+      "correct": "A",
+      "explanation": "SCADA systems monitor and control industrial processes remotely."
+    },
+    {
+      "question": "A piezoelectric sensor measures:",
+      "options": ["Temperature", "Pressure/vibration", "Light", "Magnetic field"],
+      "correct": "B",
+      "explanation": "Piezoelectric materials generate voltage when mechanically stressed."
+    },
+    {
+      "question": "What is the function of an ADC?",
+      "options": ["Digital to analog conversion", "Analog to digital conversion", "Amplification", "Filtering"],
+      "correct": "B",
+      "explanation": "ADCs convert analog signals to digital values for processing."
+    },
+    {
+      "question": "A servo motor includes:",
+      "options": ["Only motor", "Motor and controller", "Motor and feedback", "Motor, controller, and feedback"],
+      "correct": "D",
+      "explanation": "Servo systems integrate motor, controller, and position feedback."
+    },
+    {
+      "question": "Which protocol is common in industrial automation?",
+      "options": ["USB", "Ethernet/IP", "HDMI", "Thunderbolt"],
+      "correct": "B",
+      "explanation": "Ethernet/IP is widely used for industrial communication and control."
+    },
+    {
+      "question": "A proximity sensor detects:",
+      "options": ["Temperature", "Objects without contact", "Pressure", "Light color"],
+      "correct": "B",
+      "explanation": "Proximity sensors detect nearby objects without physical contact."
+    },
+    {
+      "question": "What is the integral term in PID used for?",
+      "options": ["Reduce overshoot", "Eliminate steady-state error", "Speed up response", "Improve stability"],
+      "correct": "B",
+      "explanation": "Integral action accumulates error over time to eliminate steady-state error."
+    },
+    {
+      "question": "A CNC machine uses:",
+      "options": ["Manual control", "Computer numerical control", "Hydraulic control", "Pneumatic control"],
+      "correct": "B",
+      "explanation": "CNC machines are automated by computer numerical control programs."
+    },
+    {
+      "question": "Which sensor uses light to measure distance?",
+      "options": ["Ultrasonic", "LIDAR", "Thermocouple", "Strain gauge"],
+      "correct": "B",
+      "explanation": "LIDAR uses laser light for precise distance measurement."
+    },
+    {
+      "question": "A pressure sensor commonly uses:",
+      "options": ["Thermistor", "Diaphragm and strain gauge", "Thermocouple", "Photodiode"],
+      "correct": "B",
+      "explanation": "Pressure sensors often use diaphragm deflection measured by strain gauges."
+    },
+    {
+      "question": "What does PWM stand for?",
+      "options": ["Power Width Modulation", "Pulse Width Modulation", "Pulse Wave Modulation", "Power Wave Modulation"],
+      "correct": "B",
+      "explanation": "PWM controls power by varying pulse width at fixed frequency."
+    },
+    {
+      "question": "A DC motor speed can be controlled by:",
+      "options": ["Voltage control", "Frequency control", "Phase control", "Current control"],
+      "correct": "A",
+      "explanation": "DC motor speed is proportional to applied voltage."
+    },
+    {
+      "question": "An optical encoder provides:",
+      "options": ["Analog position", "Digital position feedback", "Temperature reading", "Pressure reading"],
+      "correct": "B",
+      "explanation": "Optical encoders provide digital position/speed feedback using light and coded disks."
+    },
+    {
+      "question": "A thermistor's resistance changes with:",
+      "options": ["Pressure", "Temperature", "Light", "Magnetic field"],
+      "correct": "B",
+      "explanation": "Thermistors are temperature-sensitive resistors with high sensitivity."
+    },
+    {
+      "question": "In a control system, the plant is:",
+      "options": ["The controller", "The system being controlled", "The sensor", "The actuator"],
+      "correct": "B",
+      "explanation": "Plant refers to the process or system under control."
+    },
+    {
+      "question": "A watchdog timer in embedded systems:",
+      "options": ["Measures time", "Resets system on failure", "Generates delays", "Counts pulses"],
+      "correct": "B",
+      "explanation": "Watchdog timer resets system if software fails to periodically trigger it."
+    },
+    {
+      "question": "Which communication protocol is used for short-range device communication?",
+      "options": ["WiFi", "Bluetooth", "Ethernet", "RS-232"],
+      "correct": "B",
+      "explanation": "Bluetooth is common for short-range wireless device communication."
+    },
+    {
+      "question": "A linear actuator produces:",
+      "options": ["Rotary motion", "Linear motion", "Oscillatory motion", "Vibratory motion"],
+      "correct": "B",
+      "explanation": "Linear actuators produce straight-line motion, unlike rotary motors."
+    },
+    {
+      "question": "What is the function of a limit switch?",
+      "options": ["Measure temperature", "Detect end of travel", "Measure speed", "Control current"],
+      "correct": "B",
+      "explanation": "Limit switches detect when a mechanism reaches its travel limit."
+    },
+    {
+      "question": "A capacitive sensor detects:",
+      "options": ["Metal only", "Any material", "Magnetic fields", "Temperature"],
+      "correct": "B",
+      "explanation": "Capacitive sensors can detect both conductive and non-conductive materials."
+    },
+    {
+      "question": "The sampling rate in digital control must be:",
+      "options": ["Less than signal frequency", "At least twice signal frequency", "Equal to signal frequency", "Independent of signal"],
+      "correct": "B",
+      "explanation": "Nyquist theorem requires sampling at least twice the maximum frequency."
+    },
+    {
+      "question": "A robot's end effector is:",
+      "options": ["The controller", "The tool at the end of arm", "The motor", "The sensor"],
+      "correct": "B",
+      "explanation": "End effector is the tool or gripper attached to robot's wrist."
+    },
+    {
+      "question": "What does HMI stand for?",
+      "options": ["Human-Machine Interface", "High-Magnitude Input", "Hybrid-Motor Interface", "Hands-On Manual Input"],
+      "correct": "A",
+      "explanation": "HMI is the user interface connecting operator to machine/control system."
+    },
+    {
+      "question": "A pneumatic system uses:",
+      "options": ["Oil", "Compressed air", "Water", "Electricity"],
+      "correct": "B",
+      "explanation": "Pneumatic systems use compressed air for power and control."
+    },
+    {
+      "question": "A hydraulic system uses:",
+      "options": ["Compressed air", "Pressurized fluid", "Electricity", "Magnetism"],
+      "correct": "B",
+      "explanation": "Hydraulic systems use pressurized liquid (usually oil) for power transmission."
+    },
+    {
+      "question": "What is the main advantage of a PLC over hardwired logic?",
+      "options": ["Faster speed", "Programmability and flexibility", "Lower cost", "Higher power"],
+      "correct": "B",
+      "explanation": "PLCs can be reprogrammed easily, unlike hardwired relay logic."
+    }
+  ],
+  "computer": [
+    {
+      "question": "The smallest unit of data in computing is:",
+      "options": ["Byte", "Bit", "Word", "Nibble"],
+      "correct": "B",
+      "explanation": "A bit (binary digit) is the most basic unit, representing 0 or 1."
+    },
+    {
+      "question": "Which logic gate outputs true only when all inputs are true?",
+      "options": ["OR", "AND", "XOR", "NAND"],
+      "correct": "B",
+      "explanation": "AND gate output is 1 only when all inputs are 1."
+    },
+    {
+      "question": "RAM stands for:",
+      "options": ["Random Access Memory", "Read Access Memory", "Rapid Access Module", "Remote Access Memory"],
+      "correct": "A",
+      "explanation": "RAM is volatile memory that can be read and written randomly."
+    },
+    {
+      "question": "1 Kilobyte (KB) equals:",
+      "options": ["1000 bytes", "1024 bytes", "1048 bytes", "2048 bytes"],
+      "correct": "B",
+      "explanation": "1 KB = 2¹⁰ = 1024 bytes in binary computing."
+    },
+    {
+      "question": "Which is an output device?",
+      "options": ["Keyboard", "Mouse", "Monitor", "Scanner"],
+      "correct": "C",
+      "explanation": "Monitor displays output, while keyboard, mouse, and scanner are input devices."
+    },
+    {
+      "question": "The CPU consists of:",
+      "options": ["ALU and Memory", "Control Unit and ALU", "ALU, Control Unit, and Registers", "Memory and I/O"],
+      "correct": "C",
+      "explanation": "CPU contains Arithmetic Logic Unit, Control Unit, and registers."
+    },
+    {
+      "question": "Which number system do computers use internally?",
+      "options": ["Decimal", "Binary", "Octal", "Hexadecimal"],
+      "correct": "B",
+      "explanation": "Computers use binary (base-2) for all internal operations."
+    },
+    {
+      "question": "An operating system manages:",
+      "options": ["Only memory", "Only CPU", "Hardware and software resources", "Only files"],
+      "correct": "C",
+      "explanation": "OS manages all hardware and software resources, providing user interface."
+    },
+    {
+      "question": "URL stands for:",
+      "options": ["Universal Resource Locator", "Uniform Resource Locator", "Unified Resource Link", "Universal Reference Link"],
+      "correct": "B",
+      "explanation": "URL specifies web address and protocol for resource access."
+    },
+    {
+      "question": "Which gate is known as an inverter?",
+      "options": ["AND", "OR", "NOT", "NAND"],
+      "correct": "C",
+      "explanation": "NOT gate inverts input: 1 becomes 0, 0 becomes 1."
+    },
+    {
+      "question": "Volatile memory loses data when:",
+      "options": ["Power is off", "Data is deleted", "File is closed", "Computer restarts"],
+      "correct": "A",
+      "explanation": "Volatile memory (like RAM) requires power to retain data."
+    },
+    {
+      "question": "The brain of the computer is:",
+      "options": ["RAM", "Hard drive", "CPU", "Motherboard"],
+      "correct": "C",
+      "explanation": "CPU performs all processing and controls computer operation."
+    },
+    {
+      "question": "Which is a storage device?",
+      "options": ["RAM", "CPU", "Hard Disk Drive", "Monitor"],
+      "correct": "C",
+      "explanation": "HDD provides non-volatile storage for programs and data."
+    },
+    {
+      "question": "In binary, 1 + 1 equals:",
+      "options": ["2", "10", "11", "01"],
+      "correct": "B",
+      "explanation": "Binary 1+1 = 10 (0 carry 1), just like decimal 9+1=10."
+    },
+    {
+      "question": "Which language is used for industrial control programming?",
+      "options": ["Python", "Java", "Ladder Logic", "HTML"],
+      "correct": "C",
+      "explanation": "Ladder Logic is specifically designed for PLC programming in automation."
+    },
+    {
+      "question": "A compiler translates:",
+      "options": ["Machine code to assembly", "High-level to machine code", "Assembly to machine code", "Source to object code"],
+      "correct": "B",
+      "explanation": "Compiler converts high-level language to executable machine code."
+    },
+    {
+      "question": "LAN stands for:",
+      "options": ["Large Area Network", "Local Area Network", "Long Access Network", "Linked Area Network"],
+      "correct": "B",
+      "explanation": "LAN connects computers in limited geographical area like building."
+    },
+    {
+      "question": "Which is system software?",
+      "options": ["Windows 10", "MS Word", "Photoshop", "Chrome"],
+      "correct": "A",
+      "explanation": "Windows 10 is operating system software managing computer resources."
+    },
+    {
+      "question": "A byte consists of:",
+      "options": ["4 bits", "8 bits", "16 bits", "32 bits"],
+      "correct": "B",
+      "explanation": "Byte is standard unit of 8 bits, enough to represent one character."
+    },
+    {
+      "question": "Which gate produces inverse of AND?",
+      "options": ["OR", "NOR", "NAND", "XOR"],
+      "correct": "C",
+      "explanation": "NAND = NOT AND, output opposite of AND gate."
+    },
+    {
+      "question": "Motherboard is the:",
+      "options": ["Main circuit board", "Power supply", "Storage device", "Processor"],
+      "correct": "A",
+      "explanation": "Motherboard connects all computer components and provides communication paths."
+    },
+    {
+      "question": "A firewall protects against:",
+      "options": ["Power surges", "Unauthorized access", "Data loss", "Hardware failure"],
+      "correct": "B",
+      "explanation": "Firewall monitors and controls network traffic based on security rules."
+    },
+    {
+      "question": "An IP address identifies:",
+      "options": ["Device on network", "Website content", "User identity", "File location"],
+      "correct": "A",
+      "explanation": "IP address uniquely identifies devices on IP networks."
+    },
+    {
+      "question": "What does ALU do?",
+      "options": ["Manages memory", "Performs arithmetic/logic operations", "Controls I/O", "Stores data"],
+      "correct": "B",
+      "explanation": "ALU performs arithmetic calculations and logical comparisons."
+    },
+    {
+      "question": "Cache memory is:",
+      "options": ["Slow and large", "Fast and small", "Permanent storage", "External storage"],
+      "correct": "B",
+      "explanation": "Cache is fast, small memory close to CPU for frequently used data."
+    },
+    {
+      "question": "HTTP stands for:",
+      "options": ["HyperText Transfer Protocol", "High Transfer Text Protocol", "Hyperlink Transfer Protocol", "Home Tool Transfer Protocol"],
+      "correct": "A",
+      "explanation": "HTTP is protocol for web data transmission."
+    },
+    {
+      "question": "Which is not a programming language?",
+      "options": ["Python", "Java", "HTML", "C++"],
+      "correct": "C",
+      "explanation": "HTML is markup language, not programming language."
+    },
+    {
+      "question": "The cloud refers to:",
+      "options": ["Local storage", "Internet-based computing", "Network cable", "Weather data"],
+      "correct": "B",
+      "explanation": "Cloud computing provides services over the internet."
+    },
+    {
+      "question": "Malware is:",
+      "options": ["Hardware", "Malicious software", "Security device", "Network protocol"],
+      "correct": "B",
+      "explanation": "Malware (malicious software) includes viruses, worms, trojans."
+    },
+    {
+      "question": "SQL is used for:",
+      "options": ["Graphics design", "Database management", "Word processing", "Spreadsheets"],
+      "correct": "B",
+      "explanation": "Structured Query Language manages relational databases."
+    },
+    {
+      "question": "SSD stands for:",
+      "options": ["Solid State Drive", "System Storage Device", "Serial Storage Drive", "Secure Storage Disk"],
+      "correct": "A",
+      "explanation": "SSD uses flash memory for faster storage than HDD."
+    },
+    {
+      "question": "Which protocol is used for email?",
+      "options": ["HTTP", "FTP", "SMTP", "SNMP"],
+      "correct": "C",
+      "explanation": "Simple Mail Transfer Protocol sends emails."
+    },
+    {
+      "question": "A pixel is:",
+      "options": ["Picture element", "Processor unit", "Memory unit", "Storage unit"],
+      "correct": "A",
+      "explanation": "Pixel is smallest addressable element in display."
+    },
+    {
+      "question": "What does GUI stand for?",
+      "options": ["Graphical User Interface", "General User Interface", "Graphics Under Input", "Global User Integration"],
+      "correct": "A",
+      "explanation": "GUI provides visual interaction with computers."
+    },
+    {
+      "question": "Open-source software means:",
+      "options": ["Free of cost", "Source code available", "No license needed", "Unlimited features"],
+      "correct": "B",
+      "explanation": "Open-source allows viewing and modifying source code."
+    },
+    {
+      "question": "A virus is a type of:",
+      "options": ["Hardware", "Malware", "Network", "Protocol"],
+      "correct": "B",
+      "explanation": "Computer virus is malicious software that replicates."
+    },
+    {
+      "question": "USB stands for:",
+      "options": ["Universal Serial Bus", "United Serial Bus", "Universal System Bus", "Unified Serial Bus"],
+      "correct": "A",
+      "explanation": "USB is standard for connection and power delivery."
+    },
+    {
+      "question": "Which is an input device?",
+      "options": ["Monitor", "Printer", "Keyboard", "Speaker"],
+      "correct": "C",
+      "explanation": "Keyboard inputs data, others are output devices."
+    },
+    {
+      "question": "BIOS stands for:",
+      "options": ["Basic Input Output System", "Binary Input Output System", "Built-In Operating System", "Basic Integrated Output System"],
+      "correct": "A",
+      "explanation": "BIOS initializes hardware during booting."
+    },
+    {
+      "question": "The world wide web was invented by:",
+      "options": ["Bill Gates", "Steve Jobs", "Tim Berners-Lee", "Alan Turing"],
+      "correct": "C",
+      "explanation": "Tim Berners-Lee invented WWW in 1989."
+    },
+    {
+      "question": "Phishing is:",
+      "options": ["Network protocol", "Security attack", "Programming language", "Storage device"],
+      "correct": "B",
+      "explanation": "Phishing tricks users into revealing sensitive information."
+    },
+    {
+      "question": "Encryption converts data to:",
+      "options": ["Larger size", "Smaller size", "Secure format", "Readable format"],
+      "correct": "C",
+      "explanation": "Encryption transforms data to prevent unauthorized access."
+    },
+    {
+      "question": "A database is organized collection of:",
+      "options": ["Programs", "Data", "Networks", "Hardware"],
+      "correct": "B",
+      "explanation": "Database stores and manages structured data."
+    },
+    {
+      "question": "Which is a social engineering attack?",
+      "options": ["Virus", "Phishing", "Worm", "Trojan"],
+      "correct": "B",
+      "explanation": "Phishing manipulates people into giving information."
+    },
+    {
+      "question": "Bluetooth is for:",
+      "options": ["Long-range communication", "Short-range wireless", "Storage", "Processing"],
+      "correct": "B",
+      "explanation": "Bluetooth enables short-range device communication."
+    },
+    {
+      "question": "API stands for:",
+      "options": ["Application Programming Interface", "Application Protocol Interface", "Advanced Programming Interface", "Application Process Integration"],
+      "correct": "A",
+      "explanation": "API allows software applications to communicate."
+    },
+    {
+      "question": "Which is not an operating system?",
+      "options": ["Windows", "Linux", "Android", "Excel"],
+      "correct": "D",
+      "explanation": "Excel is application software, not operating system."
+    },
+    {
+      "question": "The cloud offers:",
+      "options": ["Local storage only", "On-demand resources", "Physical servers", "Direct control"],
+      "correct": "B",
+      "explanation": "Cloud provides scalable, on-demand computing resources."
+    },
+    {
+      "question": "AI stands for:",
+      "options": ["Artificial Intelligence", "Automated Input", "Advanced Integration", "Algorithmic Interface"],
+      "correct": "A",
+      "explanation": "AI simulates human intelligence in machines."
+    }
+  ],
+  "physics": [
+    {
+      "question": "Torque is measured in:",
+      "options": ["Newtons", "Joules", "Newton-meters", "Watts"],
+      "correct": "C",
+      "explanation": "Torque = force × perpendicular distance, unit N·m."
+    },
+    {
+      "question": "Newton's Third Law describes:",
+      "options": ["Inertia", "Action-reaction forces", "Acceleration", "Gravitation"],
+      "correct": "B",
+      "explanation": "Every action has equal and opposite reaction."
+    },
+    {
+      "question": "Work is defined as:",
+      "options": ["Force × distance", "Mass × acceleration", "Energy/time", "Pressure × volume"],
+      "correct": "A",
+      "explanation": "Work = force × displacement in force direction."
+    },
+    {
+      "question": "Power is:",
+      "options": ["Work × time", "Work/time", "Force × velocity", "Both B and C"],
+      "correct": "D",
+      "explanation": "Power = work/time = force × velocity."
+    },
+    {
+      "question": "The law of inertia is Newton's:",
+      "options": ["First law", "Second law", "Third law", "Fourth law"],
+      "correct": "A",
+      "explanation": "First law: objects resist change in motion."
+    },
+    {
+      "question": "Pressure is:",
+      "options": ["Force × area", "Force/area", "Area/force", "Mass/area"],
+      "correct": "B",
+      "explanation": "Pressure = force per unit area, unit Pascal."
+    },
+    {
+      "question": "The SI unit of energy is same as:",
+      "options": ["Force", "Power", "Work", "Momentum"],
+      "correct": "C",
+      "explanation": "Energy and work both measured in joules."
+    },
+    {
+      "question": "Newton's Second Law states:",
+      "options": ["F = ma", "F = mv", "F = m/t", "F = v/m"],
+      "correct": "A",
+      "explanation": "Force = mass × acceleration."
+    },
+    {
+      "question": "Potential energy depends on:",
+      "options": ["Mass and height", "Mass and velocity", "Velocity only", "Time"],
+      "correct": "A",
+      "explanation": "Gravitational PE = mgh."
+    },
+    {
+      "question": "Frequency is measured in:",
+      "options": ["Seconds", "Hertz", "Meters", "Joules"],
+      "correct": "B",
+      "explanation": "Hertz (Hz) = cycles per second."
+    },
+    {
+      "question": "Moving objects possess:",
+      "options": ["Kinetic energy", "Potential energy", "Thermal energy", "Chemical energy"],
+      "correct": "A",
+      "explanation": "Kinetic energy = ½mv²."
+    },
+    {
+      "question": "Inertia is resistance to:",
+      "options": ["Motion", "Change in motion", "Gravity", "Friction"],
+      "correct": "B",
+      "explanation": "Inertia resists changes in velocity."
+    },
+    {
+      "question": "A thermal insulator:",
+      "options": ["Conducts heat well", "Resists heat flow", "Generates heat", "Stores heat"],
+      "correct": "B",
+      "explanation": "Insulators have low thermal conductivity."
+    },
+    {
+      "question": "Light travels fastest in:",
+      "options": ["Water", "Glass", "Vacuum", "Air"],
+      "correct": "C",
+      "explanation": "Light speed maximum in vacuum (3×10⁸ m/s)."
+    },
+    {
+      "question": "Sound waves are:",
+      "options": ["Transverse", "Mechanical", "Electromagnetic", "Longitudinal"],
+      "correct": "B",
+      "explanation": "Sound requires medium, is mechanical longitudinal wave."
+    },
+    {
+      "question": "Refraction is bending of light due to:",
+      "options": ["Reflection", "Change in speed", "Absorption", "Diffraction"],
+      "correct": "B",
+      "explanation": "Light bends when speed changes between media."
+    },
+    {
+      "question": "In series circuit, current is:",
+      "options": ["Different everywhere", "Same everywhere", "Zero", "Maximum at source"],
+      "correct": "B",
+      "explanation": "Current constant in series circuit."
+    },
+    {
+      "question": "Machine output work cannot exceed:",
+      "options": ["Efficiency", "Input work", "Power", "Force"],
+      "correct": "B",
+      "explanation": "Energy conservation: output ≤ input work."
+    },
+    {
+      "question": "Specific heat capacity units:",
+      "options": ["J/kg", "J/kg°C", "J/°C", "W/kg°C"],
+      "correct": "B",
+      "explanation": "Specific heat = J/(kg·°C)."
+    },
+    {
+      "question": "A 60W bulb for 2 hours consumes:",
+      "options": ["0.12 kWh", "1.2 kWh", "12 kWh", "120 kWh"],
+      "correct": "A",
+      "explanation": "Energy = 0.06 kW × 2 h = 0.12 kWh."
+    },
+    {
+      "question": "Magnetic field lines:",
+      "options": ["Open loops", "Closed loops", "Straight lines", "Random"],
+      "correct": "B",
+      "explanation": "Magnetic field lines form continuous closed loops."
+    },
+    {
+      "question": "Which is scalar?",
+      "options": ["Force", "Velocity", "Mass", "Acceleration"],
+      "correct": "C",
+      "explanation": "Mass has magnitude only; others are vectors."
+    },
+    {
+      "question": "Hydraulic lift works on:",
+      "options": ["Bernoulli's principle", "Pascal's law", "Archimedes' principle", "Boyle's law"],
+      "correct": "B",
+      "explanation": "Pascal: pressure transmitted equally in fluid."
+    },
+    {
+      "question": "Heat transfer by direct contact:",
+      "options": ["Conduction", "Convection", "Radiation", "Advection"],
+      "correct": "A",
+      "explanation": "Conduction through molecular collisions."
+    },
+    {
+      "question": "Light intensity sensor:",
+      "options": ["Thermistor", "LDR", "Strain gauge", "Piezoelectric"],
+      "correct": "B",
+      "explanation": "LDR resistance decreases with light intensity."
+    },
+    {
+      "question": "Acceleration due to gravity on Earth:",
+      "options": ["9.8 m/s²", "9.8 m/s", "9.8 km/s²", "9.8 cm/s²"],
+      "correct": "A",
+      "explanation": "g ≈ 9.81 m/s² at Earth's surface."
+    },
+    {
+      "question": "Ohm's Law states:",
+      "options": ["V = IR", "P = VI", "E = mc²", "F = ma"],
+      "correct": "A",
+      "explanation": "Voltage = Current × Resistance."
+    },
+    {
+      "question": "A lever is an example of:",
+      "options": ["Simple machine", "Complex machine", "Engine", "Motor"],
+      "correct": "A",
+      "explanation": "Levers are one of six simple machines."
+    },
+    {
+      "question": "The Doppler effect relates to:",
+      "options": ["Frequency change", "Amplitude change", "Speed change", "Wavelength constant"],
+      "correct": "A",
+      "explanation": "Frequency changes with relative motion of source/observer."
+    },
+    {
+      "question": "Absolute zero is:",
+      "options": ["0°C", "-273°C", "-459°C", "32°F"],
+      "correct": "B",
+      "explanation": "Absolute zero = -273.15°C = 0 K."
+    },
+    {
+      "question": "Centripetal force acts:",
+      "options": ["Away from center", "Toward center", "Tangential", "Random"],
+      "correct": "B",
+      "explanation": "Centripetal force pulls toward center for circular motion."
+    },
+    {
+      "question": "Momentum is product of:",
+      "options": ["Mass and velocity", "Force and time", "Mass and acceleration", "Weight and speed"],
+      "correct": "A",
+      "explanation": "Momentum p = mv."
+    },
+    {
+      "question": "In parallel circuit, voltage is:",
+      "options": ["Same across branches", "Different across branches", "Zero", "Maximum in one branch"],
+      "correct": "A",
+      "explanation": "Voltage same across parallel components."
+    },
+    {
+      "question": "Critical angle causes:",
+      "options": ["Refraction", "Total internal reflection", "Diffraction", "Interference"],
+      "correct": "B",
+      "explanation": "TIR occurs beyond critical angle."
+    },
+    {
+      "question": "A transformer uses:",
+      "options": ["Electrostatic induction", "Electromagnetic induction", "Mutual induction", "Both B and C"],
+      "correct": "D",
+      "explanation": "Transformer works on mutual electromagnetic induction."
+    },
+    {
+      "question": "Resistivity depends on:",
+      "options": ["Length only", "Area only", "Material and temperature", "Voltage"],
+      "correct": "C",
+      "explanation": "Resistivity is material property varying with temperature."
+    },
+    {
+      "question": "Wave velocity =",
+      "options": ["Frequency × wavelength", "Frequency/wavelength", "Wavelength/frequency", "Amplitude × frequency"],
+      "correct": "A",
+      "explanation": "v = fλ for all waves."
+    },
+    {
+      "question": "Photoelectric effect explains:",
+      "options": ["Wave nature", "Particle nature", "Both", "Neither"],
+      "correct": "B",
+      "explanation": "Einstein explained light as particles (photons)."
+    },
+    {
+      "question": "In SHM, acceleration is proportional to:",
+      "options": ["Velocity", "Displacement", "Time", "Mass"],
+      "correct": "B",
+      "explanation": "a ∝ -x in simple harmonic motion."
+    },
+    {
+      "question": "Nuclear fission splits:",
+      "options": ["Electrons", "Protons", "Nuclei", "Atoms"],
+      "correct": "C",
+      "explanation": "Fission splits heavy nuclei into lighter ones."
+    },
+    {
+      "question": "Convection occurs in:",
+      "options": ["Solids only", "Liquids and gases", "Vacuum", "All media"],
+      "correct": "B",
+      "explanation": "Convection requires fluid motion."
+    },
+    {
+      "question": "Black body radiation depends on:",
+      "options": ["Color", "Temperature", "Material", "Size"],
+      "correct": "B",
+      "explanation": "Temperature determines black body spectrum."
+    },
+    {
+      "question": "Young's double-slit experiment shows:",
+      "options": ["Reflection", "Refraction", "Interference", "Diffraction"],
+      "correct": "C",
+      "explanation": "Demonstrates wave interference of light."
+    },
+    {
+      "question": "Bernoulli's principle relates:",
+      "options": ["Pressure and velocity", "Temperature and pressure", "Volume and pressure", "Density and pressure"],
+      "correct": "A",
+      "explanation": "In fluid flow, higher velocity = lower pressure."
+    },
+    {
+      "question": "The law of conservation of momentum applies:",
+      "options": ["With external force", "Without external force", "Always", "Never"],
+      "correct": "B",
+      "explanation": "Momentum conserved in isolated systems."
+    },
+    {
+      "question": "Coulomb's law relates to:",
+      "options": ["Gravity", "Electric forces", "Magnetic forces", "Nuclear forces"],
+      "correct": "B",
+      "explanation": "Coulomb: force between electric charges."
+    },
+    {
+      "question": "The electromagnetic spectrum includes:",
+      "options": ["Sound waves", "Radio waves", "Water waves", "Seismic waves"],
+      "correct": "B",
+      "explanation": "Radio waves are electromagnetic, sound is mechanical."
+    },
+    {
+      "question": "Polarization proves light is:",
+      "options": ["Longitudinal wave", "Transverse wave", "Particle", "Stationary"],
+      "correct": "B",
+      "explanation": "Only transverse waves can be polarized."
+    },
+    {
+      "question": "The photoelectric effect equation is:",
+      "options": ["E = mc²", "E = hf", "E = ½mv²", "V = IR"],
+      "correct": "B",
+      "explanation": "Photon energy E = hf (Planck's constant × frequency)."
+    },
+    {
+      "question": "In a vacuum, all electromagnetic waves have same:",
+      "options": ["Frequency", "Wavelength", "Speed", "Energy"],
+      "correct": "C",
+      "explanation": "All EM waves travel at c = 3×10⁸ m/s in vacuum."
+    }
+  ]
+}
