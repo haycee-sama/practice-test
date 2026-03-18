@@ -1,0 +1,397 @@
+{
+  "electrical": [
+    {
+      "question": "The SI unit of electrical resistance is:",
+      "options": ["Ohm", "Watt", "Ampere", "Volt"],
+      "correct": "A",
+      "explanation": "The ohm (Ω) is the SI unit of electrical resistance, named after Georg Simon Ohm."
+    },
+    {
+      "question": "Which device stores energy in an electric field?",
+      "options": ["Inductor", "Capacitor", "Resistor", "Transformer"],
+      "correct": "B",
+      "explanation": "A capacitor stores energy in an electric field between its plates, while an inductor stores energy in a magnetic field."
+    },
+    {
+      "question": "In a purely resistive AC circuit, the phase difference between voltage and current is:",
+      "options": ["0°", "90°", "180°", "270°"],
+      "correct": "A",
+      "explanation": "In a purely resistive circuit, voltage and current are in phase, meaning the phase difference is 0 degrees."
+    },
+    {
+      "question": "The color code for a 100Ω resistor with 5% tolerance is:",
+      "options": ["Brown Black Brown Gold", "Brown Black Red Gold", "Brown Black Orange Silver", "Red Black Brown Gold"],
+      "correct": "A",
+      "explanation": "Brown (1), Black (0), Brown (multiplier 10) = 100Ω, Gold = 5% tolerance."
+    },
+    {
+      "question": "A transformer steps up voltage from 230V to 460V. If the primary has 100 turns, the secondary turns are:",
+      "options": ["50", "100", "200", "400"],
+      "correct": "C",
+      "explanation": "Turns ratio = V2/V1 = 460/230 = 2. Therefore, secondary turns = 100 × 2 = 200 turns."
+    },
+    {
+      "question": "Which of the following is NOT a type of DC motor?",
+      "options": ["Series", "Shunt", "Compound", "Synchronous"],
+      "correct": "D",
+      "explanation": "Synchronous motors are AC motors. Series, shunt, and compound are types of DC motors."
+    },
+    {
+      "question": "The power factor of a pure inductor is:",
+      "options": ["0", "0.5", "1", "Infinity"],
+      "correct": "A",
+      "explanation": "In a pure inductor, current lags voltage by 90°, so power factor = cos 90° = 0."
+    },
+    {
+      "question": "Kirchhoff's Current Law states that:",
+      "options": ["Sum of voltages in a loop is zero", "Sum of currents at a node is zero", "Current is proportional to voltage", "Power is conserved"],
+      "correct": "B",
+      "explanation": "KCL states that the algebraic sum of currents entering and leaving a node is zero."
+    },
+    {
+      "question": "The unit of magnetic flux density is:",
+      "options": ["Weber", "Tesla", "Henry", "Gauss"],
+      "correct": "B",
+      "explanation": "Tesla (T) is the SI unit of magnetic flux density. 1 T = 1 Wb/m²."
+    },
+    {
+      "question": "A 60W bulb operates at 230V. The current drawn is approximately:",
+      "options": ["0.13A", "0.26A", "0.52A", "1.04A"],
+      "correct": "B",
+      "explanation": "I = P/V = 60/230 = 0.26A approximately."
+    },
+    {
+      "question": "Which material has the highest electrical conductivity?",
+      "options": ["Copper", "Aluminum", "Silver", "Gold"],
+      "correct": "C",
+      "explanation": "Silver has the highest electrical conductivity of all metals, followed by copper and gold."
+    },
+    {
+      "question": "The function of a commutator in a DC generator is to:",
+      "options": ["Convert AC to DC", "Convert DC to AC", "Increase voltage", "Decrease current"],
+      "correct": "A",
+      "explanation": "The commutator converts the AC generated in the armature to DC at the terminals."
+    },
+    {
+      "question": "In a three-phase star connection, the line voltage is:",
+      "options": ["Equal to phase voltage", "√3 times phase voltage", "2 times phase voltage", "3 times phase voltage"],
+      "correct": "B",
+      "explanation": "In star connection, VL = √3 × Vph, and IL = Iph."
+    },
+    {
+      "question": "The synchronous speed of a 6-pole induction motor at 50Hz is:",
+      "options": ["500 RPM", "1000 RPM", "1500 RPM", "3000 RPM"],
+      "correct": "B",
+      "explanation": "Ns = (120 × f)/P = (120 × 50)/6 = 1000 RPM."
+    },
+    {
+      "question": "Which device is used to measure very high resistances?",
+      "options": ["Ohmmeter", "Megger", "Multimeter", "Wheatstone bridge"],
+      "correct": "B",
+      "explanation": "A megger (megohmmeter) is specifically designed to measure high resistances, typically in the megaohm range."
+    },
+    {
+      "question": "The RMS value of a sinusoidal AC voltage with peak value 100V is:",
+      "options": ["50V", "70.7V", "100V", "141.4V"],
+      "correct": "B",
+      "explanation": "Vrms = Vpeak/√2 = 100/1.414 = 70.7V."
+    },
+    {
+      "question": "A zener diode is used for:",
+      "options": ["Rectification", "Amplification", "Voltage regulation", "Switching"],
+      "correct": "C",
+      "explanation": "Zener diodes are designed to operate in reverse breakdown and are primarily used for voltage regulation."
+    },
+    {
+      "question": "The skin effect in conductors increases with:",
+      "options": ["Increase in frequency", "Decrease in frequency", "Increase in conductor diameter", "Decrease in temperature"],
+      "correct": "A",
+      "explanation": "Skin effect, where AC tends to flow near the conductor surface, increases with frequency."
+    },
+    {
+      "question": "Which motor has the highest starting torque?",
+      "options": ["Split phase motor", "Capacitor start motor", "Shaded pole motor", "Universal motor"],
+      "correct": "B",
+      "explanation": "Capacitor start motors have high starting torque due to the phase shift created by the capacitor."
+    },
+    {
+      "question": "The efficiency of a transformer is maximum when:",
+      "options": ["Copper loss = Iron loss", "Copper loss > Iron loss", "Copper loss < Iron loss", "Load is maximum"],
+      "correct": "A",
+      "explanation": "Transformer efficiency is maximum when variable losses (copper) equal constant losses (iron)."
+    },
+    {
+      "question": "The unit of electric field strength is:",
+      "options": ["V/m", "V/m²", "C/m", "N/C"],
+      "correct": "A",
+      "explanation": "Electric field strength is measured in volts per meter (V/m) or newtons per coulomb (N/C)."
+    },
+    {
+      "question": "A triac is a:",
+      "options": ["Two-terminal bidirectional device", "Three-terminal unidirectional device", "Three-terminal bidirectional device", "Four-terminal device"],
+      "correct": "C",
+      "explanation": "A triac is a three-terminal bidirectional thyristor that conducts in both directions."
+    },
+    {
+      "question": "The purpose of a choke in a tube light is to:",
+      "options": ["Limit current", "Provide high voltage", "Improve power factor", "All of the above"],
+      "correct": "D",
+      "explanation": "A choke provides high voltage for starting, limits current during operation, and improves power factor."
+    },
+    {
+      "question": "In a PMMC instrument, the damping is provided by:",
+      "options": ["Air friction", "Fluid friction", "Eddy currents", "Spring"],
+      "correct": "C",
+      "explanation": "PMMC instruments use eddy current damping provided by the aluminum former moving in the magnetic field."
+    },
+    {
+      "question": "The number of diodes used in a full-wave bridge rectifier is:",
+      "options": ["1", "2", "4", "6"],
+      "correct": "C",
+      "explanation": "A full-wave bridge rectifier uses 4 diodes arranged in a bridge configuration."
+    },
+    {
+      "question": "A 3-phase induction motor is:",
+      "options": ["Constant speed motor", "Variable speed motor", "Constant torque motor", "Constant power motor"],
+      "correct": "A",
+      "explanation": "3-phase induction motors are essentially constant speed motors, though speed can be varied with VFDs."
+    },
+    {
+      "question": "The power in a 3-phase circuit can be measured by:",
+      "options": ["One wattmeter", "Two wattmeters", "Three wattmeters", "All of the above"],
+      "correct": "D",
+      "explanation": "Power can be measured by one, two, or three wattmeters depending on the system configuration."
+    },
+    {
+      "question": "The property of a capacitor to oppose change in voltage is called:",
+      "options": ["Inductance", "Capacitance", "Reactance", "Impedance"],
+      "correct": "B",
+      "explanation": "Capacitance is the property that opposes change in voltage across the capacitor."
+    },
+    {
+      "question": "A germanium diode has a forward voltage drop of approximately:",
+      "options": ["0.1V", "0.3V", "0.7V", "1.1V"],
+      "correct": "B",
+      "explanation": "Germanium diodes have a forward voltage drop of about 0.3V, while silicon diodes are about 0.7V."
+    },
+    {
+      "question": "The most commonly used insulating material for cables is:",
+      "options": ["PVC", "Rubber", "Paper", "XLPE"],
+      "correct": "A",
+      "explanation": "PVC (Polyvinyl Chloride) is the most common insulating material due to its good properties and low cost."
+    },
+    {
+      "question": "In a circuit breaker, the arc is extinguished at:",
+      "options": ["Peak voltage", "Zero current", "Peak current", "Zero voltage"],
+      "correct": "B",
+      "explanation": "AC circuit breakers are designed to interrupt current at zero crossing to minimize arcing."
+    },
+    {
+      "question": "The synchronous motor is not self-starting because:",
+      "options": ["It has no starting winding", "It has high inertia", "The direction of torque reverses every half cycle", "It requires DC excitation"],
+      "correct": "C",
+      "explanation": "The torque in a synchronous motor reverses every half cycle at standstill, so it cannot start by itself."
+    },
+    {
+      "question": "The power factor of an induction motor at no load is:",
+      "options": ["High", "Low", "Unity", "Leading"],
+      "correct": "B",
+      "explanation": "At no load, induction motors have a low power factor (0.2-0.3) due to the magnetizing current."
+    },
+    {
+      "question": "Which of the following is a active component?",
+      "options": ["Resistor", "Capacitor", "Inductor", "Transistor"],
+      "correct": "D",
+      "explanation": "Transistors are active components that can amplify signals, while resistors, capacitors, and inductors are passive."
+    },
+    {
+      "question": "The Hall effect is used to measure:",
+      "options": ["Voltage", "Current", "Magnetic field", "Temperature"],
+      "correct": "C",
+      "explanation": "Hall effect sensors measure magnetic field strength by generating a voltage perpendicular to current flow."
+    },
+    {
+      "question": "A 100μF capacitor is connected across 230V, 50Hz supply. The capacitive reactance is:",
+      "options": ["15.9Ω", "31.8Ω", "159Ω", "318Ω"],
+      "correct": "B",
+      "explanation": "Xc = 1/(2πfC) = 1/(2×3.14×50×100×10⁻⁶) = 31.8Ω."
+    },
+    {
+      "question": "The most efficient transmission voltage for long distance is:",
+      "options": ["Low voltage DC", "High voltage DC", "Low voltage AC", "High voltage AC"],
+      "correct": "B",
+      "explanation": "HVDC transmission is most efficient for very long distances due to lower losses and no reactive power issues."
+    },
+    {
+      "question": "A thermocouple produces voltage proportional to:",
+      "options": ["Current", "Resistance", "Temperature difference", "Pressure"],
+      "correct": "C",
+      "explanation": "Thermocouples generate voltage based on the temperature difference between two dissimilar metal junctions."
+    },
+    {
+      "question": "The starting current of a DC motor is high because:",
+      "options": ["Back EMF is zero", "Armature resistance is low", "Field is strong", "Applied voltage is high"],
+      "correct": "A",
+      "explanation": "At start, back EMF is zero, so the armature draws high current limited only by armature resistance."
+    },
+    {
+      "question": "Which relay is used for protection of alternators against internal faults?",
+      "options": ["Overcurrent relay", "Earth fault relay", "Differential relay", "Distance relay"],
+      "correct": "C",
+      "explanation": "Differential relays compare currents at both ends and operate for internal faults in alternators."
+    },
+    {
+      "question": "The material used for heating elements is:",
+      "options": ["Copper", "Aluminum", "Nichrome", "Tungsten"],
+      "correct": "C",
+      "explanation": "Nichrome (Ni-Cr alloy) is used for heating elements due to high resistivity and oxidation resistance."
+    },
+    {
+      "question": "In a fluorescent tube, the starter is used to:",
+      "options": ["Limit current", "Provide high voltage", "Preheat the electrodes", "Improve power factor"],
+      "correct": "C",
+      "explanation": "The starter preheats the electrodes before the tube strikes, then opens to induce high voltage from the choke."
+    },
+    {
+      "question": "The voltage regulation of an ideal transformer is:",
+      "options": ["0%", "50%", "100%", "Infinite"],
+      "correct": "A",
+      "explanation": "An ideal transformer has zero voltage regulation as there are no losses or impedance drops."
+    },
+    {
+      "question": "The unit of luminous flux is:",
+      "options": ["Candela", "Lumen", "Lux", "Watt"],
+      "correct": "B",
+      "explanation": "Lumen (lm) is the SI unit of luminous flux, measuring the total visible light emitted."
+    },
+    {
+      "question": "A silicon controlled rectifier (SCR) has how many PN junctions?",
+      "options": ["2", "3", "4", "5"],
+      "correct": "B",
+      "explanation": "An SCR is a four-layer (PNPN) device with three PN junctions."
+    },
+    {
+      "question": "The most commonly used frequency for aircraft power systems is:",
+      "options": ["50 Hz", "60 Hz", "400 Hz", "1000 Hz"],
+      "correct": "C",
+      "explanation": "400 Hz is used in aircraft to reduce transformer and motor size and weight."
+    },
+    {
+      "question": "The minimum number of transistors required for a Darlington pair is:",
+      "options": ["1", "2", "3", "4"],
+      "correct": "B",
+      "explanation": "A Darlington pair consists of two transistors connected to provide high current gain."
+    },
+    {
+      "question": "The main advantage of a switched mode power supply (SMPS) is:",
+      "options": ["High efficiency", "Low cost", "Simple design", "Low noise"],
+      "correct": "A",
+      "explanation": "SMPS offers high efficiency (80-90%) compared to linear power supplies due to switching operation."
+    },
+    {
+      "question": "The core of an electromagnet is made of:",
+      "options": ["Soft iron", "Steel", "Alnico", "Ferrite"],
+      "correct": "A",
+      "explanation": "Soft iron is used because it has high permeability and low coercivity, making it easy to magnetize and demagnetize."
+    },
+    {
+      "question": "In a series RLC circuit at resonance, the impedance is:",
+      "options": ["Maximum", "Minimum", "Zero", "Infinite"],
+      "correct": "B",
+      "explanation": "At resonance, inductive and capacitive reactances cancel, leaving only resistance, so impedance is minimum."
+    },
+    {
+      "question": "The function of a surge arrester is to:",
+      "options": ["Limit voltage", "Limit current", "Protect against lightning", "All of the above"],
+      "correct": "D",
+      "explanation": "Surge arresters protect equipment by limiting overvoltages from lightning or switching surges."
+    },
+    {
+      "question": "A Wien bridge oscillator is used to generate:",
+      "options": ["High frequency sine waves", "Low frequency sine waves", "Square waves", "Pulse waves"],
+      "correct": "B",
+      "explanation": "Wien bridge oscillators are commonly used to generate low frequency sine waves (20 Hz to 100 kHz)."
+    },
+    {
+      "question": "The dielectric strength of a material is expressed in:",
+      "options": ["V/m", "V/μm", "kV/mm", "All of the above"],
+      "correct": "D",
+      "explanation": "Dielectric strength is the maximum electric field a material can withstand without breakdown, expressed in V/m or similar."
+    },
+    {
+      "question": "Which motor is suitable for lifts and cranes?",
+      "options": ["Series motor", "Shunt motor", "Induction motor", "Synchronous motor"],
+      "correct": "A",
+      "explanation": "DC series motors have high starting torque and are suitable for lifts, cranes, and traction applications."
+    },
+    {
+      "question": "The speed of a universal motor is controlled by:",
+      "options": ["Field control", "Armature control", "Voltage control", "All of the above"],
+      "correct": "D",
+      "explanation": "Universal motor speed can be controlled by various methods including field, armature, and voltage control."
+    },
+    {
+      "question": "A 100 Ah battery can deliver 10A for:",
+      "options": ["1 hour", "5 hours", "10 hours", "100 hours"],
+      "correct": "C",
+      "explanation": "Battery capacity in Ah = Current × Time, so 100 Ah = 10A × 10 hours."
+    },
+    {
+      "question": "The main reason for using AC transmission over DC transmission is:",
+      "options": ["Lower cost", "Higher efficiency", "Ease of voltage transformation", "Less losses"],
+      "correct": "C",
+      "explanation": "AC can be easily stepped up or down using transformers, making it more practical for distribution."
+    },
+    {
+      "question": "The most common type of fault in power systems is:",
+      "options": ["Three phase fault", "Line to line fault", "Single line to ground fault", "Double line to ground fault"],
+      "correct": "C",
+      "explanation": "Single line to ground faults are the most common, accounting for about 70-80% of all faults."
+    },
+    {
+      "question": "The color of a neutral wire in a 3-phase system is:",
+      "options": ["Red", "Yellow", "Blue", "Black"],
+      "correct": "D",
+      "explanation": "Neutral is typically black or white, while phases are red, yellow, and blue in many standards."
+    },
+    {
+      "question": "A 3-phase, 4-wire system has:",
+      "options": ["3 phases and 1 neutral", "3 phases and 1 earth", "4 phases", "3 phases and 3 neutrals"],
+      "correct": "A",
+      "explanation": "A 3-phase, 4-wire system has three phase conductors and one neutral conductor."
+    },
+    {
+      "question": "The efficiency of a 100 kVA transformer at full load is 98%. The total losses are:",
+      "options": ["2 kW", "2.04 kW", "4 kW", "4.08 kW"],
+      "correct": "B",
+      "explanation": "Output = 100 kVA × pf (assume unity) = 100 kW. Efficiency = Output/(Output + Losses) => 0.98 = 100/(100 + Losses) => Losses = 2.04 kW."
+    },
+    {
+      "question": "Which of the following is not a part of a synchronous motor?",
+      "options": ["Damper winding", "Commutator", "Field winding", "Armature winding"],
+      "correct": "B",
+      "explanation": "Synchronous motors do not have commutators; they have slip rings for DC excitation."
+    },
+    {
+      "question": "The most accurate instrument for measuring resistance is:",
+      "options": ["Ohmmeter", "Multimeter", "Wheatstone bridge", "Megger"],
+      "correct": "C",
+      "explanation": "Wheatstone bridge provides the most accurate resistance measurement for medium values."
+    },
+    {
+      "question": "The power factor of an alternator is determined by:",
+      "options": ["Load", "Speed", "Excitation", "Frequency"],
+      "correct": "A",
+      "explanation": "The power factor of an alternator is determined by the type of load connected to it."
+    },
+    {
+      "question": "In a capacitor start motor, the capacitor is connected in series with the:",
+      "options": ["Main winding", "Starting winding", "Both windings", "Rotor"],
+      "correct": "B",
+      "explanation": "The capacitor is connected in series with the starting winding to create phase shift."
+    },
+    {
+      "question": "The most common type of enclosure for outdoor motors is:",
+      "options": ["Open", "TEFC", "SPDP", "TENV"],
+      "correct": "B",
+      "explanation": "TEFC (Totally Enclosed Fan Cooled) motors are most common for ou
