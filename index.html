@@ -1,280 +1,1062 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orange Group CBT Practice</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenpeg Engineering CBT Practice</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- jsPDF for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- html2canvas for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --secondary-green: #4caf50;
+            --light-green: #e8f5e9;
+            --accent-gray: #37474f;
+            --mech-orange: #ff9800;
+            --elect-yellow: #ffc107;
+            --metal-silver: #b0bec5;
+        }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
 
-<style>
-body{
-background:linear-gradient(135deg,#ff6600,#ff8c00);
-min-height:100vh;
-font-family:Segoe UI;
-}
-.card{
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-.btn-primary{
-background:#ff6600;
-border:none;
-}
-.btn-primary:hover{
-background:#e65c00;
-}
-.timer{
-font-weight:bold;
-font-size:18px;
-}
-.correct{color:green;}
-.wrong{color:red;}
-#examSection{display:none;}
-#resultSection{display:none;}
-</style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c8e6c9 100%);
+            min-height: 100vh;
+        }
+
+        /* Gear Loading Animation */
+        .gear-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 50px auto;
+        }
+
+        .gear {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+            position: relative;
+            animation: rotate 2s linear infinite;
+        }
+
+        .gear::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 15px solid transparent;
+            border-top-color: var(--accent-gray);
+            border-bottom-color: var(--accent-gray);
+            top: -25px;
+            left: -25px;
+            animation: rotate 1.5s linear infinite reverse;
+        }
+
+        .gear::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 20px;
+            left: 20px;
+        }
+
+        .gear.small {
+            width: 40px;
+            height: 40px;
+            animation: rotate 1.5s linear infinite reverse;
+        }
+
+        .gear.small::before {
+            width: 60px;
+            height: 60px;
+            border-width: 10px;
+            top: -20px;
+            left: -20px;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Circuit Pattern Background */
+        .circuit-bg {
+            background-image: 
+                radial-gradient(circle at 30% 40%, rgba(76, 175, 80, 0.1) 0px, transparent 2px),
+                linear-gradient(45deg, transparent 48%, rgba(46, 125, 80, 0.1) 50%, transparent 52%);
+            background-size: 50px 50px, 100px 100px;
+        }
+
+        /* Section Cards */
+        .discipline-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-green);
+            cursor: pointer;
+        }
+
+        .discipline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .discipline-card.completed {
+            border-left-color: var(--mech-orange);
+            background: var(--light-green);
+        }
+
+        .discipline-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-right: 20px;
+        }
+
+        /* Timer Styling */
+        .timer-container {
+            background: linear-gradient(135deg, var(--accent-gray), #1e2a2f);
+            color: white;
+            border-radius: 50px;
+            padding: 15px 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .timer-progress {
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .timer-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-green), var(--mech-orange));
+            border-radius: 4px;
+            transition: width 1s linear;
+        }
+
+        /* Question Navigation */
+        .question-nav-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-green);
+            background: white;
+            color: var(--primary-green);
+            font-weight: bold;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .question-nav-btn.answered {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .question-nav-btn.current {
+            border-width: 3px;
+            border-color: var(--mech-orange);
+            transform: scale(1.1);
+        }
+
+        .question-nav-btn:hover {
+            background: var(--light-green);
+        }
+
+        /* Question Card */
+        .question-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(46, 125, 80, 0.2);
+        }
+
+        .option-item {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-item:hover {
+            border-color: var(--secondary-green);
+            background: var(--light-green);
+        }
+
+        .option-item.selected {
+            border-color: var(--primary-green);
+            background: var(--light-green);
+        }
+
+        .option-item.correct-answer {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .option-item.wrong-answer {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        /* Results Table */
+        .results-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .results-table th {
+            background: var(--primary-green);
+            color: white;
+            padding: 15px;
+        }
+
+        .results-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .correct-badge {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .wrong-badge {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            background: var(--secondary-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .discipline-card {
+                padding: 15px;
+            }
+            
+            .discipline-icon {
+                font-size: 2rem;
+                margin-right: 10px;
+            }
+            
+            .question-nav-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .timer-container {
+                padding: 10px 15px;
+            }
+            
+            .fab {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Main Container -->
+    <div class="container py-4">
+        <!-- Header with Logo -->
+        <div class="text-center mb-5">
+            <div class="d-inline-block position-relative">
+                <i class="fas fa-cog fa-spin fa-3x text-success me-2"></i>
+                <i class="fas fa-bolt fa-2x text-warning position-absolute top-0 start-100"></i>
+            </div>
+            <h1 class="display-4 fw-bold text-dark mt-3">Greenpeg Engineering</h1>
+            <p class="lead text-muted">Computer-Based Training Practice Test</p>
+        </div>
 
-<div class="container mt-5">
+        <!-- Name Entry Screen -->
+        <div id="nameScreen" class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-user-graduate fa-4x text-success"></i>
+                        </div>
+                        <h3 class="text-center mb-4">Enter Your Details</h3>
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="userName" class="form-control form-control-lg" placeholder="e.g., John Doe">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Email (for certificate)</label>
+                            <input type="email" id="userEmail" class="form-control form-control-lg" placeholder="john@example.com">
+                        </div>
+                        <button onclick="startAssessment()" class="btn btn-success btn-lg w-100">
+                            <i class="fas fa-play me-2"></i>Start Assessment
+                            <i class="fas fa-cog fa-spin ms-2"></i>
+                        </button>
+                        <div class="gear-loading mt-4">
+                            <div class="gear small"></div>
+                            <div class="gear"></div>
+                            <div class="gear small"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!-- INSTRUCTION SECTION -->
-<div id="instructionSection" class="card p-4">
-<h3 class="text-center mb-3">Orange Group CBT Practice Examination</h3>
+        <!-- Assessment Screen (Initially Hidden) -->
+        <div id="assessmentScreen" style="display: none;">
+            <!-- Timer and Progress Bar -->
+            <div class="timer-container mb-4">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <i class="fas fa-hourglass-half fa-2x"></i>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Time Remaining</span>
+                            <span id="timerDisplay">01:00:00</span>
+                        </div>
+                        <div class="timer-progress">
+                            <div id="timerProgressBar" class="timer-progress-bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <span class="badge bg-warning text-dark" id="currentSection">Electrical</span>
+                    </div>
+                </div>
+            </div>
 
-<p><b>Instructions:</b></p>
-<ul>
-<li>Total Questions: 25</li>
-<li>15 Quantitative (Math)</li>
-<li>5 Comprehension</li>
-<li>5 Logical Reasoning</li>
-<li>Duration: 30 Minutes</li>
-<li>Do not refresh during the test</li>
-</ul>
+            <!-- Main Content Row -->
+            <div class="row">
+                <!-- Discipline Navigation Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="fas fa-book-open me-2"></i>Disciplines</h5>
+                        </div>
+                        <div class="list-group list-group-flush" id="disciplineList">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
 
-<div class="mb-3">
-<label class="form-label">Candidate Full Name</label>
-<input type="text" id="candidateName" class="form-control" placeholder="Enter your full name">
-</div>
+                    <!-- Question Navigator -->
+                    <div class="card shadow-sm mt-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="fas fa-grid-2 me-2"></i>Question Navigator</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap justify-content-center" id="questionNavigator">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                            <div class="mt-3 text-center small">
+                                <span class="badge bg-success me-2">Answered</span>
+                                <span class="badge bg-light text-dark border">Current</span>
+                            </div>
+                        </div>
+                    </div>
 
-<button class="btn btn-primary w-100" onclick="startExam()">Start Examination</button>
-</div>
+                    <!-- Save Status -->
+                    <div class="alert alert-success mt-4" id="saveStatus" style="display: none;">
+                        <i class="fas fa-check-circle me-2"></i>Progress saved
+                    </div>
+                </div>
 
-<!-- EXAM SECTION -->
-<div id="examSection">
+                <!-- Question Display Area -->
+                <div class="col-lg-9">
+                    <div class="question-card" id="questionCard">
+                        <!-- Question Header -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 id="questionNumber" class="text-success">Question 1/25</h4>
+                            <span id="questionMarks" class="badge bg-info">1 Mark</span>
+                        </div>
+                        
+                        <!-- Question Text -->
+                        <h5 id="questionText" class="mb-4">Loading question...</h5>
+                        
+                        <!-- Options -->
+                        <div id="optionsContainer" class="mt-4">
+                            <!-- Populated by JavaScript -->
+                        </div>
 
-<div class="card p-3 mb-3">
-<div class="d-flex justify-content-between">
-<div>Candidate: <b id="displayName"></b></div>
-<div>Time Left: <span id="timer" class="text-danger timer"></span></div>
-</div>
-</div>
+                        <!-- Navigation Buttons -->
+                        <div class="d-flex justify-content-between mt-5">
+                            <button onclick="previousQuestion()" class="btn btn-outline-secondary" id="prevBtn">
+                                <i class="fas fa-arrow-left me-2"></i>Previous
+                            </button>
+                            <button onclick="saveAndNext()" class="btn btn-success" id="nextBtn">
+                                Save & Next<i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
 
-<div class="card p-4">
-<h6 id="questionCategory"></h6>
-<p id="questionText"></p>
-<div id="optionsArea"></div>
+                    <!-- Submit Section -->
+                    <div class="text-center mt-4">
+                        <button onclick="submitSection()" class="btn btn-warning btn-lg" id="submitSectionBtn">
+                            <i class="fas fa-flag-checkered me-2"></i>Submit Section
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="mt-3 d-flex justify-content-between">
-<button class="btn btn-secondary" onclick="prevQuestion()">Previous</button>
-<button class="btn btn-primary" onclick="nextQuestion()">Next</button>
-<button class="btn btn-success" onclick="submitExam()">Submit</button>
-</div>
-</div>
+        <!-- Results Screen (Initially Hidden) -->
+        <div id="resultsScreen" style="display: none;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-body p-5">
+                            <!-- Results Header -->
+                            <div class="text-center mb-5">
+                                <i class="fas fa-trophy fa-4x text-warning mb-3"></i>
+                                <h2 id="resultName" class="display-6">John Doe's Results</h2>
+                                <p class="text-muted" id="resultEmail">john@example.com</p>
+                                <div class="gear-loading my-4">
+                                    <div class="gear small"></div>
+                                    <div class="gear"></div>
+                                    <div class="gear small"></div>
+                                </div>
+                            </div>
 
-</div>
+                            <!-- Summary Cards -->
+                            <div class="row g-4 mb-5">
+                                <div class="col-md-3">
+                                    <div class="card bg-success text-white">
+                                        <div class="card-body text-center">
+                                            <h3 id="totalScore">0</h3>
+                                            <p class="mb-0">Total Score</p>
+                                            <small>/150 marks</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-info text-white">
+                                        <div class="card-body text-center">
+                                            <h3 id="totalCorrect">0</h3>
+                                            <p class="mb-0">Correct</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-warning text-dark">
+                                        <div class="card-body text-center">
+                                            <h3 id="totalWrong">0</h3>
+                                            <p class="mb-0">Wrong</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-secondary text-white">
+                                        <div class="card-body text-center">
+                                            <h3 id="totalUnanswered">0</h3>
+                                            <p class="mb-0">Unanswered</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-<!-- RESULT SECTION -->
-<div id="resultSection" class="card p-4 mt-4"></div>
+                            <!-- Section-wise Results -->
+                            <div class="accordion mb-5" id="resultsAccordion">
+                                <!-- Populated by JavaScript -->
+                            </div>
 
-</div>
+                            <!-- Export Buttons -->
+                            <div class="text-center">
+                                <button onclick="exportToPDF()" class="btn btn-success btn-lg mx-2">
+                                    <i class="fas fa-file-pdf me-2"></i>Export to PDF
+                                </button>
+                                <button onclick="restartTest()" class="btn btn-outline-secondary btn-lg mx-2">
+                                    <i class="fas fa-redo me-2"></i>Take New Test
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script>
-const { jsPDF } = window.jspdf;
+    <!-- Floating Action Button for Quick Save -->
+    <button class="fab" onclick="quickSave()" id="fab">
+        <i class="fas fa-save"></i>
+    </button>
 
-let allMath = [];
-let allReasoning = [];
-let allComprehension = [];
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main Application Script -->
+    <script>
+        // Global Variables
+        let allQuestions = [];
+        let currentUser = {
+            name: '',
+            email: ''
+        };
+        let currentState = {
+            disciplineIndex: 0,
+            questionIndex: 0,
+            answers: {},
+            markedForReview: [],
+            timeRemaining: 3600, // 1 hour in seconds
+            timerInterval: null,
+            completedSections: []
+        };
+        
+        let disciplines = [
+            { id: 'electrical', name: 'Electrical Engineering', icon: 'fa-bolt', color: 'warning' },
+            { id: 'mechanical', name: 'Mechanical Engineering', icon: 'fa-cog', color: 'info' },
+            { id: 'materials', name: 'Materials & Metallurgical', icon: 'fa-flask', color: 'danger' },
+            { id: 'mechatronics', name: 'Mechatronics Engineering', icon: 'fa-robot', color: 'primary' },
+            { id: 'computer', name: 'Computer Engineering', icon: 'fa-laptop-code', color: 'secondary' },
+            { id: 'physics', name: 'Physics in Automation', icon: 'fa-atom', color: 'dark' }
+        ];
 
-function generateMathBank(){
-for(let i=1;i<=40;i++){
-let a = Math.floor(Math.random()*20)+5;
-let b = Math.floor(Math.random()*10)+1;
-allMath.push({
-section:"Quantitative",
-question:`If a product costs ₦${a*100} and markup is ${b*10}%, what is selling price?`,
-options:[
-`₦${a*100}`,
-`₦${a*100*(1+b/10)}`,
-`₦${a*100*(1+b/5)}`,
-`₦${a*100*(1+b/20)}`
-],
-answer:1,
-explanation:"Selling Price = Cost × (1 + Markup%)"
-});
-}
-}
+        // Load questions from JSON
+        async function loadQuestions() {
+            try {
+                const response = await fetch('questions.json');
+                allQuestions = await response.json();
+                return true;
+            } catch (error) {
+                console.error('Error loading questions:', error);
+                // Fallback to sample questions if JSON fails to load
+                allQuestions = generateSampleQuestions();
+                return true;
+            }
+        }
 
-function generateReasoningBank(){
-for(let i=1;i<=20;i++){
-allReasoning.push({
-section:"Logical Reasoning",
-question:"All managers are leaders. Some leaders are innovators. Which must be true?",
-options:[
-"All managers are innovators",
-"Some managers may be innovators",
-"No manager is innovator",
-"All innovators are managers"
-],
-answer:1,
-explanation:"Since some leaders are innovators and all managers are leaders, some managers may be innovators."
-});
-}
-}
+        // Start Assessment
+        function startAssessment() {
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            
+            if (!name || !email) {
+                alert('Please enter your name and email to continue.');
+                return;
+            }
+            
+            currentUser.name = name;
+            currentUser.email = email;
+            
+            document.getElementById('nameScreen').style.display = 'none';
+            document.getElementById('assessmentScreen').style.display = 'block';
+            
+            // Load questions and initialize
+            loadQuestions().then(() => {
+                initializeAssessment();
+                startTimer();
+                loadDiscipline(0);
+            });
+            
+            // Show floating action button
+            document.getElementById('fab').style.display = 'block';
+        }
 
-function generateComprehensionBank(){
-for(let i=1;i<=10;i++){
-allComprehension.push({
-section:"Comprehension",
-question:`PASSAGE: Orange Group focuses on quality manufacturing and efficiency.
-Question: What drives Orange Group success?`,
-options:[
-"Low pricing only",
-"Quality and efficiency",
-"No marketing",
-"Outsourcing everything"
-],
-answer:1,
-explanation:"Passage states quality manufacturing and efficiency."
-});
-}
-}
+        // Initialize Assessment
+        function initializeAssessment() {
+            // Load saved state from localStorage
+            const saved = localStorage.getItem('greenpeg_assessment');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                if (parsed.user.email === currentUser.email) {
+                    currentState = parsed.state;
+                }
+            }
+            
+            updateDisciplineList();
+            loadSavedAnswers();
+        }
 
-generateMathBank();
-generateReasoningBank();
-generateComprehensionBank();
+        // Load Discipline
+        function loadDiscipline(index) {
+            currentState.disciplineIndex = index;
+            currentState.questionIndex = 0;
+            updateQuestionDisplay();
+            updateQuestionNavigator();
+            updateDisciplineList();
+        }
 
-let selectedQuestions = [];
-let current = 0;
-let answers = [];
-let time = 1800;
-let timerInterval;
+        // Update Question Display
+        function updateQuestionDisplay() {
+            const discipline = disciplines[currentState.disciplineIndex];
+            const disciplineQuestions = allQuestions[discipline.id] || [];
+            const randomQuestions = getRandomQuestions(disciplineQuestions, 25);
+            
+            document.getElementById('currentSection').textContent = discipline.name;
+            
+            if (randomQuestions.length > 0) {
+                const question = randomQuestions[currentState.questionIndex];
+                document.getElementById('questionNumber').textContent = `Question ${currentState.questionIndex + 1}/25 - ${discipline.name}`;
+                document.getElementById('questionText').textContent = question.question;
+                
+                // Generate options
+                let optionsHtml = '';
+                question.options.forEach((option, idx) => {
+                    const optionLetter = String.fromCharCode(65 + idx); // A, B, C, D
+                    const isSelected = currentState.answers[`${discipline.id}_${currentState.questionIndex}`] === optionLetter;
+                    
+                    optionsHtml += `
+                        <div class="option-item ${isSelected ? 'selected' : ''}" onclick="selectOption('${optionLetter}')">
+                            <span class="fw-bold me-3">${optionLetter}.</span>
+                            ${option}
+                        </div>
+                    `;
+                });
+                
+                document.getElementById('optionsContainer').innerHTML = optionsHtml;
+                
+                // Update navigation buttons
+                document.getElementById('prevBtn').disabled = currentState.questionIndex === 0;
+            }
+        }
 
-function startExam(){
-let name = document.getElementById("candidateName").value.trim();
-if(!name){ alert("Enter your name"); return; }
+        // Get Random Questions
+        function getRandomQuestions(questions, count) {
+            // For demo, return first 25 if available
+            return questions.slice(0, Math.min(count, questions.length));
+        }
 
-document.getElementById("displayName").innerText=name;
+        // Select Option
+        function selectOption(optionLetter) {
+            const discipline = disciplines[currentState.disciplineIndex];
+            const questionKey = `${discipline.id}_${currentState.questionIndex}`;
+            
+            // Remove selected class from all options
+            document.querySelectorAll('.option-item').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+            
+            // Save answer
+            currentState.answers[questionKey] = optionLetter;
+            saveProgress();
+            
+            // Update navigator
+            updateQuestionNavigator();
+        }
 
-selectedQuestions = [
-...shuffle(allMath).slice(0,15),
-...shuffle(allComprehension).slice(0,5),
-...shuffle(allReasoning).slice(0,5)
-];
+        // Save and Next
+        function saveAndNext() {
+            const discipline = disciplines[currentState.disciplineIndex];
+            const totalQuestions = 25;
+            
+            if (currentState.questionIndex < totalQuestions - 1) {
+                currentState.questionIndex++;
+                updateQuestionDisplay();
+                updateQuestionNavigator();
+            } else {
+                // Move to next discipline
+                if (currentState.disciplineIndex < disciplines.length - 1) {
+                    if (!currentState.completedSections.includes(discipline.id)) {
+                        currentState.completedSections.push(discipline.id);
+                    }
+                    loadDiscipline(currentState.disciplineIndex + 1);
+                } else {
+                    // All sections completed
+                    showResults();
+                }
+            }
+        }
 
-selectedQuestions = shuffle(selectedQuestions);
+        // Previous Question
+        function previousQuestion() {
+            if (currentState.questionIndex > 0) {
+                currentState.questionIndex--;
+                updateQuestionDisplay();
+                updateQuestionNavigator();
+            }
+        }
 
-answers = new Array(25).fill(null);
+        // Update Question Navigator
+        function updateQuestionNavigator() {
+            const discipline = disciplines[currentState.disciplineIndex];
+            let navigatorHtml = '';
+            
+            for (let i = 0; i < 25; i++) {
+                const questionKey = `${discipline.id}_${i}`;
+                const isAnswered = currentState.answers[questionKey] !== undefined;
+                const isCurrent = i === currentState.questionIndex;
+                
+                navigatorHtml += `
+                    <button class="question-nav-btn ${isAnswered ? 'answered' : ''} ${isCurrent ? 'current' : ''}" 
+                            onclick="jumpToQuestion(${i})">
+                        ${i + 1}
+                    </button>
+                `;
+            }
+            
+            document.getElementById('questionNavigator').innerHTML = navigatorHtml;
+        }
 
-document.getElementById("instructionSection").style.display="none";
-document.getElementById("examSection").style.display="block";
+        // Jump to Question
+        function jumpToQuestion(index) {
+            currentState.questionIndex = index;
+            updateQuestionDisplay();
+            updateQuestionNavigator();
+        }
 
-renderQuestion();
-startTimer();
-}
+        // Update Discipline List
+        function updateDisciplineList() {
+            let listHtml = '';
+            
+            disciplines.forEach((discipline, index) => {
+                const isActive = index === currentState.disciplineIndex;
+                const isCompleted = currentState.completedSections.includes(discipline.id);
+                
+                listHtml += `
+                    <a href="#" class="list-group-item list-group-item-action ${isActive ? 'active bg-success' : ''} 
+                            ${isCompleted ? 'list-group-item-success' : ''}"
+                       onclick="loadDiscipline(${index})">
+                        <div class="d-flex align-items-center">
+                            <i class="fas ${discipline.icon} me-3 fa-lg"></i>
+                            <div>
+                                <strong>${discipline.name}</strong><br>
+                                <small>${isCompleted ? '✓ Completed' : 'In Progress'}</small>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            });
+            
+            document.getElementById('disciplineList').innerHTML = listHtml;
+        }
 
-function shuffle(array){
-return array.sort(()=>Math.random()-0.5);
-}
+        // Timer Functions
+        function startTimer() {
+            currentState.timerInterval = setInterval(() => {
+                if (currentState.timeRemaining > 0) {
+                    currentState.timeRemaining--;
+                    updateTimerDisplay();
+                    
+                    // Auto-submit if time runs out
+                    if (currentState.timeRemaining === 0) {
+                        clearInterval(currentState.timerInterval);
+                        alert('Time\'s up! Your answers will be submitted.');
+                        showResults();
+                    }
+                }
+            }, 1000);
+        }
 
-function renderQuestion(){
-let q = selectedQuestions[current];
-document.getElementById("questionCategory").innerText=`Section: ${q.section}`;
-document.getElementById("questionText").innerText=q.question;
+        function updateTimerDisplay() {
+            const hours = Math.floor(currentState.timeRemaining / 3600);
+            const minutes = Math.floor((currentState.timeRemaining % 3600) / 60);
+            const seconds = currentState.timeRemaining % 60;
+            
+            document.getElementById('timerDisplay').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            const percentage = (currentState.timeRemaining / 3600) * 100;
+            document.getElementById('timerProgressBar').style.width = `${percentage}%`;
+        }
 
-let optionsHTML="";
-q.options.forEach((opt,index)=>{
-optionsHTML+=`
-<div class="form-check">
-<input class="form-check-input" type="radio" name="option"
-${answers[current]===index?"checked":""}
-onclick="answers[${current}]=${index}">
-<label class="form-check-label">${opt}</label>
-</div>
-`;
-});
-document.getElementById("optionsArea").innerHTML=optionsHTML;
-}
+        // Save Progress
+        function saveProgress() {
+            const saveData = {
+                user: currentUser,
+                state: currentState
+            };
+            
+            localStorage.setItem('greenpeg_assessment', JSON.stringify(saveData));
+            
+            // Show save status
+            const saveStatus = document.getElementById('saveStatus');
+            saveStatus.style.display = 'block';
+            setTimeout(() => {
+                saveStatus.style.display = 'none';
+            }, 2000);
+        }
 
-function nextQuestion(){
-if(current<24){ current++; renderQuestion(); }
-}
+        // Quick Save
+        function quickSave() {
+            saveProgress();
+        }
 
-function prevQuestion(){
-if(current>0){ current--; renderQuestion(); }
-}
+        // Load Saved Answers
+        function loadSavedAnswers() {
+            // Implementation for loading saved answers
+        }
 
-function startTimer(){
-updateTimer();
-timerInterval=setInterval(()=>{
-time--;
-updateTimer();
-if(time<=0){
-clearInterval(timerInterval);
-submitExam();
-}
-},1000);
-}
+        // Submit Section
+        function submitSection() {
+            if (confirm('Are you sure you want to submit this section? You cannot change your answers after submission.')) {
+                const discipline = disciplines[currentState.disciplineIndex];
+                if (!currentState.completedSections.includes(discipline.id)) {
+                    currentState.completedSections.push(discipline.id);
+                }
+                
+                // Move to next section
+                if (currentState.disciplineIndex < disciplines.length - 1) {
+                    loadDiscipline(currentState.disciplineIndex + 1);
+                } else {
+                    showResults();
+                }
+                
+                updateDisciplineList();
+                saveProgress();
+            }
+        }
 
-function updateTimer(){
-let m=Math.floor(time/60);
-let s=time%60;
-document.getElementById("timer").innerText=`${m}:${s<10?"0"+s:s}`;
-}
+        // Show Results
+        function showResults() {
+            clearInterval(currentState.timerInterval);
+            
+            document.getElementById('assessmentScreen').style.display = 'none';
+            document.getElementById('resultsScreen').style.display = 'block';
+            document.getElementById('fab').style.display = 'none';
+            
+            // Calculate results
+            calculateAndDisplayResults();
+        }
 
-function submitExam(){
-clearInterval(timerInterval);
+        // Calculate and Display Results
+        function calculateAndDisplayResults() {
+            let totalScore = 0;
+            let totalCorrect = 0;
+            let totalWrong = 0;
+            let totalQuestions = 0;
+            
+            // Calculate overall statistics
+            disciplines.forEach(discipline => {
+                const disciplineQuestions = allQuestions[discipline.id] || [];
+                const randomQuestions = disciplineQuestions.slice(0, 25);
+                
+                randomQuestions.forEach((question, qIndex) => {
+                    const questionKey = `${discipline.id}_${qIndex}`;
+                    const userAnswer = currentState.answers[questionKey];
+                    const correctAnswer = question.correct;
+                    
+                    if (userAnswer) {
+                        if (userAnswer === correctAnswer) {
+                            totalScore++;
+                            totalCorrect++;
+                        } else {
+                            totalWrong++;
+                        }
+                    }
+                    totalQuestions++;
+                });
+            });
+            
+            const totalUnanswered = totalQuestions - (totalCorrect + totalWrong);
+            
+            // Update summary
+            document.getElementById('totalScore').textContent = totalScore;
+            document.getElementById('totalCorrect').textContent = totalCorrect;
+            document.getElementById('totalWrong').textContent = totalWrong;
+            document.getElementById('totalUnanswered').textContent = totalUnanswered;
+            document.getElementById('resultName').textContent = currentUser.name + "'s Results";
+            document.getElementById('resultEmail').textContent = currentUser.email;
+            
+            // Generate section-wise results
+            generateSectionResults();
+        }
 
-let score=0;
-let resultHTML="<h4>Examination Result</h4>";
+        // Generate Section Results
+        function generateSectionResults() {
+            let accordionHtml = '';
+            
+            disciplines.forEach((discipline, dIndex) => {
+                const disciplineQuestions = allQuestions[discipline.id] || [];
+                const randomQuestions = disciplineQuestions.slice(0, 25);
+                let sectionCorrect = 0;
+                let sectionTotal = 0;
+                let questionsHtml = '';
+                
+                randomQuestions.forEach((question, qIndex) => {
+                    const questionKey = `${discipline.id}_${qIndex}`;
+                    const userAnswer = currentState.answers[questionKey];
+                    const correctAnswer = question.correct;
+                    const isCorrect = userAnswer === correctAnswer;
+                    
+                    if (userAnswer) {
+                        if (isCorrect) sectionCorrect++;
+                        sectionTotal++;
+                    }
+                    
+                    // Add question details for results
+                    questionsHtml += `
+                        <tr>
+                            <td>${qIndex + 1}</td>
+                            <td>${question.question.substring(0, 50)}...</td>
+                            <td>${userAnswer || '-'}</td>
+                            <td>${correctAnswer}</td>
+                            <td>
+                                ${isCorrect ? 
+                                    '<span class="correct-badge"><i class="fas fa-check me-1"></i>Correct</span>' : 
+                                    userAnswer ? 
+                                    '<span class="wrong-badge"><i class="fas fa-times me-1"></i>Wrong</span>' :
+                                    '<span class="badge bg-secondary">Unanswered</span>'}
+                            </td>
+                            <td><small>${question.explanation || 'N/A'}</small></td>
+                        </tr>
+                    `;
+                });
+                
+                accordionHtml += `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button ${dIndex === 0 ? '' : 'collapsed'}" type="button" 
+                                    data-bs-toggle="collapse" data-bs-target="#collapse${dIndex}">
+                                <i class="fas ${discipline.icon} me-3"></i>
+                                ${discipline.name} - Score: ${sectionCorrect}/${randomQuestions.length}
+                            </button>
+                        </h2>
+                        <div id="collapse${dIndex}" class="accordion-collapse collapse ${dIndex === 0 ? 'show' : ''}">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Question</th>
+                                                <th>Your Answer</th>
+                                                <th>Correct</th>
+                                                <th>Status</th>
+                                                <th>Explanation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${questionsHtml}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('resultsAccordion').innerHTML = accordionHtml;
+        }
 
-selectedQuestions.forEach((q,i)=>{
-if(answers[i]===q.answer){score++;}
-});
+        // Export to PDF
+        function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Add content to PDF
+            doc.setFontSize(20);
+            doc.text('Greenpeg Engineering Assessment Results', 20, 20);
+            
+            doc.setFontSize(12);
+            doc.text(`Name: ${currentUser.name}`, 20, 40);
+            doc.text(`Email: ${currentUser.email}`, 20, 50);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 20, 60);
+            doc.text(`Total Score: ${document.getElementById('totalScore').textContent}/150`, 20, 70);
+            
+            // Add section-wise results
+            let yPos = 90;
+            disciplines.forEach((discipline, index) => {
+                const disciplineQuestions = allQuestions[discipline.id] || [];
+                const randomQuestions = disciplineQuestions.slice(0, 25);
+                let sectionCorrect = 0;
+                
+                randomQuestions.forEach((question, qIndex) => {
+                    const questionKey = `${discipline.id}_${qIndex}`;
+                    const userAnswer = currentState.answers[questionKey];
+                    const correctAnswer = question.correct;
+                    if (userAnswer === correctAnswer) sectionCorrect++;
+                });
+                
+                doc.text(`${discipline.name}: ${sectionCorrect}/25`, 20, yPos);
+                yPos += 10;
+                
+                if (yPos > 280) {
+                    doc.addPage();
+                    yPos = 20;
+                }
+            });
+            
+            doc.save(`Greenpeg_Results_${currentUser.name}.pdf`);
+        }
 
-resultHTML+=`<p><b>Total Score:</b> ${score}/25</p><hr>`;
+        // Restart Test
+        function restartTest() {
+            if (confirm('Are you sure you want to restart? All progress will be lost.')) {
+                localStorage.removeItem('greenpeg_assessment');
+                location.reload();
+            }
+        }
 
-selectedQuestions.forEach((q,i)=>{
-if(answers[i]!==q.answer){
-resultHTML+=`
-<div class="mb-2">
-<b>Q${i+1} Failed</b><br>
-Correct Answer: ${q.options[q.answer]}<br>
-Explanation: ${q.explanation}
-</div>
-<hr>
-`;
-}
-});
+        // Generate Sample Questions (Fallback)
+        function generateSampleQuestions() {
+            const sampleData = {};
+            
+            disciplines.forEach(discipline => {
+                sampleData[discipline.id] = [];
+                for (let i = 1; i <= 100; i++) {
+                    sampleData[discipline.id].push({
+                        question: `Sample ${discipline.name} Question ${i}? This is a multiple choice question for testing purposes.`,
+                        options: ['Option A', 'Option B', 'Option C', 'Option D'],
+                        correct: String.fromCharCode(65 + (i % 4)),
+                        explanation: `This is the explanation for question ${i}. The correct answer is ${String.fromCharCode(65 + (i % 4))} because...`
+                    });
+                }
+            });
+            
+            return sampleData;
+        }
 
-resultHTML+=`<button class="btn btn-primary" onclick="exportPDF(${score})">Export PDF</button>`;
-
-document.getElementById("examSection").style.display="none";
-document.getElementById("resultSection").style.display="block";
-document.getElementById("resultSection").innerHTML=resultHTML;
-}
-
-function exportPDF(score){
-let doc = new jsPDF();
-doc.text("Orange Group CBT Result",20,20);
-doc.text("Candidate: "+document.getElementById("displayName").innerText,20,30);
-doc.text("Score: "+score+"/25",20,40);
-doc.save("Orange_Group_CBT_Result.pdf");
-}
-
-</script>
-
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide floating action button initially
+            document.getElementById('fab').style.display = 'none';
+            
+            // Load questions in background
+            loadQuestions();
+        });
+    </script>
 </body>
 </html>
